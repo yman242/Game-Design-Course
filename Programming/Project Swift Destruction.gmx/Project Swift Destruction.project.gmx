@@ -21,9 +21,10 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
-  <scripts name="scripts"/>
   <objects name="objects">
     <object>objects\Game</object>
+    <object>objects\Map_Control</object>
+    <object>objects\obj_Mouse</object>
     <objects name="Ships">
       <object>objects\Ship</object>
       <object>objects\obj_Ship1</object>
@@ -44,8 +45,12 @@
     <objects name="Missles">
       <object>objects\Missle</object>
     </objects>
+    <objects name="Planets">
+      <object>objects\Planet</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room_Map</room>
     <room>rooms\room_Battle</room>
   </rooms>
   <help>
