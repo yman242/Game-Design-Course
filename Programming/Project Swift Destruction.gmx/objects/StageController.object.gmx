@@ -29,7 +29,7 @@
 
 global.moveSpeed = 3; //How fast ships will move to the battle line
 
-global.howFar = room_width*2/4; //Default value to push the ships by.
+global.howFar = room_width*1/4; //Default value to push the ships by.
 
 global.linePosition = room_width/4;
 
@@ -37,7 +37,26 @@ global.battleState = 0; //0 is placing ships, 1 is moving, 2 is battle.
 
 looper = room_height/32; //Used to draw the wall.
 
-instance_create(32,32,obj_Go);
+xHolder = view_wview[view_current] - sprite_get_width(sprite_Button);
+yHolder = sprite_get_height(sprite_Button)/2;
+incrementHolder = yHolder*2+32;
+
+for(i=0;i&lt;global.shipMax;i++)
+{
+    if(global.fleetShips[global.selectedFleet,i] == 1)
+    {
+        buttons[i] = instance_create(xHolder,yHolder,obj_ShipButton1);
+        yHolder += incrementHolder;
+    }
+    else if(global.fleetShips[global.selectedFleet,i] == 2)
+    {
+        buttons[i] = instance_create(xHolder,yHolder,obj_ShipButton2);
+        yHolder += incrementHolder;
+    }
+}
+
+instance_create(xHolder,yHolder,obj_Go);
+
 
 whichWay = 0; //Not Implemented yet, but will allow control of directions.
 /*
@@ -46,6 +65,8 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
 2 = left
 3 = up
 */
+
+
 
 
 </string>
@@ -102,6 +123,8 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
     {
         draw_sprite(sprite_Line,0,global.linePosition,i*32);
     }
+    
+    draw_sprite(sprite_UIOverlay,0,view_wview[view_current] - sprite_get_width(sprite_UIOverlay),view_hview[view_current] - sprite_get_height(sprite_UIOverlay));
 }
 </string>
           </argument>

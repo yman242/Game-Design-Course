@@ -25,19 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scaleX = 32;
-scaleY = 24;
+            <string>scaleX = 32;//16
+scaleY = 18;//9
 
 xMax = room_width;
 yMax = room_height;
 
 xMin = 256;
-yMin = 192; //Used to scale the map, zooming in and out.
+yMin = 144; //Used to scale the map, zooming in and out.
 
 planetNum = 50;
-radius = 256;
+global.radius = 256;
 
-instance_create(random(room_width),random(room_height),Planet); //Makes one planet for the radius thing.
+global.fleetPlanet[0] = instance_create(random(room_width),random(room_height),Planet); //Makes one planet for the radius thing, and assign all fleets to it.
+
+for(i = 1; i&lt;global.fleetNumber;i++) //put all fleets on planet.
+{
+    global.fleetPlanet[i] = global.fleetPlanet[0];
+}
 
 for(i = 1; i&lt;planetNum; i++)
 {
@@ -46,7 +51,7 @@ for(i = 1; i&lt;planetNum; i++)
     {
         holderX = random(room_width);
         holderY = random(room_height);
-        if(collision_circle(holderX,holderY,radius,Planet,false,false))
+        if(collision_circle(holderX,holderY,global.radius,Planet,false,false))
         {
             inRange = true;
             instance_create(holderX,holderY,Planet);
@@ -107,6 +112,127 @@ for(i = 1; i&lt;planetNum; i++)
 {
     view_wview[view_current] -= scaleX;
     view_hview[view_current] -= scaleY;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="56">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>collisionHolder = collision_point(mouse_x,mouse_y,Planet,true,true);
+
+if(collisionHolder &gt; 0)
+{
+    if(global.fleetPlanet[global.selectedFleet] = collisionHolder)
+    {
+        room_goto(room_Battle);
+    }
+    else if(global.radius &gt;= point_distance(global.fleetPlanet[global.selectedFleet].x,global.fleetPlanet[global.selectedFleet].y,collisionHolder.x,collisionHolder.y))//in range
+    {
+        global.fleetPlanet[global.selectedFleet] = collisionHolder;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>for(i = 0; i&lt;array_length_1d(global.fleetPlanet);i++)
+{
+    draw_sprite_stretched(sprite_Ship1,0,global.fleetPlanet[i].x,global.fleetPlanet[i].y,16,8);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="81">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(global.selectedFleet &gt; 0)
+{
+    global.selectedFleet--;
+}
+else
+{
+    global.selectedFleet = global.fleetNumber-1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="69">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(global.selectedFleet &lt; global.fleetNumber-1)
+{
+    global.selectedFleet++;
+}
+else
+{
+    global.selectedFleet = 0;
 }
 </string>
           </argument>

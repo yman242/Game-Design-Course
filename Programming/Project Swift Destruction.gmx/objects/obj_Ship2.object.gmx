@@ -34,6 +34,8 @@ moveSpeed = 1; //How fast the ship will move in combat, if needed to.
 
 goal = x + global.howFar;
 
+aimOffset = 64;
+
 engaged = false;
 </string>
           </argument>

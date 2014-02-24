@@ -34,6 +34,8 @@ moveSpeed = 1; //How fast the ship will move in combat, if needed to.
 
 goal = x + global.howFar;
 
+aimOffset = 64;
+
 engaged = false;
 </string>
           </argument>
@@ -58,6 +60,19 @@ engaged = false;
           <argument>
             <kind>1</kind>
             <string>//Shoots lasers
+
+holder = instance_create(x,y,Laser);
+
+holder.maker = id;
+
+targetHolder = instance_nearest(x, y, Monster);
+
+holder.target = targetHolder;
+
+holder.color1 = c_blue;
+holder.color2 = c_blue;
+
+alarm[1] = 30 * attackSpeedLasers;
 </string>
           </argument>
         </arguments>
@@ -81,7 +96,16 @@ engaged = false;
           <argument>
             <kind>1</kind>
             <string>//Shoot missles
-instance_create(x,y,Missle);
+holder = instance_create(x,y,Missle);
+
+targetHolder = instance_nearest(x, y, Monster);
+
+spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
+aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
+aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
+
+holder.direction = point_direction(x,y,aimX,aimY);
+
 alarm[0] = 30 * attackSpeedMissiles;
 </string>
           </argument>
@@ -120,8 +144,15 @@ else if(global.battleState == 2) //If we're in battle
     if(!engaged)
     {
         engaged = true;
-        alarm[0] = 1;
-        alarm[1] = 1;
+        
+        if(attackSpeedMissiles &gt; 0)
+        {
+            alarm[0] = 1;
+        }
+        if(attackSpeedLasers &gt; 0)
+        {
+            alarm[1] = 1;
+        }
     }
 }
 </string>

@@ -29,12 +29,17 @@
 imageHolder = sprite_Ship1; //This holds the ship type.
 holdingShip = false; //If there's a ship on the mouse.
 validShip = false; //Used to tell if placement is valid.
+placed = false; //Used to see if the ship was placed.
 
-shipXSize = 32; //Size of the ship shown in button. Temp value for speed.
-shipYSize = 32;
+shipXSize = 160; //Size of the ship shown in button.
+shipYSize = sprite_get_height(sprite_Ship1)*(160/sprite_get_width(sprite_Ship1));// 50 should be the max on this...
 
-xOffset = (sprite_get_height(sprite_Button)/2) - shipXSize/2;
-yOffset = (sprite_get_width(sprite_Button)/2) - shipYSize/2;
+xOffset = 21;
+yOffset = 22+(50-shipYSize);//22;
+
+shipName = "Ship 1";
+textXOffset = (sprite_get_width(sprite_Button)*3/4); 
+textYOffset = 16;
 </string>
           </argument>
         </arguments>
@@ -117,8 +122,8 @@ yOffset = (sprite_get_width(sprite_Button)/2) - shipYSize/2;
         }
         
         instance_create(mouse_x - mouseXOffset,mouse_y - mouseYOffset,object);
-        global.onField += 1; 
-        global.shipCount[buttonType] -= 1;
+        global.onField++;
+        placed = true;
     }
 }
 </string>
@@ -143,7 +148,7 @@ yOffset = (sprite_get_width(sprite_Button)/2) - shipYSize/2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.shipCount[buttonType]&gt;0 &amp;&amp; global.onField &lt; global.shipMax)
+            <string>if(!placed)
 {
     holdingShip = true;
     validShip = false;
@@ -174,12 +179,12 @@ yOffset = (sprite_get_width(sprite_Button)/2) - shipYSize/2;
             <kind>1</kind>
             <string>if(global.battleState = 0)
 {
-    if(global.shipCount[buttonType]=0 || global.onField &gt;= global.shipMax) //used to fade the buttons
+    if(placed) //used to fade the buttons
     {
         draw_set_alpha(0.2);
     }
     draw_sprite(sprite_Button,0,x,y);//Draws the button and the ship on said button.
-    draw_sprite_stretched(imageHolder,0,x+xOffset,y+yOffset,32,32);
+    draw_sprite_stretched(imageHolder,0,x+xOffset,y+yOffset,shipXSize,shipYSize);
     
     draw_set_alpha(1);
     
@@ -195,6 +200,10 @@ yOffset = (sprite_get_width(sprite_Button)/2) - shipYSize/2;
         }
         draw_sprite_ext(imageHolder,0,mouse_x - mouseXOffset,mouse_y - mouseYOffset,1,1,0,color,.5);
     }
+    
+    draw_set_font(font_Text);
+    draw_set_halign(fa_center);
+    draw_text(x+textXOffset,y+textYOffset,shipName);
 }
 </string>
           </argument>

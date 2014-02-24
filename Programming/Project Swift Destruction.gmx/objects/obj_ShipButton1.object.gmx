@@ -29,12 +29,17 @@
 imageHolder = sprite_Ship1;
 holdingShip = false; //If there's a ship on the mouse.
 validShip = false; //Used to tell if placement is valid.
+placed = false; //Used to see if the ship was placed.
 
-shipXSize = 32; //Size of the ship shown in button. Temp value for speed.
-shipYSize = 32;
+shipXSize = 160; //Size of the ship shown in button.
+shipYSize = sprite_get_height(sprite_Ship1)*(160/sprite_get_width(sprite_Ship1));// 50 should be the max on this...
 
-xOffset = (sprite_get_height(sprite_Button)/2) - shipXSize/2;
-yOffset = (sprite_get_width(sprite_Button)/2) - shipYSize/2;
+xOffset = 21;
+yOffset = 22+(50-shipYSize);//22;
+
+shipName = "Ship 1";
+textXOffset = (sprite_get_width(sprite_Button)*3/4); 
+textYOffset = 16;
 </string>
           </argument>
         </arguments>

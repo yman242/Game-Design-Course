@@ -32,6 +32,17 @@ global.shipMax = 3; //Current number of ships aloud on the field.
 global.shipCount[0] = 0; //This is the parent ship, should not be more than 0.
 global.shipCount[1] = 3; //ship1
 global.shipCount[2] = 1; //ship2
+
+global.selectedFleet = 0; //Which fleet is selected.
+global.fleetNumber = 2; // The number of fleets we have.
+
+global.fleetShips[0,0] = 1; //This might change, but currently
+global.fleetShips[0,1] = 2; //the numbers work as [fleet][whichship]
+global.fleetShips[0,2] = 1;
+
+global.fleetShips[1,0] = 2;
+global.fleetShips[1,1] = 2;
+global.fleetShips[1,2] = 1;
 </string>
           </argument>
         </arguments>

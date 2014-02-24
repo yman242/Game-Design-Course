@@ -6,7 +6,7 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\sprite_Planet1</sprite>
+    <sprite>sprites\sprite_PlanetMap</sprite>
     <sprites name="Ships">
       <sprite>sprites\sprite_Ship1</sprite>
       <sprite>sprites\sprite_Ship2</sprite>
@@ -14,13 +14,24 @@
     <sprites name="Misc">
       <sprite>sprites\sprite_Line</sprite>
       <sprite>sprites\sprite_Button</sprite>
+      <sprite>sprites\sprite_UIOverlay</sprite>
+      <sprite>sprites\sprite_Glow</sprite>
+      <sprite>sprites\sprite_Button2</sprite>
     </sprites>
     <sprites name="Missiles">
       <sprite>sprites\sprite_Missile1</sprite>
     </sprites>
+    <sprites name="Monsters">
+      <sprite>sprites\sprite_Monster1</sprite>
+    </sprites>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background_Space</background>
+  </backgrounds>
   <paths name="paths"/>
+  <fonts name="fonts">
+    <font>fonts\font_Text</font>
+  </fonts>
   <objects name="objects">
     <object>objects\Game</object>
     <object>objects\Map_Control</object>
@@ -44,6 +55,7 @@
     </objects>
     <objects name="Missles">
       <object>objects\Missle</object>
+      <object>objects\Laser</object>
     </objects>
     <objects name="Planets">
       <object>objects\Planet</object>
