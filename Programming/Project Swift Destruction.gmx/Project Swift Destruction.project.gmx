@@ -29,6 +29,10 @@
     <background>background\background_Space</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scriptShipControllerSetup.gml</script>
+    <script>scripts\scriptShipStratLocations.gml</script>
+  </scripts>
   <fonts name="fonts">
     <font>fonts\font_Text</font>
   </fonts>
@@ -38,6 +42,7 @@
     <object>objects\obj_Mouse</object>
     <objects name="Ships">
       <object>objects\Ship</object>
+      <object>objects\ShipController</object>
       <object>objects\obj_Ship1</object>
       <object>objects\obj_Ship2</object>
     </objects>
