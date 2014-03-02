@@ -1,5 +1,5 @@
 //This will return the strategy locations.
-if(argument0 == 0 )
+if(argument0 == 0)
 {
     for(i=0;i<10;i+=2) //Sets up positions...
     {
@@ -11,6 +11,20 @@ if(argument0 == 0 )
     {
         temp[i,0] = ceil(i/2)*-32;
         temp[0,i] = ceil(i/2)*32;
+    }
+}
+else if(argument0 == 1)
+{
+    for(i=0;i<10;i+=2) //Sets up positions...
+    {
+        temp[i,0] =0;
+        temp[0,i] =  i/2*-32;
+    }
+    
+    for(i=1;i<10;i+=2)
+    {
+        temp[i,0] = -192;
+        temp[0,i] = ceil(i/2)*-32;
     }
 }
 else

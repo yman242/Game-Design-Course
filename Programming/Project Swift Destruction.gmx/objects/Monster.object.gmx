@@ -96,6 +96,8 @@ aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spr
 aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
 
 holder.direction = point_direction(x,y,aimX,aimY);
+holder.target = Ship;
+
 alarm[0] = 30 * attackSpeedMissiles;
 </string>
           </argument>

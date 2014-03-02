@@ -32,6 +32,8 @@
   <scripts name="scripts">
     <script>scripts\scriptShipControllerSetup.gml</script>
     <script>scripts\scriptShipStratLocations.gml</script>
+    <script>scripts\scriptChangePosition.gml</script>
+    <script>scripts\scriptUpdateArray.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_Text</font>
@@ -58,7 +60,7 @@
     <objects name="Monsters">
       <object>objects\Monster</object>
     </objects>
-    <objects name="Missles">
+    <objects name="Weapons">
       <object>objects\Missle</object>
       <object>objects\Laser</object>
     </objects>

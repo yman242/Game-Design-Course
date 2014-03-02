@@ -83,10 +83,10 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(target) &amp;&amp; instance_exists(maker))
+            <string>if(instance_exists(target.id) &amp;&amp; instance_exists(maker.id))
 {
-    spriteTemp = sprite_get_name(target); //Used to get an aiming point.
-    aimX = target.x + sprite_get_width(spriteTemp)/2;
+    spriteTemp = target.sprite_index; //Used to get an aiming point.
+    aimX = target.x + sprite_get_width(spriteTemp)/2;//For some reason detecting sprite sizes odd.
     aimY = target.y + sprite_get_height(spriteTemp)/2;
     
     direction = point_direction(x,y,aimX,aimY);
@@ -94,6 +94,7 @@ instance_destroy();
     if(!hit &amp;&amp; (collision_point(x,y,Ship,true,true) == target || collision_point(x,y,Monster,true,true) == target))
     {
         hit = true;
+        speed = speed/2;
         alarm[0] = 30*3;
     }
 }
@@ -125,10 +126,10 @@ else
             <kind>1</kind>
             <string>if(hit)
 {
-    tempSprite = sprite_get_name(maker);
+    tempSprite = maker.sprite_index;
     aimX = sprite_get_width(tempSprite)/2;
     aimY = sprite_get_height(tempSprite)/2;
-    draw_line_width_color(x,y,maker.x+aimY,maker.y+aimY,laserWidth,color1,color2);
+    draw_line_width_color(x,y,maker.x+aimX,maker.y+aimY,laserWidth,color1,color2);
 }
 </string>
           </argument>

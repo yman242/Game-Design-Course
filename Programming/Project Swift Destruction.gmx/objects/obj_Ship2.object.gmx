@@ -30,9 +30,12 @@ missiles = 4; //Number of missile ports on ship.
 lasers = 0; //Number of laser ports on ships.
 attackSpeedMissiles = 3; //How often missiles can/will be launched.
 attackSpeedLasers = 5; //How often lasers can/will be launched.
-moveSpeed = 1; //How fast the ship will move in combat, if needed to.
+stratSpeed = 1; //How fast the ship will move in combat, if needed to.
 
 goal = x + global.howFar;
+
+stratGoalX = 0;
+stratGoalY = 0;
 
 aimOffset = 64;
 

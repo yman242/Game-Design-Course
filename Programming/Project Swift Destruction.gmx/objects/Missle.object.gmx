@@ -30,6 +30,8 @@
 alarm[0] = 30*15;
 
 speed = 15;
+
+target = Monster;
 </string>
           </argument>
         </arguments>
@@ -76,6 +78,12 @@ speed = 15;
           <argument>
             <kind>1</kind>
             <string>image_angle = direction;
+
+holder = collision_point(x,y,target,true,false)
+if(holder&gt;0)
+{
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>

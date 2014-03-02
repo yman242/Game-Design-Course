@@ -33,11 +33,51 @@ shipType = 1;
 
 numOfShips = 9;
 
+stratPosition = 0
+
 stratPosition = scriptShipStratLocations(strategyType);
 
 ships = 0;
 
 ships = scriptShipControllerSetup(shipType,numOfShips,stratPosition,x,y);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="65">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(strategyType == 0)
+{
+    strategyType = 1;
+}
+else
+{
+    strategyType = 0;
+}
+
+
+stratPosition = scriptShipStratLocations(strategyType);
+
+if(array_length_1d(ships)&gt;0)
+{
+    scriptChangePosition(ships,stratPosition,ships[0].x,ships[0].y);
+}
 </string>
           </argument>
         </arguments>
