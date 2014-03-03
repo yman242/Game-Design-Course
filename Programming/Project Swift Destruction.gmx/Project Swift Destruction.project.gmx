@@ -24,9 +24,26 @@
     <sprites name="Monsters">
       <sprite>sprites\sprite_Monster1</sprite>
     </sprites>
+    <sprites name="Front End">
+      <sprite>sprites\sprite_MainMenu_New</sprite>
+      <sprite>sprites\sprite_MainMenu_Load</sprite>
+      <sprite>sprites\sprite_MainMenu_Quit</sprite>
+      <sprite>sprites\sprite_credits</sprite>
+    </sprites>
+    <sprites name="Narrative">
+      <sprites name="Introduction">
+        <sprite>sprites\sprite_text_test1</sprite>
+        <sprite>sprites\sprite_text_test2</sprite>
+      </sprites>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background_Space</background>
+    <background>background\background_front_end_space</background>
+    <background>background\background_game_logo</background>
+    <background>background\background_LoadMenu</background>
+    <background>background\background_menu_mochop</background>
+    <background>background\background_team_logo</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -34,6 +51,7 @@
     <script>scripts\scriptShipStratLocations.gml</script>
     <script>scripts\scriptChangePosition.gml</script>
     <script>scripts\scriptUpdateArray.gml</script>
+    <script>scripts\scriptCombatDamage.gml</script>
     <script>scripts\scriptTarget.gml</script>
   </scripts>
   <fonts name="fonts">
@@ -68,10 +86,36 @@
     <objects name="Planets">
       <object>objects\Planet</object>
     </objects>
+    <objects name="Front End">
+      <object>objects\obj_MenuGraphics</object>
+      <object>objects\obj_intro_skipable</object>
+      <object>objects\obj_credits</object>
+      <object>objects\obj_back_to_main</object>
+    </objects>
+    <objects name="Narrative">
+      <objects name="Introduction">
+        <object>objects\obj_narrative_intro</object>
+      </objects>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <rooms name="Front End">
+      <rooms name="Intro">
+        <room>rooms\room_intro1_GameMaker</room>
+        <room>rooms\room_intro2_TeamLogo</room>
+        <room>rooms\room_intro3_TeamLogo</room>
+      </rooms>
+      <rooms name="MainMenu">
+        <room>rooms\room_mainMenu</room>
+        <room>rooms\room_LoadMenu</room>
+      </rooms>
+      <rooms name="Narrative Intro">
+        <room>rooms\room_NarrativeRoom</room>
+      </rooms>
+    </rooms>
     <room>rooms\room_Map</room>
     <room>rooms\room_Battle</room>
+    <room>rooms\room_Credits</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

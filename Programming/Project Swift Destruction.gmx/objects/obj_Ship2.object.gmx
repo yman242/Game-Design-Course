@@ -40,6 +40,8 @@ stratGoalY = 0;
 aimOffset = 64;
 
 engaged = false;
+
+life = 100;
 </string>
           </argument>
         </arguments>
