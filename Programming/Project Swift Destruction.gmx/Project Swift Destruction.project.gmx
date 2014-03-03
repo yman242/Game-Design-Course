@@ -34,6 +34,7 @@
     <script>scripts\scriptShipStratLocations.gml</script>
     <script>scripts\scriptChangePosition.gml</script>
     <script>scripts\scriptUpdateArray.gml</script>
+    <script>scripts\scriptTarget.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_Text</font>
