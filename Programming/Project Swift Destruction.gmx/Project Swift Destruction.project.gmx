@@ -36,6 +36,7 @@
         <sprite>sprites\sprite_text_test2</sprite>
       </sprites>
     </sprites>
+    <sprite>sprites\spr_MissileHit</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_Space</background>
@@ -97,6 +98,11 @@
         <object>objects\obj_narrative_intro</object>
       </objects>
     </objects>
+    <objects name="Misc">
+      <object>objects\obj_Win</object>
+      <object>objects\obj_Lose</object>
+      <object>objects\obj_MissleHit</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="Front End">
@@ -116,6 +122,10 @@
     <room>rooms\room_Map</room>
     <room>rooms\room_Battle</room>
     <room>rooms\room_Credits</room>
+    <rooms name="Win/Lose">
+      <room>rooms\room_Win</room>
+      <room>rooms\room_Lose</room>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

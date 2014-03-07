@@ -132,6 +132,12 @@ alarm[0] = 30 * attackSpeedMissiles;
         alarm[1] = 1;
     }
 }
+
+if(life&lt;=0)
+{
+    //they died, time to explode.
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
