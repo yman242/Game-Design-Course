@@ -35,11 +35,11 @@ numOfShips = 9;
 
 stratPosition = 0
 
-stratPosition = scriptShipStratLocations(strategyType);
+//stratPosition = scriptShipStratLocations(strategyType);
 
 ships = 0;
 
-ships = scriptShipControllerSetup(shipType,numOfShips,stratPosition,x,y);
+//ships = scriptShipControllerSetup(shipType,numOfShips,stratPosition,x,y);
 </string>
           </argument>
         </arguments>

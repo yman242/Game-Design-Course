@@ -109,7 +109,7 @@ textYOffset = 16;
     
     if(validShip)
     {
-        switch (buttonType)
+        /*switch (buttonType)
         {
             case 1:
             object = obj_Ship1;
@@ -119,9 +119,15 @@ textYOffset = 16;
             break;
             default:
             object = obj_Ship1;
-        }
+        }*/
         
-        instance_create(mouse_x - mouseXOffset,mouse_y - mouseYOffset,object);
+        tempHolder = instance_create(mouse_x - mouseXOffset,mouse_y - mouseYOffset,ShipController);
+        tempHolder.strategyType = 0;
+        tempHolder.shipType = buttonType;
+        tempHolder.stratPosition = scriptShipStratLocations(tempHolder.strategyType);
+        tempHolder.ships = scriptShipControllerSetup(tempHolder.shipType,tempHolder.numOfShips,tempHolder.stratPosition,tempHolder.x ,tempHolder.y);
+        
+        
         global.onField++;
         placed = true;
     }

@@ -123,7 +123,7 @@ alarm[0] = 30 * attackSpeedMissiles;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.battleState == 2) //If we're in battle
+            <string>if(global.battleState == 3) //If we're in battle
 {
     if(!engaged)
     {
