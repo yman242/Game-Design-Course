@@ -40,6 +40,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\background_Space</background>
+    <background>background\background_Stars</background>
     <background>background\background_front_end_space</background>
     <background>background\background_game_logo</background>
     <background>background\background_LoadMenu</background>

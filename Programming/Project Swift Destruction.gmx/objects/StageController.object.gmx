@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scaleSize = 1.5;
+            <string>scaleSize = 1.5;//scaled size of screen
+scrollSpeed = 2; //Speed of the background.
 
 view_wview[view_current] *= scaleSize;
 view_hview[view_current] *= scaleSize;
@@ -146,6 +147,7 @@ else if(global.battleState == 2)
 }
 if(global.battleState&gt;0)
 {
+    background_hspeed[1] = -scrollSpeed;
     if(!instance_exists(Monster)) //Wave over
     {
         global.battleState = 1;
