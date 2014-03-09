@@ -1,0 +1,3 @@
+with(Captain) {
+    visible = !visible;
+}

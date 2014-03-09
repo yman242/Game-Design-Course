@@ -28,6 +28,12 @@
             <string>health = 100; //Generic health value. Can be edited by ship.
 missiles = 0; //Number of missile ports on ship.
 lasers = 0; //Number of laser ports on ships.
+
+burstCount = 0; //used to keep track of burst fire
+burstTotal = 3; //Total burst shots to fire
+burstDelay = .5;//How many seconds until burst fire.
+
+attackSpeedBurst = 3;
 attackSpeedMissiles = 5; //How often missiles can/will be launched.
 attackSpeedLasers = 5; //How often lasers can/will be launched.
 stratSpeed = 1; //How fast the ship will move in combat, if needed to.
@@ -65,6 +71,53 @@ life = 100;
           <argument>
             <kind>1</kind>
             <string>//Explosion code goes here.
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Shoot missles
+xHolder = x+(sprite_get_width(sprite_index)/2);
+yHolder = y+(sprite_get_height(sprite_index)/2);
+
+holder = instance_create(xHolder,yHolder,Burst);
+
+targetHolder = instance_nearest(xHolder, yHolder, Monster);
+
+spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
+aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
+aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
+
+holder.direction = point_direction(xHolder,yHolder,aimX,aimY);
+holder.target = Monster;
+
+burstCount++;
+if(burstCount&lt;burstTotal)
+{
+    alarm[2] = 30 * burstDelay;
+}
+else
+{
+    alarm[2] = 30 *attackSpeedBurst;
+    burstCount = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -174,6 +227,10 @@ alarm[0] = 30 * attackSpeedMissiles;
         if(attackSpeedLasers &gt; 0)
         {
             alarm[1] = 1;
+        }
+        if(attackSpeedBurst&gt;0)
+        {
+            alarm[2] = 1;
         }
     }
 }

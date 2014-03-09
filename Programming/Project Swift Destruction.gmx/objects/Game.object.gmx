@@ -25,12 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.playerCash = 0; //Not implemented. Holds player cash.
-
-global.shipMax = 5; //Current number of ships aloud on the field.
+            <string>global.shipMax = 5; //Current number of ships aloud on the field.
 
 global.selectedFleet = 0; //Which fleet is selected.
-global.fleetNumber = 2; // The number of fleets we have.
+global.fleetNumber = 1; // The number of fleets we have.
 
 global.fleetShips[0,0] = 1; //This might change, but currently
 global.fleetShips[0,1] = 2; //the numbers work as [fleet][whichship]
@@ -38,14 +36,36 @@ global.fleetShips[0,2] = 1;
 global.fleetShips[0,3] = 1;
 global.fleetShips[0,4] = 1;
 
-
-global.fleetShips[1,0] = 2;
-global.fleetShips[1,1] = 2;
-global.fleetShips[1,2] = 1;
-global.fleetShips[1,3] = 1;
-global.fleetShips[1,4] = 1;
-
 global.difficulty_multiplier = 1;
+
+global.playerTokens = 10000; // Used to recruit / Reroll captains
+
+for (i=0; i&lt;global.shipMax; i+=1)
+{
+    global.fleet[i] = scriptGenerateCaptain();
+    global.fleet[i].fleet_id = i;
+    global.fleet[i].visible = false;
+}
+
+global.Galaxy_Created = false;
+globalvar galaxy;
+
+global.GALAXY_HEIGHT = 1180;
+global.GALAXY_WIDTH = 1180;
+global.GALAXY_PLANETS_MAX = 50;
+
+global.MIN_PLANET_RANGE = 30;
+global.MAX_PLANET_RANGE = 250;
+
+global.CENTER_OF_GALAXY_X = 640;
+global.CENTER_OF_GALAXY_Y = 640;
+
+global.EDGE_MOUSE_MOVE = 25;
+
+global.MAX_SCALE = 0.5;
+global.MIN_SCALE = 0.3;
+
+global.currently_selected_planet_id = -1;
 </string>
           </argument>
         </arguments>

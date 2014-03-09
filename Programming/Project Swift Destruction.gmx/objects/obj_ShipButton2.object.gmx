@@ -40,6 +40,8 @@ yOffset = 22+(50-shipYSize);//22;
 shipName = "Ship 2";
 textXOffset = (sprite_get_width(sprite_Button)*3/4); 
 textYOffset = 16;
+
+commander = 0;
 </string>
           </argument>
         </arguments>

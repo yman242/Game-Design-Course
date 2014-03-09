@@ -66,6 +66,8 @@ for(i=0;i&lt;global.shipMax;i++)
         buttons[i] = instance_create(xHolder,yHolder,obj_ShipButton2);
         yHolder += incrementHolder;
     }
+    
+    buttons[i].commander = global.fleet[i]
 }
 
 instance_create(xHolder,yHolder,obj_Go);
