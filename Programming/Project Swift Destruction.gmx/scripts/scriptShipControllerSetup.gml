@@ -9,6 +9,18 @@ else if(argument0 == 2)
 {
     shipHolder = obj_Ship2;
 }
+else if(argument0 == 3)
+{
+    shipHolder = obj_Cruiser;
+}
+else if(argument0 == 4)
+{
+    shipHolder = obj_Battleship;
+}
+else if(argument0 == 5)
+{
+    shipHolder = obj_Missleship;
+}
 else
 {
     shipHolder = obj_Ship1;

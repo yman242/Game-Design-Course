@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.shipMax = 5; //Current number of ships aloud on the field.
+            <string>randomize(); //Since GM can't random worth shit...
+
+global.shipMax = 5; //Current number of ships aloud on the field.
 
 global.selectedFleet = 0; //Which fleet is selected.
 global.fleetNumber = 1; // The number of fleets we have.

@@ -10,6 +10,11 @@
     <sprites name="Ships">
       <sprite>sprites\sprite_Ship1</sprite>
       <sprite>sprites\sprite_Ship2</sprite>
+      <sprite>sprites\sprite_Frigate</sprite>
+      <sprite>sprites\sprite_Destroyer</sprite>
+      <sprite>sprites\sprite_Cruiser</sprite>
+      <sprite>sprites\sprite_Battleship</sprite>
+      <sprite>sprites\sprite_Missleship</sprite>
     </sprites>
     <sprites name="Misc">
       <sprite>sprites\sprite_Line</sprite>
@@ -78,6 +83,9 @@
       <object>objects\ShipController</object>
       <object>objects\obj_Ship1</object>
       <object>objects\obj_Ship2</object>
+      <object>objects\obj_Cruiser</object>
+      <object>objects\obj_Battleship</object>
+      <object>objects\obj_Missleship</object>
     </objects>
     <objects name="Stage Controllers">
       <object>objects\StageController</object>
@@ -86,6 +94,9 @@
       <object>objects\ShipButton</object>
       <object>objects\obj_ShipButton1</object>
       <object>objects\obj_ShipButton2</object>
+      <object>objects\obj_ShipButtonCruiser</object>
+      <object>objects\obj_ShipButtonBattleship</object>
+      <object>objects\obj_ShipButtonMissleship</object>
       <object>objects\obj_Go</object>
     </objects>
     <objects name="Monsters">

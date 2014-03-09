@@ -42,6 +42,8 @@ textXOffset = (sprite_get_width(sprite_Button)*3/4);
 textYOffset = 16;
 
 commander = 0;
+
+numberOfShips = 9;
 </string>
           </argument>
         </arguments>
@@ -126,6 +128,7 @@ commander = 0;
         tempHolder = instance_create(mouse_x - mouseXOffset,mouse_y - mouseYOffset,ShipController);
         tempHolder.strategyType = 0;
         tempHolder.shipType = buttonType;
+        tempHolder.numOfShips = numberOfShips;
         tempHolder.stratPosition = scriptShipStratLocations(tempHolder.strategyType);
         tempHolder.ships = scriptShipControllerSetup(tempHolder.shipType,tempHolder.numOfShips,tempHolder.stratPosition,tempHolder.x ,tempHolder.y);
         

@@ -56,18 +56,33 @@ incrementHolder = yHolder*2+32;
 
 for(i=0;i&lt;global.shipMax;i++)
 {
-    if(global.fleetShips[global.selectedFleet,i] == 1)
+    if(global.fleet[i].shipType == 0)
     {
         buttons[i] = instance_create(xHolder,yHolder,obj_ShipButton1);
         yHolder += incrementHolder;
     }
-    else if(global.fleetShips[global.selectedFleet,i] == 2)
+    else if(global.fleet[i].shipType == 1)
     {
         buttons[i] = instance_create(xHolder,yHolder,obj_ShipButton2);
         yHolder += incrementHolder;
     }
+    else if(global.fleet[i].shipType == 2)
+    {
+        buttons[i] = instance_create(xHolder,yHolder,obj_ShipButtonCruiser);
+        yHolder += incrementHolder;
+    }
+    else if(global.fleet[i].shipType == 3)
+    {
+        buttons[i] = instance_create(xHolder,yHolder,obj_ShipButtonBattleship);
+        yHolder += incrementHolder;
+    }
+    else // shipType == 4
+    {
+        buttons[i] = instance_create(xHolder,yHolder,obj_ShipButtonMissleship);
+        yHolder += incrementHolder;
+    }
     
-    buttons[i].commander = global.fleet[i]
+    buttons[i].commander = global.fleet[i];
 }
 
 instance_create(xHolder,yHolder,obj_Go);
