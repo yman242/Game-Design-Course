@@ -4,7 +4,10 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sound_Missle</sound>
+    <sound>sound\sound_MenuMusic</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprite_PlanetMap</sprite>
     <sprites name="Ships">
@@ -60,6 +63,7 @@
     <sprite>sprites\sprite_subMenuFleetManagement</sprite>
     <sprite>sprites\sprite_MonsterPlanet</sprite>
     <sprite>sprites\sprite_PlanetLaser</sprite>
+    <sprite>sprites\sprite_Formations</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_Space</background>
@@ -90,6 +94,7 @@
     <script>scripts\scriptGeneratePlanet.gml</script>
     <script>scripts\scriptGetPlanetName.gml</script>
     <script>scripts\scriptIsPlanetPositionValid.gml</script>
+    <script>scripts\scriptRectanglePointCollision.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_Text</font>
@@ -146,6 +151,7 @@
     </objects>
     <objects name="Misc">
       <object>objects\obj_Win</object>
+      <object>objects\objectTutorialSplash</object>
       <object>objects\obj_Lose</object>
       <object>objects\obj_MissleHit</object>
     </objects>
@@ -183,6 +189,7 @@
     <room>rooms\room_Map</room>
     <rooms name="Win/Lose">
       <room>rooms\room_Win</room>
+      <room>rooms\room_Tutorial</room>
       <room>rooms\room_Lose</room>
     </rooms>
   </rooms>

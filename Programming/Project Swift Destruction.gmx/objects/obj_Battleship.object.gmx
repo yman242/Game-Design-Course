@@ -42,7 +42,7 @@ burstDelay = .5;//How many seconds until burst fire.
 
 attackSpeedBurst = 0;
 attackSpeedMissiles = 0; //How often missiles can/will be launched.
-attackSpeedLasers = 5; //How often lasers can/will be launched.
+attackSpeedLasers = 3; //How often lasers can/will be launched.
 stratSpeed = 1; //How fast the ship will move in combat, if needed to.
 
 goal = x + global.howFar;

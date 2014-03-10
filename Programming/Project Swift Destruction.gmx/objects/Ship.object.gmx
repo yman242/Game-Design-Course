@@ -76,6 +76,7 @@ life = 100;
           <argument>
             <kind>1</kind>
             <string>//Explosion code goes here.
+audio_play_sound(sound_Missle, 0, false);
 </string>
           </argument>
         </arguments>

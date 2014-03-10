@@ -25,7 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomize();
+            <string>sound_global_volume(.5);
+sound_volume(sound_MenuMusic,.8);
+
+global.tutorial = false; //If combat tutorial was done.
+
+audio_play_sound(sound_MenuMusic, 0, true);
+
+randomize();
 
 global.shipMax = 5; //Current number of ships allowed on the field.
 

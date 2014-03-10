@@ -25,7 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>general = 0;
+            <string>global.buttonTier++;//This adds code to get some UI for the controller.
+stratButtonTier = global.buttonTier;
+buttonSprite = sprite_Formations;
+buttonWidth = sprite_get_width(buttonSprite);
+buttonHeight = sprite_get_height(buttonSprite);
+buttonNumber = 2; //How many buttons we printing?
+
+
+
+general = 0;
 
 strategyType = 0;
 
@@ -63,6 +72,69 @@ ships = 0;
           <argument>
             <kind>1</kind>
             <string>ships = scriptUpdateArray(ships);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="56">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Button collision
+for(i = 0; i&lt;buttonNumber;i++)
+{
+    if(scriptRectanglePointCollision(mouse_x,mouse_y,buttonWidth*i,view_hview[view_current]-(stratButtonTier*buttonHeight),buttonWidth*(i+1),view_hview[view_current]-((stratButtonTier-1)*buttonHeight)))
+    {
+        strategyType = i;
+        stratPosition = scriptShipStratLocations(strategyType);
+
+        if(array_length_1d(ships)&gt;0)
+        {
+            scriptChangePosition(ships,stratPosition,ships[0].x,ships[0].y);
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>for(i=0;i&lt;buttonNumber;i++)
+{
+    draw_sprite(buttonSprite,i,i*buttonWidth,view_hview[view_current]-(buttonHeight*stratButtonTier))
+}
+
 </string>
           </argument>
         </arguments>

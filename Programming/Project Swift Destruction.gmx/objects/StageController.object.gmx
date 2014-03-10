@@ -25,7 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scaleSize = 1.5;//scaled size of screen
+            <string>if(!global.tutorial)
+{
+    global.tutorial = true;
+    room_goto(room_Tutorial);
+}
+
+global.buttonTier = 0;//Used to determine how many buttons we have in place in terms of layers.
+
+scaleSize = 1.5;//scaled size of screen
 scrollSpeed = 2; //Speed of the background.
 
 view_wview[view_current] *= scaleSize;
