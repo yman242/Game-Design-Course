@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(room_Map);
+            <string>room_goto(room_StrategyLayer);
 </string>
           </argument>
         </arguments>
@@ -77,7 +77,7 @@ draw_text(xHolder,yHolder,"You won the fight!");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(room_Map);
+            <string>room_goto(room_StrategyLayer);
 </string>
           </argument>
         </arguments>
@@ -100,7 +100,7 @@ draw_text(xHolder,yHolder,"You won the fight!");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(room_Map);
+            <string>room_goto(room_StrategyLayer);
 </string>
           </argument>
         </arguments>

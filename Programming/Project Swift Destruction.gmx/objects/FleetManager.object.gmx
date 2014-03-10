@@ -65,13 +65,14 @@ for(i=0; i &lt; global.shipMax; i+=1)
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>&lt;undefined&gt;</whoName>
+        <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (inFocus) {
+            <string>
+if (inFocus) {
     // Mouse detection and input
     mouseInBounds = false;
     drawBox = false;
@@ -139,7 +140,7 @@ for(i=0; i &lt; global.shipMax; i+=1)
 {
     if (drawBox) {
         // draw the selection box at location specified
-        draw_rectangle(box_x, box_y, capt_width+box_x, capt_height+box_y, false)
+        draw_rectangle(box_x, box_y, capt_width+box_x, capt_height+box_y, false);
     }
     
     newx = 150 + ((i mod 2) * 550);

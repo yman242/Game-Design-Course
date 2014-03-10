@@ -37,6 +37,8 @@ laserTime = 1; //How long the laser will exist
 color1 = c_red;
 color2 = c_red;
 laserWidth = 5;
+
+damage = 50;
 </string>
           </argument>
         </arguments>
@@ -83,7 +85,7 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(target.id) &amp;&amp; instance_exists(maker.id))
+            <string>if(instance_exists(target) &amp;&amp; instance_exists(maker))
 {
     spriteTemp = target.sprite_index; //Used to get an aiming point.
     aimX = target.x + sprite_get_width(spriteTemp)/2;//For some reason detecting sprite sizes odd.
@@ -95,6 +97,7 @@ instance_destroy();
     {
         hit = true;
         speed = speed/2;
+        scriptCombatDamage(damage,target); //Damage the ship
         alarm[0] = 30*3;
     }
 }
