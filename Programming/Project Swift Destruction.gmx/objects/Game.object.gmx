@@ -25,28 +25,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomize(); //Since GM can't random worth shit...
+            <string>randomize();
 
-global.shipMax = 5; //Current number of ships aloud on the field.
+global.shipMax = 5; //Current number of ships allowed on the field.
 
-global.selectedFleet = 0; //Which fleet is selected.
 global.fleetNumber = 1; // The number of fleets we have.
 
 global.fleetShips[0,0] = 1; //This might change, but currently
-global.fleetShips[0,1] = 2; //the numbers work as [fleet][whichship]
+global.fleetShips[0,1] = 2; //the numbers work as [fleet][unit]
 global.fleetShips[0,2] = 1;
-global.fleetShips[0,3] = 1;
+global.fleetShips[0,3] = 2;
 global.fleetShips[0,4] = 1;
 
 global.difficulty_multiplier = 1;
 
+// Tyler's Shit
 global.playerTokens = 10000; // Used to recruit / Reroll captains
 
 for (i=0; i&lt;global.shipMax; i+=1)
 {
     global.fleet[i] = scriptGenerateCaptain();
     global.fleet[i].fleet_id = i;
-    global.fleet[i].visible = false;
 }
 
 global.Galaxy_Created = false;

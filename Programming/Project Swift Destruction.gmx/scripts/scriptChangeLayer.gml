@@ -1,0 +1,3 @@
+with(Planet) {
+    visible = false;
+}

@@ -49,6 +49,14 @@
     <sprite>sprites\sprite_portrait_2</sprite>
     <sprite>sprites\sprite_portrait_3</sprite>
     <sprite>sprites\sprite_portrait_empty</sprite>
+    <sprite>sprites\sprite_btn_invade_planet_select</sprite>
+    <sprite>sprites\sprite_btn_manage_fleet</sprite>
+    <sprite>sprites\sprite_hire_button_fm</sprite>
+    <sprite>sprites\sprite_Map_Galaxy</sprite>
+    <sprite>sprites\sprite_Planet</sprite>
+    <sprite>sprites\sprite_planet_selection</sprite>
+    <sprite>sprites\sprite_Planet_Terrestrial</sprite>
+    <sprite>sprites\sprite_subMenuFleetManagement</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_Space</background>
@@ -58,6 +66,9 @@
     <background>background\background_LoadMenu</background>
     <background>background\background_menu_mochop</background>
     <background>background\background_team_logo</background>
+    <background>background\background_fleet_mng_bg</background>
+    <background>background\background_tut_splash_1</background>
+    <background>background\background_UI_Grid_Overlay</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -69,6 +80,13 @@
     <script>scripts\scriptTarget.gml</script>
     <script>scripts\scriptCaptainVisibility.gml</script>
     <script>scripts\scriptGenerateCaptain.gml</script>
+    <script>scripts\scriptChangeLayer.gml</script>
+    <script>scripts\scriptDeselectAllPlanets.gml</script>
+    <script>scripts\scriptDrawCaptain.gml</script>
+    <script>scripts\scriptGenerateGalaxy.gml</script>
+    <script>scripts\scriptGeneratePlanet.gml</script>
+    <script>scripts\scriptGetPlanetName.gml</script>
+    <script>scripts\scriptIsPlanetPositionValid.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_Text</font>
@@ -126,6 +144,15 @@
       <object>objects\obj_Lose</object>
       <object>objects\obj_MissleHit</object>
     </objects>
+    <object>objects\FleetManager</object>
+    <object>objects\MapController</object>
+    <object>objects\obj_fleet_management_btn</object>
+    <object>objects\obj_Galaxy</object>
+    <object>objects\obj_hire_captain</object>
+    <object>objects\obj_hire_captain_menu</object>
+    <object>objects\obj_invade_planet_button</object>
+    <object>objects\obj_load_screen</object>
+    <object>objects\obj_planet_info</object>
   </objects>
   <rooms name="rooms">
     <rooms name="Front End">
@@ -142,9 +169,12 @@
         <room>rooms\room_NarrativeRoom</room>
       </rooms>
     </rooms>
-    <room>rooms\room_Map</room>
+    <room>rooms\room_tutorial_load</room>
+    <room>rooms\room_StrategyLayer</room>
+    <room>rooms\room_fleet_management</room>
     <room>rooms\room_Battle</room>
     <room>rooms\room_Credits</room>
+    <room>rooms\room_Map</room>
     <rooms name="Win/Lose">
       <room>rooms\room_Win</room>
       <room>rooms\room_Lose</room>

@@ -1,14 +1,12 @@
 //This is used to update an array that may have lost some instances.
 
 holder = 0;
-count = 0;
 
 for(i = 0; i<array_length_1d(argument0); i++)
 {
-    if(instance_exists(argument0[i]))
+    if(instance_exists(argument0[i].id))
     {
-        holder[count] = argument0[i];
-        count++;
+        holder[i] = argument0[i];
     }
 }
 
