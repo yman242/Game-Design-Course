@@ -15,6 +15,7 @@
       <sprite>sprites\sprite_Cruiser</sprite>
       <sprite>sprites\sprite_Battleship</sprite>
       <sprite>sprites\sprite_Missleship</sprite>
+      <sprite>sprites\sprite_PlanetDestroyer</sprite>
     </sprites>
     <sprites name="Misc">
       <sprite>sprites\sprite_Line</sprite>
@@ -57,6 +58,8 @@
     <sprite>sprites\sprite_planet_selection</sprite>
     <sprite>sprites\sprite_Planet_Terrestrial</sprite>
     <sprite>sprites\sprite_subMenuFleetManagement</sprite>
+    <sprite>sprites\sprite_MonsterPlanet</sprite>
+    <sprite>sprites\sprite_PlanetLaser</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_Space</background>
@@ -99,6 +102,7 @@
     <objects name="Ships">
       <object>objects\Ship</object>
       <object>objects\ShipController</object>
+      <object>objects\obj_PlanetDestroyer</object>
       <object>objects\obj_Ship1</object>
       <object>objects\obj_Ship2</object>
       <object>objects\obj_Cruiser</object>
@@ -119,6 +123,7 @@
     </objects>
     <objects name="Monsters">
       <object>objects\Monster</object>
+      <object>objects\MonsterPlanet</object>
     </objects>
     <objects name="Weapons">
       <object>objects\Missle</object>
@@ -153,6 +158,7 @@
     <object>objects\obj_invade_planet_button</object>
     <object>objects\obj_load_screen</object>
     <object>objects\obj_planet_info</object>
+    <object>objects\obj_deathLaser</object>
   </objects>
   <rooms name="rooms">
     <rooms name="Front End">

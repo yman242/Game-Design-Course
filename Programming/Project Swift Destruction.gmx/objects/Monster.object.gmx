@@ -32,7 +32,7 @@ aimOffset = 128; //0 is perfect aim. Variable controls how accurate missles are.
 attackSpeedMissiles = 5;
 attackSpeedLasers = 7;
 
-life = 100;
+life = 200;
 </string>
           </argument>
         </arguments>

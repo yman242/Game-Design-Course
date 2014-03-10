@@ -31,7 +31,7 @@ scrollSpeed = 2; //Speed of the background.
 view_wview[view_current] *= scaleSize;
 view_hview[view_current] *= scaleSize;
 
-waves = 2; //How many waves of enemies there will be.
+global.waves = 2; //How many waves of enemies there will be.
 currentWave = 0;
 
 waveTotals[0,0] = 10;// Controls the monsters per wave. x is the wave number, y is the enemy type.
@@ -49,6 +49,14 @@ global.linePosition = (view_wview[view_current] - sprite_get_width(sprite_UIOver
 global.battleState = 0; //0 is placing ships, 1 is placing new wave, 2 is moving, 3 is fighting.
 
 looper = room_height/32; //Used to draw the wall.
+
+planetDestroyer = instance_create(0,view_hview[view_current]/2,obj_PlanetDestroyer);
+planetDestroyer.y -= sprite_get_height(planetDestroyer.sprite_index)/2;
+
+attackedPlanet = instance_create(view_wview[view_current],view_hview[view_current]/2,MonsterPlanet); //makes the planet being attacked.
+attackedPlanet.x -= sprite_get_width(attackedPlanet.sprite_index)*3/4;//Puts the planet on screen and then pushes it back.
+attackedPlanet.x += (sprite_get_width(attackedPlanet.sprite_index)/4)*global.waves;
+attackedPlanet.y -= sprite_get_height(attackedPlanet.sprite_index)/2;
 
 xHolder = view_wview[view_current] - sprite_get_width(sprite_Button);
 yHolder = sprite_get_height(sprite_Button)/2;
@@ -124,12 +132,16 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
             <string>if(global.battleState == 1)
 {   
     currentWave++;
-    if(currentWave&gt;waves)
+    if(currentWave&gt;global.waves)
     {
         room_goto(room_Win);
     }
     else
     {   
+        if(currentWave-global.waves==0)
+        {
+            global.destroyable = true;
+        }
         counter = 0;
         for(i=0;i&lt;waveTotals[currentWave-1,0];i++)
         {
@@ -138,6 +150,8 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
             monsters[counter].speed = global.moveSpeed;
             counter++;
         }
+        
+        attackedPlanet.goal = attackedPlanet.x - (sprite_get_width(attackedPlanet.sprite_index)/4);
         global.battleState = 2;
     }
 }
