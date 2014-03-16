@@ -46,4 +46,6 @@ if (!global.Galaxy_Created) {
     with(obj_fleetManager_backButton) {
         instance_destroy();
     }
+    
+    scriptDeselectAllPlanets();
 }

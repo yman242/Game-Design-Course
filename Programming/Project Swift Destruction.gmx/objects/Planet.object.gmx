@@ -83,9 +83,12 @@ isSelected = false;
         }
     }
     
-    if (mouseInBounds &amp;&amp; mouse_check_button_pressed(mb_left)) {
+    if (mouseInBounds &amp;&amp; mouse_check_button_pressed(mb_left) &amp;&amp; !global.mouse_in_info_bounds) {
         scriptDeselectAllPlanets();
     
+        // Screen Shake (magnitude in pixels, Duration in steps)
+        scriptShakeScreen(10, 30);
+        
         isSelected = true;
         global.currently_selected_planet_id = myRef;
     }

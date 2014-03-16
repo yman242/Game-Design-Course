@@ -14,3 +14,4 @@ with (obj_invade_planet_button) {
 }
 
 global.orbitSpeed = 0.001;
+global.mouse_in_info_bounds = false;
