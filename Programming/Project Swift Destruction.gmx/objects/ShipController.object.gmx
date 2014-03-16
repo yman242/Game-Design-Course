@@ -99,12 +99,27 @@ for(i = 0; i&lt;buttonNumber;i++)
 {
     if(scriptRectanglePointCollision(mouse_x,mouse_y,buttonWidth*i,view_hview[view_current]-(stratButtonTier*buttonHeight),buttonWidth*(i+1),view_hview[view_current]-((stratButtonTier-1)*buttonHeight)))
     {
-        strategyType = i;
-        stratPosition = scriptShipStratLocations(strategyType);
-
-        if(array_length_1d(ships)&gt;0)
+        if(i == 0)
         {
-            scriptChangePosition(ships,stratPosition,ships[0].x,ships[0].y);
+            strategyType++;
+            if(strategyType&gt;1)
+            {
+                strategyType = 0;
+            }
+            
+            stratPosition = scriptShipStratLocations(strategyType);
+    
+            if(array_length_1d(ships)&gt;0)
+            {
+                scriptChangePosition(ships,stratPosition,ships[0].x,ships[0].y);
+            }
+        }
+        else if(i==1 &amp;&amp; global.battleState == 3)
+        {
+            for(k = 0; k&lt;array_length_1d(ships); k++)
+            {
+                ships[k].alarm[3] = 1;
+            }
         }
     }
 }

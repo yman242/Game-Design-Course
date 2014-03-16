@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>idleMax = 0; //Max frame for the idle.
+            <string>captainPower = -1;
+
+idleMax = 0; //Max frame for the idle.
 idleMin = 0; //Lowest idle frame.
 moveStart = 0; //frame where we start the movement
 moveMax = 0; //highest move frame. (May not want it to be the final frame)
@@ -82,6 +84,48 @@ audio_play_sound(sound_Missle, 0, false);
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Captain skill. Should be an if or case in here once we've more than 1 skill.
+
+holder = instance_create(x,y,Laser);
+
+holder.maker = id;
+
+targetHolder = instance_nearest(x, y, Monster);
+
+holder.target = targetHolder;
+
+holder.x = targetHolder.x + sprite_get_width(targetHolder.sprite_index)/2;
+holder.y = targetHolder.y + sprite_get_width(targetHolder.sprite_index)/2;
+
+holder.color1 = c_blue;
+holder.color2 = c_blue;
+holder.laserWidth = 15;
+
+damage = 300;
+
+holder.speed = 8;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="2">
       <action>
         <libid>1</libid>
@@ -99,7 +143,7 @@ audio_play_sound(sound_Missle, 0, false);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Shoot missles
+            <string>//Shoot burst missles
 xHolder = x+(sprite_get_width(sprite_index)/2);
 yHolder = y+(sprite_get_height(sprite_index)/2);
 

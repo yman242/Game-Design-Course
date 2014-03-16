@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 1/4;
+            <string>captainPower = -1;
+
+image_speed = 1/4;
 
 idleMax = 9; //Max frame for the idle.
 idleMin = 0; //Lowest idle frame.
