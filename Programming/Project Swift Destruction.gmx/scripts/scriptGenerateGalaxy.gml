@@ -38,12 +38,12 @@ if (!global.Galaxy_Created) {
     // Use this to switch between needing to create a galaxy or just populating based on what is there in the array.
     global.Galaxy_Created = true;
 } else {
-    /*for (i = 0; i < global.GALAXY_PLANETS_MAX; i+=1)
-    {
-        // Regenerate the planets that were already created
-        //galaxy[i].draw // instance_create? hmmm how to do this
-    }*/
     with(Planet) {
         visible = true;
+        isFocus = true;
+    }
+    
+    with(obj_fleetManager_backButton) {
+        instance_destroy();
     }
 }

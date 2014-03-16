@@ -29,6 +29,9 @@
 scriptGenerateGalaxy();
 
 instance_create(0, 0, obj_fleet_management_btn);
+
+view_yview = (640 - view_hview[0]/2);
+view_xview = (640 - view_wview[0]/2);
 </string>
           </argument>
         </arguments>
@@ -112,6 +115,26 @@ if (mouse_y &lt; view_yview[0] + global.EDGE_MOUSE_MOVE) {
 } else if (mouse_y &gt; (view_yview[0] + view_hview[0]) - global.EDGE_MOUSE_MOVE) {
     // Move the view down
     view_yview[0] += ViewMovementSpeed;
+}
+
+if (view_yview[0] &lt;= -500)
+{
+    view_yview = -500;
+}
+
+if ((view_yview[0] + view_hview[0]) &gt;= 1780)
+{
+    view_yview = (1780 - view_hview[0]);
+}
+
+if (view_xview[0] &lt;= -500)
+{
+    view_xview = -500;
+}
+
+if ((view_xview[0] + view_wview[0]) &gt;= 1780)
+{
+    view_xview = (1780 - view_wview[0]);
 }
 </string>
           </argument>

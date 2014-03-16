@@ -74,6 +74,9 @@ global.MAX_SCALE = 0.5;
 global.MIN_SCALE = 0.3;
 
 global.currently_selected_planet_id = -1;
+global.mouse_in_info_bounds = false;
+
+global.orbitSpeed = 0.001;
 </string>
           </argument>
         </arguments>

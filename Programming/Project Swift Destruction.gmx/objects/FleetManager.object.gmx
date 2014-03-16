@@ -49,6 +49,9 @@ for(i=0; i &lt; global.shipMax; i+=1)
         // Show the empty Card and show a hire banner
     }*/
 }
+
+// Create an instance of the back button
+instance_create((95 + 25), 720 - (37 + 25), obj_fleetManager_backButton);
 </string>
           </argument>
         </arguments>
