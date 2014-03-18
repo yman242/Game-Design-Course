@@ -82,7 +82,9 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scriptShipControllerSetup.gml</script>
+    <script>scripts\scriptMonsterControllerSetup.gml</script>
     <script>scripts\scriptShipStratLocations.gml</script>
+    <script>scripts\scriptMonsterStratLocations.gml</script>
     <script>scripts\scriptChangePosition.gml</script>
     <script>scripts\scriptUpdateArray.gml</script>
     <script>scripts\scriptCombatDamage.gml</script>
@@ -131,6 +133,7 @@
       <object>objects\obj_Go</object>
     </objects>
     <objects name="Monsters">
+      <object>objects\MonsterController</object>
       <object>objects\Monster</object>
       <object>objects\MonsterPlanet</object>
     </objects>

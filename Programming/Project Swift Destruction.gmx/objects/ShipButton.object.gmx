@@ -130,7 +130,7 @@ numberOfShips = 9;
         tempHolder.shipType = buttonType;
         tempHolder.numOfShips = numberOfShips;
         tempHolder.stratPosition = scriptShipStratLocations(tempHolder.strategyType);
-        tempHolder.ships = scriptShipControllerSetup(tempHolder.shipType,tempHolder.numOfShips,tempHolder.stratPosition,tempHolder.x ,tempHolder.y);
+        tempHolder.ships = scriptShipControllerSetup(tempHolder.shipType,tempHolder.numOfShips,tempHolder.stratPosition,tempHolder.x ,tempHolder.y,tempHolder.id);
         
         tempHolder.general = commander;
         

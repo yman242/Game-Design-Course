@@ -57,6 +57,10 @@ damage = 25;
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(sound_Missle, 0, false);
+
+// Screen Shake (magnitude in pixels, Duration in steps)
+scriptShakeScreen(3, 3);
+
 instance_create(x,y,obj_MissleHit);
 </string>
           </argument>

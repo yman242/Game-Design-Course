@@ -197,7 +197,7 @@ else
 
 for(i=0;i&lt;buttonNumber;i++)
 {
-    draw_sprite_ext(buttonSprite,i,i*buttonWidth,view_hview[view_current]-(buttonHeight*stratButtonTier),1,1,0,color,1)
+    draw_sprite_ext(buttonSprite,i,view_xview[view_current] + i*buttonWidth,view_yview[view_current] + view_hview[view_current]-(buttonHeight*stratButtonTier),1,1,0,color,1)
 }
 
 </string>

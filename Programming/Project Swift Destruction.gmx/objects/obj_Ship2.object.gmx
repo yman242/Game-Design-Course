@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>captainPower = -1;
+            <string>myController = 0;
+captainPower = -1;
 
 
 image_speed = 1/4;

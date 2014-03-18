@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.buttonTier++;//This adds code to get some UI for the controller.
+            <string>target = 0; //The controller's target
+
+global.buttonTier++;//This adds code to get some UI for the controller.
 stratButtonTier = global.buttonTier;
 buttonSprite = sprite_Formations;
 buttonWidth = sprite_get_width(buttonSprite);
@@ -72,6 +74,17 @@ ships = 0;
           <argument>
             <kind>1</kind>
             <string>ships = scriptUpdateArray(ships);
+
+if(target == 0)
+{
+    targetHolder = instance_nearest(x, y, Monster);
+    target = targetHolder.myController;
+}
+else if(array_length_1d(target.ships) == 0)
+{
+    targetHolder = instance_nearest(x, y, Monster);
+    target = targetHolder.myController;
+}
 </string>
           </argument>
         </arguments>
@@ -147,7 +160,8 @@ for(i = 0; i&lt;buttonNumber;i++)
             <kind>1</kind>
             <string>for(i=0;i&lt;buttonNumber;i++)
 {
-    draw_sprite(buttonSprite,i,i*buttonWidth,view_hview[view_current]-(buttonHeight*stratButtonTier))
+    //draw_sprite(buttonSprite,i,i*buttonWidth,view_hview[view_current]-(buttonHeight*stratButtonTier));
+    draw_sprite(buttonSprite,i,view_xview[view_current] + i*buttonWidth, view_yview[view_current] + view_hview[view_current]-(buttonHeight*stratButtonTier));
 }
 
 </string>
