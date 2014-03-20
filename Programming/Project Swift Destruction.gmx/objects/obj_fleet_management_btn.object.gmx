@@ -71,12 +71,12 @@ if (mouseInBounds &amp;&amp; mouse_check_button_pressed(mb_left)) {
     room_goto(room_fleet_management);
 }
 
-image_xscale = scalex;
-image_yscale = scaley;
+image_xscale = scalex * (view_wview[view_current] / 1280);
+image_yscale = scaley * (view_hview[view_current] / 720);
 
 //x = view_xview[0] + view_wview[0] - (sprite_get_width(sprite_btn_manage_fleet)/2 + 25);
-x = view_xview[0] + 25 + sprite_get_width(sprite_btn_manage_fleet)/2;
-y = view_yview[0] + view_hview[0] - (sprite_get_height(sprite_btn_manage_fleet)/2 + 25);
+x = view_xview[0] + (25 * (view_wview[view_current] / 1280)) + sprite_get_width(sprite_btn_manage_fleet)/2;
+y = view_yview[0] + view_hview[0] - (sprite_get_height(sprite_btn_manage_fleet)/2 + (25 * (view_hview[view_current] / 720)));
 </string>
           </argument>
         </arguments>

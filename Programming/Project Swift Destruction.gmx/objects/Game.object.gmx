@@ -46,6 +46,11 @@ global.fleetShips[0,4] = 1;
 
 global.difficulty_multiplier = 1;
 
+// Destroying Planets and planet reference variables (Variables being played with for planet tracking between layers)
+global.currentlyInvadingPlanet = 0; // used to track an object reference to the planet that was last being invaded
+global.invasionDone = false;
+global.invasionStarted = false; // if both started and done then we can check and update the last planet invaded for a destruction status
+
 // Tyler's Shit
 global.playerTokens = 10000; // Used to recruit / Reroll captains
 
@@ -78,11 +83,26 @@ global.mouse_in_info_bounds = false;
 
 global.orbitSpeed = 0.001;
 
+global.bg_50_created = false;
+
+// Zoom variables
+global.screenZooming = false;
+global.last_zoom_amount = 0;
+global.zoomTimer = 0;
+global.zoomWidth_Max = 1280;
+global.zoomWidth_Min = 1280 * 0.6;
+global.zoomHeight_Max = 720;
+global.zoomHeight_Min = 720 * 0.6;
+
+global.distanceViewLastMoved = 0;
+
 // Screen Shake variables
 global.originalCameraPosition_x = 0;
 global.originalCameraPosition_y = 0;
 
 global.shaking = false;
+
+global.currentShakePriority = 0;
     
 global.shakeMagnitude = 0;
 global.shakeDuration = 0;
@@ -90,6 +110,20 @@ global.shakeTimer = 0;
 </string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>0</libid>
+        <id>0</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="3" enumb="0">
@@ -110,6 +144,7 @@ global.shakeTimer = 0;
           <argument>
             <kind>1</kind>
             <string>scriptScreenShakeLoop(global.shakeMagnitude, global.shakeDuration);
+scriptZoomOnPlanet();
 </string>
           </argument>
         </arguments>

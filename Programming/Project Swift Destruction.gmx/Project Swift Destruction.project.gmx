@@ -48,24 +48,39 @@
       </sprites>
     </sprites>
     <sprite>sprites\spr_MissileHit</sprite>
-    <sprite>sprites\sprite_captain_select_area</sprite>
-    <sprite>sprites\sprite_captain_selected</sprite>
-    <sprite>sprites\sprite_portrait_1</sprite>
-    <sprite>sprites\sprite_portrait_2</sprite>
-    <sprite>sprites\sprite_portrait_3</sprite>
-    <sprite>sprites\sprite_portrait_empty</sprite>
-    <sprite>sprites\sprite_btn_invade_planet_select</sprite>
-    <sprite>sprites\sprite_btn_manage_fleet</sprite>
-    <sprite>sprites\sprite_hire_button_fm</sprite>
-    <sprite>sprites\sprite_Map_Galaxy</sprite>
-    <sprite>sprites\sprite_Planet</sprite>
-    <sprite>sprites\sprite_planet_selection</sprite>
-    <sprite>sprites\sprite_Planet_Terrestrial</sprite>
-    <sprite>sprites\sprite_subMenuFleetManagement</sprite>
     <sprite>sprites\sprite_MonsterPlanet</sprite>
     <sprite>sprites\sprite_PlanetLaser</sprite>
     <sprite>sprites\sprite_Formations</sprite>
-    <sprite>sprites\sprite_back_btn</sprite>
+    <sprites name="Strat Layer">
+      <sprites name="UI Elements">
+        <sprite>sprites\sprite_bg_70</sprite>
+        <sprite>sprites\sprite_bg_50</sprite>
+        <sprite>sprites\sprite_Replace_captain</sprite>
+        <sprite>sprites\sprite_back_btn</sprite>
+        <sprite>sprites\sprite_subMenuFleetManagement</sprite>
+        <sprite>sprites\sprite_planet_selection</sprite>
+        <sprite>sprites\sprite_hire_button_fm</sprite>
+        <sprite>sprites\sprite_btn_manage_fleet</sprite>
+        <sprite>sprites\sprite_btn_invade_planet_select</sprite>
+        <sprite>sprites\sprite_portrait_empty</sprite>
+        <sprite>sprites\sprite_portrait_3</sprite>
+        <sprite>sprites\sprite_portrait_2</sprite>
+        <sprite>sprites\sprite_portrait_1</sprite>
+        <sprite>sprites\sprite_captain_selected</sprite>
+        <sprite>sprites\sprite_captain_select_area</sprite>
+      </sprites>
+      <sprites name="Planet Displays">
+        <sprite>sprites\sprite_WATER_PLANET</sprite>
+        <sprite>sprites\sprite_SAND_PLANET</sprite>
+        <sprite>sprites\sprite_magma_planet</sprite>
+        <sprite>sprites\sprite_ICE_PLANET</sprite>
+        <sprite>sprites\sprite_GAS_PLANET</sprite>
+        <sprite>sprites\sprite_TERRESTRIAL_PLANET</sprite>
+      </sprites>
+      <sprite>sprites\sprite_Planet</sprite>
+      <sprite>sprites\sprite_Map_Galaxy</sprite>
+      <sprite>sprites\sprite_Planet_Terrestrial</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background_Space</background>
@@ -101,6 +116,11 @@
     <script>scripts\scriptRectanglePointCollision.gml</script>
     <script>scripts\scriptScreenShakeLoop.gml</script>
     <script>scripts\scriptShakeScreen.gml</script>
+    <script>scripts\scriptZoomOnPlanet.gml</script>
+    <script>scripts\scriptResetZoom.gml</script>
+    <script>scripts\scriptZoomIn.gml</script>
+    <script>scripts\scriptZoomOut.gml</script>
+    <script>scripts\scriptViewTowardsActivePlanet.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_Text</font>
@@ -173,6 +193,7 @@
     <object>objects\obj_planet_info</object>
     <object>objects\obj_deathLaser</object>
     <object>objects\obj_fleetManager_backButton</object>
+    <object>objects\obj_trans_bg_50</object>
   </objects>
   <rooms name="rooms">
     <rooms name="Front End">

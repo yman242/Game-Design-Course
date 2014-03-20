@@ -3,7 +3,7 @@
   <spriteName>sprite_back_btn</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-7</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -45,6 +45,7 @@ if ((mouse_x &gt; x - sprite_width) &amp;&amp; (mouse_x &lt; x + sprite_width)) 
 
 if (mouseInBounds &amp;&amp; mouse_check_button_pressed(mb_left)) {
     // Call Transition Script here
+    global.bg_50_created = false;
     room_goto(room_StrategyLayer);
 }
 
@@ -67,5 +68,8 @@ image_yscale = scaley;
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>95,37</point>
+    <point>96,96</point>
+  </PhysicsShapePoints>
 </object>

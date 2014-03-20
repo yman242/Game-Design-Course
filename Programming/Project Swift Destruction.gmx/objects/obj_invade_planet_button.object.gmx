@@ -68,6 +68,10 @@ if ((mouse_x &gt; x - sprite_width) &amp;&amp; (mouse_x &lt; x + sprite_width)) 
 if (mouseInBounds &amp;&amp; mouse_check_button_pressed(mb_left)) {
     // Call Transition Script here
     scriptChangeLayer();
+    
+    // Screen Shake (magnitude in pixels, Duration in steps, priority of shake, whether this should always overwrite another shake)
+    scriptShakeScreen(5, 15, 0, false);
+    
     room_goto(room_Battle);
 }
 

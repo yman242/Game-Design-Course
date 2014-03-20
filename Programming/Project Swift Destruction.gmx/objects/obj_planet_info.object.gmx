@@ -102,32 +102,36 @@ if ((mouse_x &gt; x) &amp;&amp; (mouse_x &lt; x + sprite_width)) {
     draw_self();
     
     planet_x = x + 5 + sprite_width/2 - sprite_get_width(sprite_Planet_Terrestrial)/2;
-    planet_y = y + 25 + sprite_get_width(sprite_Planet_Terrestrial)/2;
+    planet_y = y + sprite_get_width(sprite_Planet_Terrestrial)/2;
+    
+    planet_scale_x = 0.2;
+    planet_scale_y = 0.2;
     
     switch (planet_id.type) {
         case 0:
             //draw a sprite at position
-            draw_sprite(sprite_Planet_Terrestrial, -1, planet_x, planet_y);
+            draw_sprite_ext(sprite_GAS_PLANET, -1, planet_x, planet_y, planet_scale_x, planet_scale_y, 0, c_white, 1);
             break;
         case 1:
-            draw_sprite(sprite_Planet_Terrestrial, -1, planet_x, planet_y);
+            draw_sprite_ext(sprite_ICE_PLANET, -1, planet_x, planet_y, planet_scale_x, planet_scale_y, 0, c_white, 1);
             break;
         case 2:
-            draw_sprite(sprite_Planet_Terrestrial, -1, planet_x, planet_y);
+            draw_sprite_ext(sprite_SAND_PLANET, -1, planet_x, planet_y, planet_scale_x, planet_scale_y, 0, c_white, 1);
             break;
         case 3:
-            draw_sprite(sprite_Planet_Terrestrial, -1, planet_x, planet_y);
+            draw_sprite_ext(sprite_magma_planet, -1, planet_x, planet_y, planet_scale_x, planet_scale_y, 0, c_white, 1);
             break;
         case 4:
-            draw_sprite(sprite_Planet_Terrestrial, -1, planet_x, planet_y);
+            draw_sprite_ext(sprite_TERRESTRIAL_PLANET, -1, planet_x, planet_y, planet_scale_x, planet_scale_y, 0, c_white, 1);
+            //draw_sprite(sprite_TERRESTRIAL_PLANET, -1, planet_x, planet_y);
             break;
         default:
-            draw_sprite(sprite_Planet_Terrestrial, -1, planet_x, planet_y);
+            draw_sprite_ext(sprite_WATER_PLANET, -1, planet_x, planet_y, planet_scale_x, planet_scale_y, 0, c_white, 1);
             break;
     }
     
-    ship_x = planet_x;// - sprite_get_width(sprite_Ship1)/2;
-    ship_y = planet_y;// - sprite_get_width(sprite_Ship1)/2;
+    ship_x = planet_x - 5;// - sprite_get_width(sprite_Monster1)/2;
+    ship_y = planet_y + 5;// - sprite_get_width(sprite_Monster1)/2;
     ship_scale = 0.5;
     switch (planet_id.threat) {
         case 0:
@@ -135,28 +139,28 @@ if ((mouse_x &gt; x) &amp;&amp; (mouse_x &lt; x + sprite_width)) {
             break;
         case 1:
             // Add 1 ship
-            draw_sprite_ext(sprite_Ship1, 0, ship_x, ship_y, ship_scale, ship_scale, 0, c_white, 1);
+            draw_sprite_ext(sprite_Monster1, 0, ship_x-15, ship_y+10, ship_scale, ship_scale, 0, c_white, 1);
             break;
         case 2:
             // Add 3 ships
-            draw_sprite_ext(sprite_Ship1, 0, ship_x-sprite_get_width(sprite_Ship1)/4, ship_y, ship_scale, ship_scale, 0, c_white, 1);
-            draw_sprite_ext(sprite_Ship1, 0, ship_x+sprite_get_width(sprite_Ship1)/4, ship_y - sprite_get_height(sprite_Ship1)/4 - 10, ship_scale, ship_scale, 0, c_white, 1);
-            draw_sprite_ext(sprite_Ship1, 0, ship_x+sprite_get_width(sprite_Ship1)/4, ship_y + sprite_get_height(sprite_Ship1)/4 + 10, ship_scale, ship_scale, 0, c_white, 1);
+            draw_sprite_ext(sprite_Monster1, 0, ship_x-sprite_get_width(sprite_Monster1)/4, ship_y, ship_scale, ship_scale, 0, c_white, 1);
+            draw_sprite_ext(sprite_Monster1, 0, ship_x+sprite_get_width(sprite_Monster1)/4, ship_y - sprite_get_height(sprite_Monster1)/4 - 10, ship_scale, ship_scale, 0, c_white, 1);
+            draw_sprite_ext(sprite_Monster1, 0, ship_x+sprite_get_width(sprite_Monster1)/4, ship_y + sprite_get_height(sprite_Monster1)/4 + 10, ship_scale, ship_scale, 0, c_white, 1);
             break;
         default:
             // Add 5 ships
-            draw_sprite_ext(sprite_Ship1, 0, ship_x, ship_y, ship_scale, ship_scale, 0, c_white, 1);
-            draw_sprite_ext(sprite_Ship1, 0, ship_x+sprite_get_width(sprite_Ship1)/4, ship_y - sprite_get_height(sprite_Ship1)/4 - 10, ship_scale, ship_scale, 0, c_white, 1);
-            draw_sprite_ext(sprite_Ship1, 0, ship_x+sprite_get_width(sprite_Ship1)/4, ship_y + sprite_get_height(sprite_Ship1)/4 + 10, ship_scale, ship_scale, 0, c_white, 1);
-            draw_sprite_ext(sprite_Ship1, 0, ship_x-sprite_get_width(sprite_Ship1)/4, ship_y - sprite_get_height(sprite_Ship1)/4 - 10, ship_scale, ship_scale, 0, c_white, 1);
-            draw_sprite_ext(sprite_Ship1, 0, ship_x-sprite_get_width(sprite_Ship1)/4, ship_y + sprite_get_height(sprite_Ship1)/4 + 10, ship_scale, ship_scale, 0, c_white, 1);
+            draw_sprite_ext(sprite_Monster1, 0, ship_x, ship_y + 5, ship_scale, ship_scale, 0, c_white, 1);
+            draw_sprite_ext(sprite_Monster1, 0, ship_x+sprite_get_width(sprite_Monster1)/4 + 5, ship_y - sprite_get_height(sprite_Monster1)/4 - 10, ship_scale, ship_scale, 0, c_white, 1);
+            draw_sprite_ext(sprite_Monster1, 0, ship_x+sprite_get_width(sprite_Monster1)/4 + 5, ship_y + sprite_get_height(sprite_Monster1)/4 + 20, ship_scale, ship_scale, 0, c_white, 1);
+            draw_sprite_ext(sprite_Monster1, 0, ship_x-sprite_get_width(sprite_Monster1)/4 - 5, ship_y - sprite_get_height(sprite_Monster1)/4 - 10, ship_scale, ship_scale, 0, c_white, 1);
+            draw_sprite_ext(sprite_Monster1, 0, ship_x-sprite_get_width(sprite_Monster1)/4 - 5, ship_y + sprite_get_height(sprite_Monster1)/4 + 20, ship_scale, ship_scale, 0, c_white, 1);
             break;
     }
     
     draw_set_font(font_Text);
     draw_set_color(c_white);
-    draw_text(x+20, y+120, planet_id.planet_name);
-    draw_text(x+20, y+150, "Threat: " + string(planet_id.threat));
+    draw_text(x+20, y+140, planet_id.planet_name);
+    //draw_text(x+20, y+150, "Threat: " + string(planet_id.threat));
 }
 </string>
           </argument>

@@ -86,8 +86,10 @@ isSelected = false;
     if (mouseInBounds &amp;&amp; mouse_check_button_pressed(mb_left) &amp;&amp; !global.mouse_in_info_bounds) {
         scriptDeselectAllPlanets();
     
-        // Screen Shake (magnitude in pixels, Duration in steps)
-        scriptShakeScreen(10, 30);
+        // Screen Shake (magnitude in pixels, Duration in steps, priority of shake, whether this should always overwrite another shake)
+        //scriptShakeScreen(3, 3, 0, false);
+        
+        scriptZoomIn();
         
         isSelected = true;
         global.currently_selected_planet_id = myRef;
@@ -104,7 +106,7 @@ isSelected = false;
     }
     
     if (isSelected &amp;&amp; !info_created) {
-        instance_create(x + 25, y - 10, obj_planet_info);
+        instance_create(x + 25, y - (sprite_get_height(sprite_planet_selection) / 2), obj_planet_info);
         //scriptCenterView(x, y, zoomlevel);
         info_created = true;
     }

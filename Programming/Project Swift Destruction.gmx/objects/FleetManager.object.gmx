@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -143,7 +143,8 @@ if (inFocus) {
 {
     if (drawBox) {
         // draw the selection box at location specified
-        draw_rectangle(box_x, box_y, capt_width+box_x, capt_height+box_y, false);
+        //draw_rectangle(box_x, box_y, capt_width+box_x, capt_height+box_y, false);
+        draw_sprite(sprite_Replace_captain, -1, box_x, box_y);
     }
     
     newx = 150 + ((i mod 2) * 550);
