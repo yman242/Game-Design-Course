@@ -80,6 +80,7 @@ life = 100;
             <kind>1</kind>
             <string>//Explosion code goes here.
 audio_play_sound(sound_Missle, 0, false);
+scriptParticleEngine(x,y,0,random(100),500,250,0,360,1,6,c_gray,sprite_SoftParticle);
 </string>
           </argument>
         </arguments>
