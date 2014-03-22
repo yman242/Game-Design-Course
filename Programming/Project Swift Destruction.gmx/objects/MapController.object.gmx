@@ -140,6 +140,13 @@ if ((view_xview[0] + view_wview[0]) &gt;= 1780)
 /***** Keeping Background1 centered while zooming *****/
 background_xscale[1] = view_wview[view_current] / 1280;
 background_yscale[1] = view_hview[view_current] / 720;
+
+// Generate Boss Planets
+if ((global.playerPlanetsKilled &gt;= global.NextBoss) &amp;&amp; (!global.bossPlanetGenerated))
+{
+    global.bossPlanetGenerated = true;
+    scriptGenerateBossPlanet();
+}
 </string>
           </argument>
         </arguments>

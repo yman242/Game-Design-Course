@@ -144,6 +144,9 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
     currentWave++;
     if(currentWave&gt;global.waves)
     {
+        // Conquered the planet
+        global.currentlyInvadingPlanet.isControlled = true;
+        
         room_goto(room_Win);
     }
     else

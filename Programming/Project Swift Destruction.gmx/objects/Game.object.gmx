@@ -49,20 +49,26 @@ global.difficulty_multiplier = 1;
 // Destroying Planets and planet reference variables (Variables being played with for planet tracking between layers)
 global.currentlyInvadingPlanet = 0; // used to track an object reference to the planet that was last being invaded
 global.invasionDone = false;
-global.invasionStarted = false; // if both started and done then we can check and update the last planet invaded for a destruction status
 
 // Narrative Variables
 global.pointInStory = 0;
 
-// Game stuff for Strat layer
-global.playerTokens = 10000; // Used to recruit / Reroll captains
+// Bosses for Narrative
+global.NextBoss = 0;
+global.bossPlanetGenerated = false;
 
+// Player kill counts
+global.playerPlanetsKilled = 0;
+global.playerKillCount = 0;
+
+// Fleet Game Start Generation
 for (i=0; i&lt;global.shipMax; i+=1)
 {
     global.fleet[i] = scriptGenerateCaptain();
     global.fleet[i].fleet_id = i;
 }
 
+// Galaxy generation variables
 global.Galaxy_Created = false;
 globalvar galaxy;
 
@@ -81,11 +87,14 @@ global.EDGE_MOUSE_MOVE = 25;
 global.MAX_SCALE = 0.5;
 global.MIN_SCALE = 0.3;
 
+// Strat Map UI
 global.currently_selected_planet_id = -1;
 global.mouse_in_info_bounds = false;
 
 global.orbitSpeed = 0.001;
 
+// Fleet Management UI and vars
+global.playerTokens = 10000; // Used to recruit / Reroll captains
 global.bg_50_created = false;
 
 // Zoom variables

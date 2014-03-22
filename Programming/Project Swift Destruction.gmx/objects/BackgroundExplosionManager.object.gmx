@@ -29,6 +29,7 @@
 ExplosionInterval = random(15) + 30; // In steps
 burstAmount = ceil(random(5))+2; // How many explosions per interval
 minBurstDelay = 1; // Minimum time between burst explosions in steps
+ExplosionRange = 75;
 
 burstDelay = ceil(random(3)) + minBurstDelay;
 
@@ -67,8 +68,8 @@ lasty = view_yview[view_current] + random(view_hview[view_current]);
     if ((burstTimer &gt; burstDelay) &amp;&amp; (burstAmount &gt; 0))
     {
         // Generate an explosion location within range
-        newx = lastx + ((random(2)-1) * (100 * (view_wview[view_current] / global.zoomWidth_Max)));
-        newy = lasty + ((random(2)-1) * (100 * (view_wview[view_current] / global.zoomWidth_Max)));
+        newx = lastx + ((random(2)-1) * (ExplosionRange * (view_wview[view_current] / global.zoomWidth_Max)));
+        newy = lasty + ((random(2)-1) * (ExplosionRange * (view_wview[view_current] / global.zoomWidth_Max)));
 
         // Create Explosion
         scriptCreateExplosions(newx, newy);
@@ -77,8 +78,8 @@ lasty = view_yview[view_current] + random(view_hview[view_current]);
         burstAmount -= 1;
         burstDelay = ceil(random(2)) + minBurstDelay;
         
-        lastx = newx;
-        lasty = newy;
+        // lastx = newx;
+        // lasty = newy;
     }
     
     currTimer += 1;

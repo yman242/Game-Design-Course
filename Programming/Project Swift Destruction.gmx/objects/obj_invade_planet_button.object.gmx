@@ -69,9 +69,8 @@ if (mouseInBounds &amp;&amp; mouse_check_button_pressed(mb_left)) {
     // Call Transition Script here
     scriptChangeLayer();
     
-    // Screen Shake (magnitude in pixels, Duration in steps, priority of shake, whether this should always overwrite another shake)
-    scriptShakeScreen(5, 15, 0, false);
-    
+    global.currentlyInvadingPlanet = global.currently_selected_planet_id;
+
     room_goto(room_Battle);
 }
 

@@ -39,8 +39,10 @@ var orbspeed;
 var orbstep;
 var myRef;
 
-var isDestroyed = false;
-var hasShownDestruction = false;
+isBoss = false;
+isControlled = false;
+isDestroyed = false;
+hasShownDestruction = false;
 
 isSelected = false;
 </string>
@@ -66,6 +68,29 @@ isSelected = false;
           <argument>
             <kind>1</kind>
             <string>if (isFocus) {
+    if ((isDestroyed) &amp;&amp; (!hasShownDestruction))
+    {
+        // Create an Explosion at this planet location
+        instance_create(x, y, obj_backgroundExplosions);
+        
+        // Shake the screen
+        scriptShakeScreen(10, 60, 2, true);
+        
+        // Increase the planet kill count
+        global.playerPlanetsKilled += 1;
+        
+        // Add the population to the kill counter
+        global.playerKillCount += population;
+        
+        // destroy the planet
+        instance_destroy();
+    }
+    
+    /*if ((isDestroyed) &amp;&amp; (hasShownDestruction))
+    {
+        visible = false;
+    }*/
+
     // Mouse in bounds?
     mouseInBounds = false;
     info_created = true;
@@ -120,6 +145,11 @@ isSelected = false;
     x = newX;
     y = newY;
     
+    if (isBoss) {
+        scalex = scalex * 2;
+        scaley = scaley * 2;
+    }
+    
     image_xscale = scalex;
     image_yscale = scaley;
 }
@@ -146,7 +176,11 @@ isSelected = false;
           <argument>
             <kind>1</kind>
             <string>if (isSelected) {
-     image_blend = make_color_rgb(100, 255, 100);
+    image_blend = make_color_rgb(100, 255, 100);
+} else if (isControlled) {
+    image_blend = make_color_rgb(100, 100, 255);
+} else if (isBoss) {
+    image_blend = make_color_rgb(255, 50, 50);
 } else {
     image_blend = -1;
 }

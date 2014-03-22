@@ -59,7 +59,7 @@ damage = 25;
             <string>audio_play_sound(sound_Missle, 0, false);
 
 // Screen Shake (magnitude in pixels, Duration in steps, priority of shake, whether this should always overwrite another shake)
-scriptShakeScreen(3, 3, 1, true);
+scriptShakeScreen(3, 3, 1, false);
 
 instance_create(x,y,obj_MissleHit);
 </string>

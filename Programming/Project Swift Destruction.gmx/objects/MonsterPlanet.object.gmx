@@ -94,6 +94,8 @@ else
 
 if(image_index&gt;=deathFrame)
 {
+    global.currentlyInvadingPlanet.isDestroyed = true;
+
     instance_destroy();
     audio_play_sound(sound_Missle, 0, false);
 }

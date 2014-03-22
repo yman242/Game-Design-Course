@@ -17,6 +17,6 @@ if ((global.shaking))// && (global.shakeTimer mod 3 == 0))
     shakeOffset_x = (random(2) - 1) * global.shakeMagnitude * (1.0 - (global.shakeTimer / global.shakeDuration) * (global.shakeTimer / global.shakeDuration));
     shakeOffset_y = (random(2) - 1) * global.shakeMagnitude * (1.0 - (global.shakeTimer / global.shakeDuration) * (global.shakeTimer / global.shakeDuration));
     
-    view_xview[0] += shakeOffset_x;
-    view_yview[0] += shakeOffset_y;
+    view_xview[view_current] += shakeOffset_x;
+    view_yview[view_current] += shakeOffset_y;
 }

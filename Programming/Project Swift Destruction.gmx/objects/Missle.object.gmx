@@ -57,7 +57,7 @@ target = Monster;
             <string>audio_play_sound(sound_Missle, 0, false);
 
 // Screen Shake (magnitude in pixels, Duration in steps, priority of shake, whether this should always overwrite another shake)
-scriptShakeScreen(7, 5, 1, true);
+scriptShakeScreen(7, 5, 1, false);
 
 instance_create(x,y,obj_MissleHit);
 </string>
