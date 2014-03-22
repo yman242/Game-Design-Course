@@ -132,6 +132,8 @@ numberOfShips = 9;
         tempHolder.stratPosition = scriptShipStratLocations(tempHolder.strategyType);
         tempHolder.ships = scriptShipControllerSetup(tempHolder.shipType,tempHolder.numOfShips,tempHolder.stratPosition,tempHolder.x ,tempHolder.y,tempHolder.id);
         
+        tempHolder.formationController.alarm[0] = 1;
+        
         tempHolder.general = commander;
         
         global.onField++;
