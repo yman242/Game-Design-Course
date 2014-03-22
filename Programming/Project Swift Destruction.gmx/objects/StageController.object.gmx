@@ -152,16 +152,14 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
         {
             global.destroyable = true;
         }
-        counter = 0;
         for(i=0;i&lt;waveTotals[currentWave-1,0];i++)
         {
             /*monsters[counter] = instance_create(view_wview+random(view_wview - global.linePosition*1.2), random(view_hview),Monster);
             monsters[counter].direction = 180;
             monsters[counter].speed = global.moveSpeed;*/
-            monsters[counter] = instance_create(view_wview+random(view_wview - global.linePosition*1.2), random(view_hview),MonsterController);
-            counter++;
+            monsters[i] = instance_create(view_wview+random(view_wview - global.linePosition*1.2), random(view_hview),MonsterController);
         }
-        
+        monsters = scriptUpdateArray(monsters);
         attackedPlanet.goal = attackedPlanet.x - (sprite_get_width(attackedPlanet.sprite_index)/4);
         global.battleState = 2;
     }
@@ -169,10 +167,9 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
 else if(global.battleState == 2)
 {
     stop = false;
-    monsters = scriptUpdateArray(monsters);
+    
     for(i = 0; i&lt;array_length_1d(monsters);i++)
     {
-        //monsters[i].ships = scriptUpdateArray(monsters[i].ships);
         for(k = 0;k&lt;array_length_1d(monsters[i].ships);k++)
         {
             if(monsters[i].ships[k].x &lt;= global.linePosition*1.1)

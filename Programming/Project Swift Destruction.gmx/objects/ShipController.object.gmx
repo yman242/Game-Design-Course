@@ -37,6 +37,8 @@ buttonNumber = 2; //How many buttons we printing?
 
 
 general = 0;
+generalCooldown = 10;
+generalCooling = false;
 
 strategyType = 0;
 
@@ -51,6 +53,29 @@ stratPosition = 0
 ships = 0;
 
 //ships = scriptShipControllerSetup(shipType,numOfShips,stratPosition,x,y);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>generalCooling = false;
 </string>
           </argument>
         </arguments>
@@ -110,12 +135,12 @@ else if(array_length_1d(target.ships) == 0)
             <string>//Button collision
 for(i = 0; i&lt;buttonNumber;i++)
 {
-    if(scriptRectanglePointCollision(mouse_x,mouse_y,buttonWidth*i,view_hview[view_current]-(stratButtonTier*buttonHeight),buttonWidth*(i+1),view_hview[view_current]-((stratButtonTier-1)*buttonHeight)))
+    if(scriptRectanglePointCollision(mouse_x,mouse_y, view_xview[view_current] + buttonWidth*i,view_yview[view_current] + view_hview[view_current]-(stratButtonTier*buttonHeight),view_xview[view_current] + buttonWidth*(i+1),view_yview[view_current] + view_hview[view_current]-((stratButtonTier-1)*buttonHeight)))
     {
         if(i == 0)
         {
             strategyType++;
-            if(strategyType&gt;1)
+            if(strategyType&gt;2)
             {
                 strategyType = 0;
             }
@@ -127,10 +152,12 @@ for(i = 0; i&lt;buttonNumber;i++)
                 scriptChangePosition(ships,stratPosition,ships[0].x,ships[0].y);
             }
         }
-        else if(i==1 &amp;&amp; global.battleState == 3)
+        else if(i==1 &amp;&amp; global.battleState == 3 &amp;&amp; !generalCooling)
         {
+            generalCooling = true;
+            alarm[0] = 30*generalCooldown;
             for(k = 0; k&lt;array_length_1d(ships); k++)
-            {
+            {   
                 ships[k].alarm[3] = 1;
             }
         }
@@ -162,6 +189,11 @@ for(i = 0; i&lt;buttonNumber;i++)
 {
     //draw_sprite(buttonSprite,i,i*buttonWidth,view_hview[view_current]-(buttonHeight*stratButtonTier));
     draw_sprite(buttonSprite,i,view_xview[view_current] + i*buttonWidth, view_yview[view_current] + view_hview[view_current]-(buttonHeight*stratButtonTier));
+}
+
+if(generalCooldown)
+{
+    draw_sprite_ext(sprite_Cooldown,0,view_xview[view_current] + 1*buttonWidth,view_yview[view_current] + view_hview[view_current]-(buttonHeight*stratButtonTier)+(1-(alarm[0]/(30*generalCooldown)))*buttonHeight,1,alarm[0]/(30*generalCooldown),0,c_white,100);
 }
 
 </string>
