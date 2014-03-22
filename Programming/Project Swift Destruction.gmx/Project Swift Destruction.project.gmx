@@ -22,11 +22,15 @@
     </sprites>
     <sprites name="Misc">
       <sprite>sprites\sprite_Line</sprite>
+      <sprite>sprites\sprite_Cooldown</sprite>
       <sprite>sprites\sprite_Mouse</sprite>
       <sprite>sprites\sprite_Button</sprite>
       <sprite>sprites\sprite_UIOverlay</sprite>
       <sprite>sprites\sprite_Glow</sprite>
       <sprite>sprites\sprite_Button2</sprite>
+      <sprite>sprites\sprite_Formations</sprite>
+      <sprite>sprites\spr_MissileHit</sprite>
+      <sprite>sprites\sprite_PlanetLaser</sprite>
     </sprites>
     <sprites name="Weapons">
       <sprite>sprites\sprite_Missile1</sprite>
@@ -34,6 +38,7 @@
     </sprites>
     <sprites name="Monsters">
       <sprite>sprites\sprite_Monster1</sprite>
+      <sprite>sprites\sprite_MonsterPlanet</sprite>
     </sprites>
     <sprites name="Front End">
       <sprite>sprites\sprite_MainMenu_New</sprite>
@@ -47,10 +52,6 @@
         <sprite>sprites\sprite_text_test2</sprite>
       </sprites>
     </sprites>
-    <sprite>sprites\spr_MissileHit</sprite>
-    <sprite>sprites\sprite_MonsterPlanet</sprite>
-    <sprite>sprites\sprite_PlanetLaser</sprite>
-    <sprite>sprites\sprite_Formations</sprite>
     <sprites name="Strat Layer">
       <sprites name="UI Elements">
         <sprite>sprites\sprite_bg_70</sprite>
