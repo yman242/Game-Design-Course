@@ -158,7 +158,7 @@ alarm[0] = 30 * attackSpeedMissiles;
     }
 }
 
-if(life&lt;=0)
+if(life&lt;=0 &amp;&amp; global.battleState == 3)
 {
     //they died, time to explode.
     instance_destroy();

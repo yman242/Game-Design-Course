@@ -10,15 +10,11 @@ curr_y = view_yview[view_current] + view_hview[view_current]/2;
 distance_x = planet_x - curr_x;
 distance_y = planet_y - curr_y;
 
-move_x = distance_x * (global.zoomTimer / totalTime);//(1.0 - (global.zoomTimer / totalTime) * (global.zoomTimer / totalTime)) - global.distanceViewLastMoved;
-move_y = distance_y * (global.zoomTimer / totalTime);
+move_x = distance_x * (global.zoomTimer / totalTime)* (global.zoomTimer / totalTime);
+move_y = distance_y * (global.zoomTimer / totalTime)* (global.zoomTimer / totalTime);
 
-//angleToPoint = point_direction(curr_x, curr_y, planet_x, planet_y);
-
-//move_x = distanceToMoveNow * sin(angleToPoint);
-//move_y = distanceToMoveNow * cos(angleToPoint);
+//move_x = distance_x * (1.0 - (global.zoomTimer / totalTime) * (global.zoomTimer / totalTime));
+//move_y = distance_y * (1.0 - (global.zoomTimer / totalTime) * (global.zoomTimer / totalTime));
 
 view_xview[view_current] += move_x;
 view_yview[view_current] += move_y;
-
-//global.distanceViewLastMoved = distanceToMoveNow;

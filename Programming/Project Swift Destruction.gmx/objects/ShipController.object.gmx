@@ -110,12 +110,12 @@ else if(array_length_1d(target.ships) == 0)
             <string>//Button collision
 for(i = 0; i&lt;buttonNumber;i++)
 {
-    if(scriptRectanglePointCollision(mouse_x,mouse_y,buttonWidth*i,view_hview[view_current]-(stratButtonTier*buttonHeight),buttonWidth*(i+1),view_hview[view_current]-((stratButtonTier-1)*buttonHeight)))
+    if(scriptRectanglePointCollision(mouse_x,mouse_y, view_xview[view_current] + buttonWidth*i,view_yview[view_current] + view_hview[view_current]-(stratButtonTier*buttonHeight),view_xview[view_current] + buttonWidth*(i+1),view_yview[view_current] + view_hview[view_current]-((stratButtonTier-1)*buttonHeight)))
     {
         if(i == 0)
         {
             strategyType++;
-            if(strategyType&gt;1)
+            if(strategyType&gt;2)
             {
                 strategyType = 0;
             }
