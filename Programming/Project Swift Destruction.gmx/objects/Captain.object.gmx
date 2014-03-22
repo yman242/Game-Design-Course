@@ -34,6 +34,7 @@ mouseInBounds = false;
 var myRef;
 inFocus = true;
 fleet_id = -1;
+drawText = true;
 </string>
           </argument>
         </arguments>

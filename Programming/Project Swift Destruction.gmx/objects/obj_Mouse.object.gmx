@@ -120,6 +120,8 @@ pressed = false;
             <string>image_speed = 3;
 image_index = 0;
 pressed = true;
+
+scriptActivateExplosions(15);
 </string>
           </argument>
         </arguments>

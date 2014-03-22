@@ -114,7 +114,7 @@ if (inFocus) {
             drawBox = true;
             box_x = newx;
             box_y = newy;
-        }
+         }
     }
 }
 </string>
@@ -139,14 +139,19 @@ if (inFocus) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;global.shipMax;i+=1)
+            <string>draw_set_alpha(1);
+
+for(i=0;i&lt;global.shipMax;i+=1)
 {
     if (drawBox) {
         // draw the selection box at location specified
         //draw_rectangle(box_x, box_y, capt_width+box_x, capt_height+box_y, false);
         draw_sprite(sprite_Replace_captain, -1, box_x, box_y);
+        global.fleet[i].drawText = false;
+    } else {
+        global.fleet[i].drawText = true;
     }
-    
+        
     newx = 150 + ((i mod 2) * 550);
     newy = 150 + ((i mod 3) * 150);
 

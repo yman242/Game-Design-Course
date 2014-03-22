@@ -51,7 +51,10 @@ global.currentlyInvadingPlanet = 0; // used to track an object reference to the 
 global.invasionDone = false;
 global.invasionStarted = false; // if both started and done then we can check and update the last planet invaded for a destruction status
 
-// Tyler's Shit
+// Narrative Variables
+global.pointInStory = 0;
+
+// Game stuff for Strat layer
 global.playerTokens = 10000; // Used to recruit / Reroll captains
 
 for (i=0; i&lt;global.shipMax; i+=1)

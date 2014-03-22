@@ -17,10 +17,12 @@ switch (captain.faceType) {
         draw_sprite(sprite_portrait_empty, -1, newx, newy);
         break;
 }
-    
+
+//if (captain.drawText)
+//{
 // show the name
 draw_text(newx+150, newy, captain.captain_name);
-    
+        
 // Need some switch action here to show names and not numbers:
 // show the tactical type
 switch(captain.tacticalType) {
@@ -40,7 +42,7 @@ switch(captain.tacticalType) {
         draw_text(newx+150, newy+30, "Defensive");
         break;
 }
-    
+        
 // show the ability
 switch(captain.ability) {
     case 0:
@@ -59,7 +61,7 @@ switch(captain.ability) {
         draw_text(newx+150, newy+60, "Ship Launcher");
         break;
 }
-    
+        
 // show the ship type
 switch(captain.shipType) {
     case 0:
@@ -78,3 +80,4 @@ switch(captain.shipType) {
         draw_text(newx+150, newy+90, "Battleship");
         break;
 }
+//}
