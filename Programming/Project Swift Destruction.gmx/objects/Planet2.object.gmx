@@ -82,13 +82,6 @@ isSelected = false;
         // Add the population to the kill counter
         global.playerKillCount += population;
         
-        if (isBoss) {
-            // Destroy the universe, set the galaxy creation var to false
-            
-            // Goto Narrative Room
-            room_goto(room_Narrative_Section);
-        }
-        
         // destroy the planet
         instance_destroy();
     }

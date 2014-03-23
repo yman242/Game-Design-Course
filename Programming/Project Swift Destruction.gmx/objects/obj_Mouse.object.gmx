@@ -144,7 +144,8 @@ pressed = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scriptDeactivateExplosions();
+            <string>//scriptDeactivateExplosions();
+room_goto(room_Narrative_Section);
 </string>
           </argument>
         </arguments>
