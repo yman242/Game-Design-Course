@@ -113,16 +113,10 @@ alarm[0] = 30*chargeUpdate;
     {
         tempShipHolder = myController.myMaster.target;
         
-        tempShipHolder.ships = scriptUpdateArray(tempShipHolder.ships);
-        
         charge = 0
         scale = 0;
         holder = instance_create(x,y,obj_ShotOrbLaunched);
         holder.target = myController.target;
-        
-        
-        
-        
         
         value = array_length_1d(tempShipHolder.ships);
         if(value&gt;0)

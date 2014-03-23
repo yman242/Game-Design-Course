@@ -153,8 +153,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(hit)
+            <string>if(hit &amp;&amp; instance_exists(maker))
 {
+
     tempSprite = maker.sprite_index;
     aimX = sprite_get_width(tempSprite)/2;
     aimY = sprite_get_height(tempSprite)/2;

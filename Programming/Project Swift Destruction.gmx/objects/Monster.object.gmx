@@ -26,13 +26,25 @@
           <argument>
             <kind>1</kind>
             <string>myController = 0;
+captainPower = -1;
 
 engaged = false;
 
 aimOffset = 128; //0 is perfect aim. Variable controls how accurate missles are.
 
-attackSpeedMissiles = 5;
-attackSpeedLasers = 7;
+burstCount = 0; //used to keep track of burst fire
+burstTotal = 3; //Total burst shots to fire
+burstDelay = .5;//How many seconds until burst fire.
+
+attackSpeedBurst = 0;
+attackSpeedMissiles = 5; //How often missiles can/will be launched.
+attackSpeedLasers = 7; //How often lasers can/will be launched.
+stratSpeed = 1; //How fast the ship will move in combat, if needed to.
+
+goal = x + global.howFar;
+
+stratGoalX = 0;
+stratGoalY = 0;
 
 life = 200;
 </string>
@@ -58,6 +70,59 @@ life = 200;
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(sound_Missle, 0, false);
+scriptParticleEngine(x,y,0,random(100),500,250,0,360,1,6,c_gray,sprite_SoftParticle);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Shoot burst missles
+xHolder = x+(sprite_get_width(sprite_index)/2);
+yHolder = y+(sprite_get_height(sprite_index)/2);
+
+valueHolder = array_length_1d(myController.target.ships);
+
+if(valueHolder&gt;0)
+{
+    holder = instance_create(xHolder,yHolder,Burst);
+    
+    targetHolder = myController.target.ships[valueHolder-1];
+    
+    spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
+    aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
+    aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
+    
+    holder.direction = point_direction(xHolder,yHolder,aimX,aimY);
+    holder.target = Ship;
+}
+
+burstCount++;
+if(burstCount&lt;burstTotal)
+{
+    alarm[2] = 30 * burstDelay;
+}
+else
+{
+    alarm[2] = 30 *attackSpeedBurst * myController.formationController.attackSpeed;
+    burstCount = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -81,15 +146,25 @@ life = 200;
           <argument>
             <kind>1</kind>
             <string>//Shoots lasers
-holder = instance_create(x,y,Laser);
 
-holder.maker = id;
+valueHolder = array_length_1d(myController.target.ships);
 
-targetHolder = instance_nearest(x, y, Ship);
+if(valueHolder&gt;0)
+{
+    holder = instance_create(x,y,Laser);
+    
+    holder.maker = id;
+    
+    
+    targetHolder = myController.target.ships[random(valueHolder-1)];
+    
+    holder.target = targetHolder;
+    
+    holder.color1 = c_red;
+    holder.color2 = c_red;
+}
 
-holder.target = targetHolder;
-
-alarm[1] = 30 * attackSpeedLasers;
+alarm[1] = 30 * attackSpeedLasers* myController.formationController.attackSpeed;
 </string>
           </argument>
         </arguments>
@@ -113,19 +188,54 @@ alarm[1] = 30 * attackSpeedLasers;
           <argument>
             <kind>1</kind>
             <string>//Shoot missles
-holder = instance_create(x,y,Missle);
+xHolder = x+(sprite_get_width(sprite_index)/2);
+yHolder = y+(sprite_get_height(sprite_index)/2);
 
+//show_message(myController.target);
+valueHolder = array_length_1d(myController.target.ships);
 
-targetHolder = instance_nearest(x, y, Ship);
+if(valueHolder&gt;0)
+{
+    holder = instance_create(xHolder,yHolder,Missle);
+    
+    targetHolder = myController.target.ships[random(valueHolder-1)];
+    
+    spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
+    aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
+    aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
+    
+    holder.direction = point_direction(xHolder,yHolder,aimX,aimY);
+    holder.target = Ship;
+}
 
-spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
-aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
-aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
-
-holder.direction = point_direction(x,y,aimX,aimY);
-holder.target = Ship;
-
-alarm[0] = 30 * attackSpeedMissiles;
+alarm[0] = 30 * attackSpeedMissiles * myController.formationController.attackSpeed;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(life&lt;=0)
+{
+    //they died, time to explode.
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -150,19 +260,71 @@ alarm[0] = 30 * attackSpeedMissiles;
             <kind>1</kind>
             <string>if(global.battleState == 3) //If we're in battle
 {
+    
     if(!engaged)
     {
         engaged = true;
-        alarm[0] = 1;
-        alarm[1] = 1;
+        
+        if(attackSpeedMissiles &gt; 0)
+        {
+            alarm[0] = 1;
+        }
+        if(attackSpeedLasers &gt; 0)
+        {
+            alarm[1] = 1;
+        }
+        if(attackSpeedBurst&gt;0)
+        {
+            alarm[2] = 1;
+        }
     }
 }
 
-if(life&lt;=0 &amp;&amp; global.battleState == 3)
-{
-    //they died, time to explode.
-    instance_destroy();
+if((stratGoalX != 0 || stratGoalY != 0)&amp;&amp; engaged)//if the ship has a movement goal
+{    
+    if((x &gt; stratGoalX-speed &amp;&amp; x &lt; stratGoalX+speed) &amp;&amp; (y &gt; stratGoalY-speed &amp;&amp; y &lt; stratGoalY+speed) ) //If it's within a range..
+    //if(x == stratGoalX &amp;&amp; y == stratGoalY)
+    {
+        stratGoalX = 0; //Close enough
+        stratGoalY = 0;
+        speed = 0;
+    }
+    else
+    {
+        direction = point_direction(x,y,stratGoalX,stratGoalY);
+        speed = stratSpeed;
+    
+        
+    }
+    
+   
+    
+
 }
+else if(engaged)
+{
+    direction = 0;
+    speed = 0;
+    image_angle = 0;
+}
+/*if(global.battleState == 0)//animating
+{
+    if(image_index&gt;idleMax)
+    {
+        image_index = idleMin;
+    }
+}
+else
+{
+    if(image_index&lt;moveStart)
+    {
+        image_index = moveStart;
+    }
+    if(image_index&gt;=moveMax)
+    {
+        image_index = moveMin;
+    }
+}*/
 </string>
           </argument>
         </arguments>

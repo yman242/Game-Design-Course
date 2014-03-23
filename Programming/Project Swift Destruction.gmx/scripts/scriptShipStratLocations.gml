@@ -1,125 +1,114 @@
 //This will return the strategy locations.
 
-sizeX = 256;
-sizeY = 64;
+scriptingsizeX = 256;
+scriptingsizeY = 64;
+
 if(argument0 == 0) //Skirmish
-{
-    /*for(i=0;i<10;i+=2) //Sets up positions...
-    {
-        temp[i,0] = i/2*-32;
-        temp[0,i] = i/2*-32;
-    }
+{   
+    scriptingtemp[0,0] = 0; //Ship 1
     
-    for(i=1;i<10;i+=2)
-    {
-        temp[i,0] = ceil(i/2)*-32;
-        temp[0,i] = ceil(i/2)*32;
-    }*/
+    scriptingtemp[1,0] = 0; //Ship 2
+    scriptingtemp[0,1] = scriptingsizeY;
     
-    temp[0,0] = 0; //Ship 1
+    scriptingtemp[2,0] = scriptingsizeX; //Ship 3
+    scriptingtemp[0,2] = 0;
     
-    temp[1,0] = 0; //Ship 2
-    temp[0,1] = sizeY;
+    scriptingtemp[3,0] = scriptingsizeX; //Ship 4
+    scriptingtemp[0,3] = scriptingsizeY;
     
-    temp[2,0] = sizeX; //Ship 3
-    temp[0,2] = 0;
+    scriptingtemp[4,0] = scriptingsizeX/2; //Ship 5
+    scriptingtemp[0,4] = -scriptingsizeY;
     
-    temp[3,0] = sizeX; //Ship 4
-    temp[0,3] = sizeY;
+    scriptingtemp[5,0] = scriptingsizeX/2; //Ship 6
+    scriptingtemp[0,5] = 2*scriptingsizeY;
     
-    temp[4,0] = sizeX/2; //Ship 5
-    temp[0,4] = -sizeY;
+    scriptingtemp[6,0] = -scriptingsizeX/2; //Ship 7
+    scriptingtemp[0,6] = -scriptingsizeY;
     
-    temp[5,0] = sizeX/2; //Ship 6
-    temp[0,5] = 2*sizeY;
+    scriptingtemp[7,0] = -scriptingsizeX/2; //Ship 8
+    scriptingtemp[0,7] = scriptingsizeY*2;
     
-    temp[6,0] = -sizeX/2; //Ship 7
-    temp[0,6] = -sizeY;
+    scriptingtemp[8,0] = -scriptingsizeX; //Ship 9
+    scriptingtemp[0,8] = 0;
     
-    temp[7,0] = -sizeX/2; //Ship 8
-    temp[0,7] = sizeY*2;
-    
-    temp[8,0] = -sizeX; //Ship 9
-    temp[0,8] = 0;
-    
-    temp[9,0] = -sizeX; //Ship 10
-    temp[0,9] = sizeY;
+    scriptingtemp[9,0] = -scriptingsizeX; //Ship 10
+    scriptingtemp[0,9] = scriptingsizeY;
     
 }
 else if(argument0 == 1) //Attack
 {
-    temp[0,0] = 0; //Ship 1
+    scriptingtemp[0,0] = 0; //Ship 1
     
-    temp[1,0] = 0; //Ship 2
-    temp[0,1] = sizeY;
+    scriptingtemp[1,0] = 0; //Ship 2
+    scriptingtemp[0,1] = scriptingsizeY;
     
-    temp[2,0] = 0; //Ship 3
-    temp[0,2] = -sizeY;
+    scriptingtemp[2,0] = 0; //Ship 3
+    scriptingtemp[0,2] = -scriptingsizeY;
     
-    temp[3,0] = 0; //Ship 4
-    temp[0,3] = sizeY*2;
+    scriptingtemp[3,0] = 0; //Ship 4
+    scriptingtemp[0,3] = scriptingsizeY*2;
     
-    temp[4,0] = sizeX/2; //Ship 5
-    temp[0,4] = -sizeY*1.5;
+    scriptingtemp[4,0] = scriptingsizeX/2; //Ship 5
+    scriptingtemp[0,4] = -scriptingsizeY*1.5;
     
-    temp[5,0] = sizeX/2; //Ship 6
-    temp[0,5] = sizeY*2.5;
+    scriptingtemp[5,0] = scriptingsizeX/2; //Ship 6
+    scriptingtemp[0,5] = scriptingsizeY*2.5;
     
-    temp[6,0] = sizeX*1.5; //Ship 7
-    temp[0,6] = -sizeY*1.5;
+    scriptingtemp[6,0] = scriptingsizeX*1.5; //Ship 7
+    scriptingtemp[0,6] = -scriptingsizeY*1.5;
     
-    temp[7,0] = sizeX*1.5; //Ship 8
-    temp[0,7] = sizeY*2.5;
+    scriptingtemp[7,0] = scriptingsizeX*1.5; //Ship 8
+    scriptingtemp[0,7] = scriptingsizeY*2.5;
     
-    temp[8,0] = sizeX; //Ship 9
-    temp[0,8] = -sizeY*2;
+    scriptingtemp[8,0] = scriptingsizeX; //Ship 9
+    scriptingtemp[0,8] = -scriptingsizeY*2;
     
-    temp[9,0] = sizeX; //Ship 10
-    temp[0,9] = sizeY*3;
+    scriptingtemp[9,0] = scriptingsizeX; //Ship 10
+    scriptingtemp[0,9] = scriptingsizeY*3;
 }
 else if(argument0 == 2) //Shield
 {
-    temp[0,0] = 0; //Ship 1
+    scriptingtemp[0,0] = 0; //Ship 1
     
-    temp[1,0] = 0; //Ship 2
-    temp[0,1] = -sizeY;
+    scriptingtemp[1,0] = 0; //Ship 2
+    scriptingtemp[0,1] = -scriptingsizeY;
     
-    temp[2,0] = 0; //Ship 3
-    temp[0,2] = sizeY;
+    scriptingtemp[2,0] = 0; //Ship 3
+    scriptingtemp[0,2] = scriptingsizeY;
     
-    temp[3,0] = 0; //Ship 4
-    temp[0,3] = -sizeY*2;
+    scriptingtemp[3,0] = 0; //Ship 4
+    scriptingtemp[0,3] = -scriptingsizeY*2;
     
-    temp[4,0] = 0; //Ship 5
-    temp[0,4] = sizeY*2;
+    scriptingtemp[4,0] = 0; //Ship 5
+    scriptingtemp[0,4] = scriptingsizeY*2;
     
-    temp[5,0] = 0; //Ship 6
-    temp[0,5] = -sizeY*3;
+    scriptingtemp[5,0] = 0; //Ship 6
+    scriptingtemp[0,5] = -scriptingsizeY*3;
     
-    temp[6,0] = -sizeX/2; //Ship 7
-    temp[0,6] = sizeY*1.5;
+    scriptingtemp[6,0] = -scriptingsizeX/2; //Ship 7
+    scriptingtemp[0,6] = scriptingsizeY*1.5;
     
-    temp[7,0] = -sizeX/2; //Ship 8
-    temp[0,7] = -sizeY*2.5;
+    scriptingtemp[7,0] = -scriptingsizeX/2; //Ship 8
+    scriptingtemp[0,7] = -scriptingsizeY*2.5;
     
-    temp[8,0] = -sizeX/2; //Ship 9
-    temp[0,8] = -sizeY*1.5;
+    scriptingtemp[8,0] = -scriptingsizeX/2; //Ship 9
+    scriptingtemp[0,8] = -scriptingsizeY*1.5;
     
-    temp[9,0] = -sizeX/2; //Ship 10
-    temp[0,9] = sizeY/2;
+    scriptingtemp[9,0] = -scriptingsizeX/2; //Ship 10
+    scriptingtemp[0,9] = scriptingsizeY/2;
 }
 else
 {
-    for(i=0;i<10;i+=2) //Sets up positions...
+    for(scriptingi=0;scriptingi<10;scriptingi+=2) //Sets up positions...
     {
-        temp[i,0] = i/2*-32;
-        temp[0,i] = i/2*-32;
+        scriptingtemp[scriptingi,0] = scriptingi/2*-32;
+        scriptingtemp[0,scriptingi] = scriptingi/2*-32;
     }
     
-    for(i=1;i<10;i+=2)
+    for(scriptingi=1;scriptingi<10;scriptingi+=2)
     {
-        temp[i,0] = ceil(i/2)*-32;
-        temp[0,i] = ceil(i/2)*32;
+        scriptingtemp[scriptingi,0] = ceil(scriptingi/2)*-32;
+        scriptingtemp[0,scriptingi] = ceil(scriptingi/2)*32;
     }
 }
-return temp;
+return scriptingtemp;

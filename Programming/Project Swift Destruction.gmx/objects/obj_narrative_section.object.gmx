@@ -51,76 +51,79 @@
             <string>draw_set_font(font_Intro);
 draw_set_color(c_white);
 
+MessageLineOne = "";
+MessageLineTwo = "";
+
 switch (narrative) {
     case 0:
         leftImage = 0;
         rightImage = 1;
         leftSpeaking = false;
         Talking = "Boss";
-        Message = "You will go no further human, your path of destruction has come to an end. No more Doregan will die today!";
+        MessageLineOne = "You will go no further human, your path of destruction has come to an end. No more Doregan will die today!";
         break;
     case 1:
         leftImage = 0;
         rightImage = 1;
         leftSpeaking = true;
         Talking = "Player";
-        Message = "You should have thought of that before you broke the peace with my people… Now we have nothing left, and someone has to pay. I’m going to stomp your evil race out of existence.";
+        MessageLineOne = "You should have thought of that before you broke the peace with my people… Now we have nothing left, and someone has to pay. I’m going to stomp your evil race out of existence.";
         break;
     case 2:
         leftImage = 0;
         rightImage = 1;
         leftSpeaking = false;
         Talking = "Boss";
-        Message = "These systems are not the evil you seek! You walk a destructive path and cannot be allowed to continue.";
+        MessageLineOne = "These systems are not the evil you seek! You walk a destructive path and cannot be allowed to continue.";
         break;
     case 3:
         leftImage = 0;
         rightImage = 1;
         leftSpeaking = true;
         Talking = "Player";
-        Message = "It was your race that oppressed us, your race that tried to enslave us. I am completely justified in my actions!";
+        MessageLineOne = "It was your race that oppressed us, your race that tried to enslave us. I am completely justified in my actions!";
         break;
     case 4:
         leftImage = 0;
         rightImage = 1;
         leftSpeaking = false;
         Talking = "Boss";
-        Message = "So be it, if you seek death, than death shall come to you! Prepare yourself human, as this day shall be your last.";
+        MessageLineOne = "So be it, if you seek death, than death shall come to you! Prepare yourself human, as this day shall be your last.";
         break;
     case 5:
         leftImage = 0;
         rightImage = 2;
         leftSpeaking = false;
         Talking = "Missile";
-        Message = ". . .";
+        MessageLineOne = ". . .";
         break;
     case 6:
         leftImage = 0;
         rightImage = 1;
         leftSpeaking = true;
         Talking = "Player";
-        Message = "It’s too late for second thoughts now friend, we’ve come too far, there’s no going back!";
+        MessageLineOne = "It’s too late for second thoughts now friend, we’ve come too far, there’s no going back!";
         break;
-    case 6:
+    case 7:
         leftImage = 0;
         rightImage = 3;
         leftSpeaking = false;
         Talking = "Captain";
-        Message = "Commander?";
+        MessageLineOne = "Commander?";
         break;
-    case 6:
+    case 8:
         leftImage = 0;
         rightImage = 1;
         leftSpeaking = true;
         Talking = "Player";
-        Message = "Set a course for the planet, we’ll show this Doregan wretch who he’s dealing with . . .";
+        MessageLineOne = "Set a course for the planet, we’ll show this Doregan wretch who he’s dealing with . . .";
         break;
-    case 6:
+    case 9:
         leftImage = 0;
         rightImage = 3;
         leftSpeaking = false;
         Talking = "Captain";
-        Message = "Yes sir . . .";
+        MessageLineOne = "Yes sir . . .";
         break;
 }
 
@@ -168,7 +171,7 @@ draw_sprite(sprite_Narrative_Frame, -1, 0, view_hview[view_current] - sprite_get
 draw_text(25, view_hview[view_current] - sprite_get_height(sprite_Narrative_Frame) + 15, Talking);
 
 // Text
-draw_text(25, view_hview[view_current] - sprite_get_height(sprite_Narrative_Frame) + 40, Message);
+draw_text(25, view_hview[view_current] - sprite_get_height(sprite_Narrative_Frame) + 40, MessageLineOne);
 </string>
           </argument>
         </arguments>

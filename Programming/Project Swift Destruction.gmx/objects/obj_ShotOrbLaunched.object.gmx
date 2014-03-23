@@ -113,8 +113,9 @@ else
     
     if(holderTarget&gt;0)
     {
-        if(holderTarget.myController.target != target)
+        if(holderTarget.myController.target != target &amp;&amp; holderTarget.myController.shieldHealth&gt;0)
         {
+            holderTarget.myController.shieldHealth--;
             instance_destroy();
         }
     }

@@ -25,18 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.buttonTier++;//This adds code to get some UI for the controller.
+            <string>currentNumShips = 0; // used to update formations
+
 target = 0;
 
-general = 0;
+formationController = instance_create(x,y,FormationController);
+formationController.myMaster = id;
+formationController.target = Ship
 
-strategyType = 0;
+general = 0;
+generalCooldown = 10;
+generalCooling = false;
+
+strategyType = 2;
 
 shipType = 1;
 
 numOfShips = 9;
 
-stratPosition = 0
+stratPosition = 0;
 
 stratPosition = scriptMonsterStratLocations(strategyType);
 
@@ -44,6 +51,29 @@ stratPosition = scriptMonsterStratLocations(strategyType);
 ships = 0;
 
 ships = scriptMonsterControllerSetup(shipType,numOfShips,stratPosition,x,y,id);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ships = scriptUpdateArray(ships);
 </string>
           </argument>
         </arguments>
@@ -66,7 +96,27 @@ ships = scriptMonsterControllerSetup(shipType,numOfShips,stratPosition,x,y,id);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ships = scriptUpdateArray(ships);
+            <string>if(target == 0)
+{
+    targetHolder = instance_nearest(x, y, Ship);
+    target = targetHolder.myController;
+}
+else if(array_length_1d(target.ships) == 0)
+{
+    targetHolder = instance_nearest(x, y, Ship);
+    target = targetHolder.myController;
+}
+
+if(currentNumShips&gt;array_length_1d(ships))
+{
+    formationController.alarm[1] = 1;
+}
+if(!formationController.setup &amp;&amp; global.battleState == 3)
+{
+    formationController.alarm[0] = 1;
+}
+
+currentNumShips = array_length_1d(ships);
 </string>
           </argument>
         </arguments>
