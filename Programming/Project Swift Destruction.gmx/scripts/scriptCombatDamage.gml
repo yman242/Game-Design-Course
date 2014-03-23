@@ -9,4 +9,7 @@ if (Ship_ID.object_index = Ship)
     Damage_Caused *= global.difficulty_multiplier;
 }
 
-Ship_ID.life -= Damage_Caused;
+if(instance_exists(Ship_ID))
+{
+    Ship_ID.life -= Damage_Caused;
+}

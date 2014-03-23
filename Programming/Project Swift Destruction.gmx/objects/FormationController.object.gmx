@@ -29,22 +29,32 @@
 
 myMaster = 0;
 
-shieldHealth = 100;
+shieldHealth = 50;
 shieldMax = shieldHealth;
 shieldArray = 0;
 
 regenValue = 10;
 regenSpeed = 5;
 
-alarm[1] = 30*regenSpeed;
+chargeShot = 0;
+chargeSpeedPerShip = 3;
+chargeGoal = 100;
+
+attackSpeed = 1;
+normalAttackSpeed = attackSpeed;
+
+alarm[2] = 30*regenSpeed;
 
 target = Monster;
+
+sizeX = 128;//256
+sizeY = 32;//64
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="1">
+    <event eventtype="2" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -68,7 +78,89 @@ if(shieldHealth&gt;shieldMax)
     shieldHealth=shieldMax;
 }
 
-alarm[1] = 30 * regenSpeed;
+alarm[2] = 30 * regenSpeed;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//This is code to edit things on the fly.
+numOfShips = array_length_1d(myMaster.ships)
+if(numOfShips &gt; 1)
+{
+    if(myMaster.strategyType == 2)
+    {
+        shieldX = shieldArray[0].x;
+        shieldY = shieldArray[0].y;
+        
+        for(i=0;i&lt;array_length_1d(shieldArray);i++)
+        {
+            with (shieldArray[i]) instance_destroy();
+        }
+
+        shieldArray = 0;
+        
+        if(numOfShips&gt;5)
+        {
+            shieldNum = 11;
+        }
+        else if(numOfShips&gt;4)
+        {
+            shieldNum = 9;
+        }
+        else if(numOfShips&gt;3)
+        {
+            shieldNum = 7;
+        }
+        else if(numOfShips&gt;2)
+        {
+            shieldNum = 5;
+        }
+        else if(numOfShips&gt;1)
+        {
+            shieldNum = 3;
+        }
+        else if(numOfShips&gt;0)
+        {
+            shieldNum = 0;
+        }
+        
+        for(i=0;i&lt;shieldNum;i++)
+        {
+            shieldArray[i] = instance_create(shieldX,shieldY+sizeY*i,obj_ShieldBlock);
+            shieldArray[i].myController = id;
+        }
+        
+        sizeofShields = array_length_1d(shieldArray);
+        
+        if(sizeofShields&gt;1)
+        {
+            shieldArray[0].imageIndex = 0;
+            shieldArray[sizeofShields-1].imageIndex = 2;
+        }
+    }
+}
+else
+{
+    alarm[0] = 1;
+}
 </string>
           </argument>
         </arguments>
@@ -103,11 +195,32 @@ for(i=0;i&lt;array_length_1d(shieldArray);i++)
 }
 
 shieldArray = 0;
+attackSpeed = normalAttackSpeed;
 
-sizeX = 128;//256
-sizeY = 32//64;
+//sizeX = 128;//256
+//sizeY = 32//64;
 
-if(myMaster.strategyType == 2)
+if(!(chargeShot &gt; 0 ) &amp;&amp; myMaster.strategyType == 1) //messes with the charge orb cause we can't have it resetting all the time.
+{
+        chargeShot = instance_create(x,y,obj_ShotOrb);
+        chargeShot.myController = id;
+}
+else if(chargeShot &gt; 0 &amp;&amp; myMaster.strategyType != 1)
+{
+        with(chargeShot) instance_destroy();
+        chargeShot = 0;
+}
+
+if(myMaster.strategyType == 0)
+{
+    attackSpeed = .5;
+}
+else if(myMaster.strategyType == 1)
+{
+    chargeShot.x = myMaster.ships[0].x+sizeX*2;
+    chargeShot.y =  myMaster.ships[0].y+sizeY;
+}
+else if(myMaster.strategyType == 2)
 {
     if(numOfShips&gt;5)
     {
@@ -163,29 +276,6 @@ if(myMaster.strategyType == 2)
         }
     }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//things
 </string>
           </argument>
         </arguments>

@@ -171,7 +171,7 @@ if(burstCount&lt;burstTotal)
 }
 else
 {
-    alarm[2] = 30 *attackSpeedBurst;
+    alarm[2] = 30 *attackSpeedBurst * myController.formationController.attackSpeed;
     burstCount = 0;
 }
 </string>
@@ -210,7 +210,7 @@ holder.target = targetHolder;
 holder.color1 = c_blue;
 holder.color2 = c_blue;
 
-alarm[1] = 30 * attackSpeedLasers;
+alarm[1] = 30 * attackSpeedLasers* myController.formationController.attackSpeed;
 </string>
           </argument>
         </arguments>
@@ -252,7 +252,7 @@ aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(sp
 holder.direction = point_direction(xHolder,yHolder,aimX,aimY);
 holder.target = Monster;
 
-alarm[0] = 30 * attackSpeedMissiles;
+alarm[0] = 30 * attackSpeedMissiles * myController.formationController.attackSpeed;
 </string>
           </argument>
         </arguments>
