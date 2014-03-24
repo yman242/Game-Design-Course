@@ -30,6 +30,12 @@ captainPower = -1;
 
 engaged = false;
 
+idleMax = 0; //Max frame for the idle.
+idleMin = 0; //Lowest idle frame.
+moveStart = 0; //frame where we start the movement
+moveMax = 0; //highest move frame. (May not want it to be the final frame)
+moveMin = 0; //Lowest movement frame. (may not want it to be the start)
+
 aimOffset = 128; //0 is perfect aim. Variable controls how accurate missles are.
 
 burstCount = 0; //used to keep track of burst fire
@@ -307,7 +313,7 @@ else if(engaged)
     speed = 0;
     image_angle = 0;
 }
-/*if(global.battleState == 0)//animating
+if(global.battleState == 0)//animating
 {
     if(image_index&gt;idleMax)
     {
@@ -324,7 +330,7 @@ else
     {
         image_index = moveMin;
     }
-}*/
+}
 </string>
           </argument>
         </arguments>

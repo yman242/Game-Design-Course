@@ -43,7 +43,7 @@ textYOffset = 16;
 
 commander = 0;
 
-numberOfShips = 3;
+numberOfShips = 4;
 </string>
           </argument>
         </arguments>

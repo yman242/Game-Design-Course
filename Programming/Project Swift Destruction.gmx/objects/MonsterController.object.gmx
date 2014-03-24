@@ -37,20 +37,16 @@ general = 0;
 generalCooldown = 10;
 generalCooling = false;
 
-strategyType = 2;
+strategyType = floor(random(3));
 
-shipType = 1;
+shipType = 5;
 
 numOfShips = 9;
 
 stratPosition = 0;
 
-stratPosition = scriptMonsterStratLocations(strategyType);
-
 
 ships = 0;
-
-ships = scriptMonsterControllerSetup(shipType,numOfShips,stratPosition,x,y,id);
 </string>
           </argument>
         </arguments>

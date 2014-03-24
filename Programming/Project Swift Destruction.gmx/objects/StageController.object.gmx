@@ -155,12 +155,34 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
         {
             global.destroyable = true;
         }
-        for(i=0;i&lt;waveTotals[currentWave-1,0];i++)
+        for(k=0;k&lt;waveTotals[currentWave-1,0];k++)
         {
-            /*monsters[counter] = instance_create(view_wview+random(view_wview - global.linePosition*1.2), random(view_hview),Monster);
-            monsters[counter].direction = 180;
-            monsters[counter].speed = global.moveSpeed;*/
-            monsters[i] = instance_create(view_wview+random(view_wview - global.linePosition*1.2), random(view_hview),MonsterController);
+            monsters[k] = instance_create(view_wview+random(view_wview - global.linePosition*1.2), random(view_hview),MonsterController);
+            monsters[k].stratPosition = scriptMonsterStratLocations(monsters[k].strategyType);
+            monsters[k].shipType = floor(random(5))+1;
+            
+            if(monsters[k].shipType==1) //Frigate
+            {
+                monsters[k].numOfShips = 10;
+            }
+            else if(monsters[k].shipType==2) //Cruiser
+            {
+                monsters[k].numOfShips = 5;
+            }
+            else if(monsters[k].shipType==3) //Destroyer
+            {
+                monsters[k].numOfShips = 7;
+            }
+            else if(monsters[k].shipType==4) //Missleship
+            {
+                monsters[k].numOfShips = 5;
+            }
+            else if(monsters[k].shipType==5) //Battleship
+            {
+                monsters[k].numOfShips = 4;
+            }
+            
+            monsters[k].ships = scriptMonsterControllerSetup(monsters[k].shipType,monsters[k].numOfShips,monsters[k].stratPosition,monsters[k].x,monsters[k].y,monsters[k].id);
         }
         monsters = scriptUpdateArray(monsters);
         attackedPlanet.goal = attackedPlanet.x - (sprite_get_width(attackedPlanet.sprite_index)/4);

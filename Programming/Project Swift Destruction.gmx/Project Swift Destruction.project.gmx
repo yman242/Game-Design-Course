@@ -41,6 +41,11 @@
     <sprites name="Monsters">
       <sprite>sprites\sprite_Monster1</sprite>
       <sprite>sprites\sprite_MonsterPlanet</sprite>
+      <sprite>sprites\sprite_MonsterFrigate</sprite>
+      <sprite>sprites\sprite_MonsterCruiser</sprite>
+      <sprite>sprites\sprite_MonsterDestroyer</sprite>
+      <sprite>sprites\sprite_MonsterMissleship</sprite>
+      <sprite>sprites\sprite_MonsterBattleship</sprite>
     </sprites>
     <sprites name="Front End">
       <sprite>sprites\sprite_MainMenu_New</sprite>
@@ -179,6 +184,11 @@
     <objects name="Monsters">
       <object>objects\MonsterController</object>
       <object>objects\Monster</object>
+      <object>objects\obj_MonsterFrigate</object>
+      <object>objects\obj_MonsterCruiser</object>
+      <object>objects\obj_MonsterDestroyer</object>
+      <object>objects\obj_MonsterMissleship</object>
+      <object>objects\obj_MonsterBattleship</object>
       <object>objects\MonsterPlanet</object>
     </objects>
     <objects name="Weapons">

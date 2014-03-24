@@ -3,23 +3,23 @@
 
 if(argument0 == 1)//Ship type...
 {
-    shipHolder = Monster;
+    shipHolder = obj_MonsterFrigate;
 }
 else if(argument0 == 2)
 {
-    shipHolder = Monster;
+    shipHolder = obj_MonsterCruiser;
 }
 else if(argument0 == 3)
 {
-    shipHolder = Monster;
+    shipHolder = obj_MonsterDestroyer;
 }
 else if(argument0 == 4)
 {
-    shipHolder = Monster;
+    shipHolder = obj_MonsterMissleship;
 }
 else if(argument0 == 5)
 {
-    shipHolder = Monster;
+    shipHolder = obj_MonsterBattleship;
 }
 else
 {
