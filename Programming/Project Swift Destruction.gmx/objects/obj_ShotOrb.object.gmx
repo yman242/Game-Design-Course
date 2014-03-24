@@ -105,7 +105,7 @@ alarm[0] = 30*chargeUpdate;
             
             directionHolder = point_direction(myController.myMaster.ships[k].x+widthHolder,myController.myMaster.ships[k].y+heightHolder,x+sizeX/2,y+sizeY/2);
             
-            scriptParticleEngine(myController.myMaster.ships[k].x +widthHolder,myController.myMaster.ships[k].y+heightHolder,0,random(20),50,40,directionHolder-5,directionHolder+5,5,6,color,sprite_SoftParticle);
+            scriptParticleEngine(myController.myMaster.ships[k].x +widthHolder,myController.myMaster.ships[k].y+heightHolder,0,random(15),50,40,directionHolder-5,directionHolder+5,5,6,color,sprite_SoftParticle);
         }
     }
     

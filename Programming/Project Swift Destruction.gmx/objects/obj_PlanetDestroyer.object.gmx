@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>global.buttonTier++;//This adds code to get some UI for the controller.
 stratButtonTier = global.buttonTier;
-buttonSprite = sprite_Formations;
+buttonSprite = sprite_DestroyerIcon;
 buttonWidth = sprite_get_width(buttonSprite);
 buttonHeight = sprite_get_height(buttonSprite);
 buttonNumber = 1; //How many buttons we printing?

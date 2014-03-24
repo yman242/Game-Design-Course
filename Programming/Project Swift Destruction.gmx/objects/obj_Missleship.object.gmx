@@ -44,7 +44,7 @@ burstTotal = 3; //Total burst shots to fire
 burstDelay = .5;//How many seconds until burst fire.
 
 attackSpeedBurst = 0;
-attackSpeedMissiles = 3; //How often missiles can/will be launched.
+attackSpeedMissiles = 5; //How often missiles can/will be launched.
 attackSpeedLasers = 0; //How often lasers can/will be launched.
 stratSpeed = 1; //How fast the ship will move in combat, if needed to.
 
@@ -57,7 +57,7 @@ aimOffset = 64;
 
 engaged = false;
 
-life = 225;
+life = 100;
 </string>
           </argument>
         </arguments>

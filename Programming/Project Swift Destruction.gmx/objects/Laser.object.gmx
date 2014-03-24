@@ -38,7 +38,7 @@ color1 = c_red;
 color2 = c_red;
 laserWidth = 5;
 
-damage = 50;
+damage = 200;
 </string>
           </argument>
         </arguments>

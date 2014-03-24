@@ -7,6 +7,11 @@
   <sounds name="sound">
     <sound>sound\sound_Missle</sound>
     <sound>sound\sound_MenuMusic</sound>
+    <sound>sound\sound_LaserFire</sound>
+    <sound>sound\sound_LaserImpact</sound>
+    <sound>sound\sound_PlanetBoom</sound>
+    <sound>sound\sound_CombatMusic</sound>
+    <sound>sound\sound_BossMusic</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprite_PlanetMap</sprite>
@@ -33,6 +38,8 @@
       <sprite>sprites\sprite_PlanetLaser</sprite>
       <sprite>sprites\sprite_Shield</sprite>
       <sprite>sprites\sprite5_Orb</sprite>
+      <sprite>sprites\sprite_Abilities</sprite>
+      <sprite>sprites\sprite_DestroyerIcon</sprite>
     </sprites>
     <sprites name="Weapons">
       <sprite>sprites\sprite_Missile1</sprite>

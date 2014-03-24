@@ -169,6 +169,7 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
             {
                 bossOffset=1;
                 monsters[0] = instance_create(view_wview+random(view_wview - global.linePosition*1.2), view_hview/2,BossMonsterController);
+                global.destroyable = false;
             }
         }
         for(k=0+bossOffset;k&lt;waveTotals[currentWave-1,0];k++)

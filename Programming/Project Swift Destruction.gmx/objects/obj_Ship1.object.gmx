@@ -37,15 +37,12 @@ moveStart = 13; //frame where we start the movement
 moveMax = 30; //highest move frame. (May not want it to be the final frame)
 moveMin = 25; //Lowest movement frame. (may not want it to be the start)
 
-missiles = 2; //Number of missile ports on ship.
-lasers = 0; //Number of laser ports on ships.
-
 burstCount = 0; //used to keep track of burst fire
-burstTotal = 3; //Total burst shots to fire
-burstDelay = .5;//How many seconds until burst fire.
+burstTotal = 2; //Total burst shots to fire
+burstDelay = .3;//How many seconds until burst fire.
 
-attackSpeedBurst = 0;
-attackSpeedMissiles = 3; //How often missiles can/will be launched.
+attackSpeedBurst = 5;
+attackSpeedMissiles = 0; //How often missiles can/will be launched.
 attackSpeedLasers = 0; //How often lasers can/will be launched.
 stratSpeed = 1; //How fast the ship will move in combat, if needed to.
 
@@ -58,7 +55,7 @@ aimOffset = 64;
 
 engaged = false;
 
-life = 150;
+life = 100;
 </string>
           </argument>
         </arguments>

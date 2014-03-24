@@ -28,16 +28,22 @@
             <string>xHolder = room_width/2;
 yHolder = room_height/4;
 
-draw_set_font(font_Text);
+draw_set_font(font_Intro);
 draw_set_halign(fa_center);
+
 draw_set_color(c_white)
 draw_text(xHolder,yHolder,"Hey, welcome to your first combat!");
 draw_text(xHolder,yHolder+32,"Place some ships by clicking and draging on the cards to the right.");
-draw_text(xHolder,yHolder+64,"Place them to the left of the green line.");
+draw_text(xHolder,yHolder+64,"Place them to the left of the blue line.");
 draw_text(xHolder,yHolder+96,"As you place them strategy controls pop up in the bottom left.");
-draw_text(xHolder,yHolder+128,"At the very bottom left is the planet destroyer control.");
-draw_text(xHolder,yHolder+160,"It'll be enabled when the planet is in range. Click it then and BOOM!");
-draw_text(xHolder,yHolder+192,"Press the space bar to get back to combat!");
+draw_text(xHolder,yHolder+128,"They all start skirmish, which fires faster. There's also attack and shield!");
+draw_text(xHolder,yHolder+160,"Shield will block projectiles, but can only take so many hits,");
+draw_text(xHolder,yHolder+192,"Attack charges a shot that goes through units but you can't shoot normally!");
+draw_text(xHolder,yHolder+224,"At the very bottom left is the planet destroyer control.");
+draw_text(xHolder,yHolder+256,"It'll be enabled when the planet is in range, unless it's a boss.");
+draw_text(xHolder,yHolder+288,"Click a unit to select them, they'll grow green and their target red.");
+draw_text(xHolder,yHolder+320,"With a unit selected click on a monster to target their formation.");
+draw_text(xHolder,yHolder+352,"Press the space bar to get back to combat!");
 </string>
           </argument>
         </arguments>

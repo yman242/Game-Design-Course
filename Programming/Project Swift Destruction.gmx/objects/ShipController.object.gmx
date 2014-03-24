@@ -86,6 +86,33 @@ ships = 0;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(array_length_1d(ships)==0)
+{
+    with(formationController) instance_destroy();
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
@@ -222,7 +249,14 @@ for(i = 0; i&lt;buttonNumber;i++)
             <string>for(i=0;i&lt;buttonNumber;i++)
 {
     //draw_sprite(buttonSprite,i,i*buttonWidth,view_hview[view_current]-(buttonHeight*stratButtonTier));
-    draw_sprite(buttonSprite,i,view_xview[view_current] + i*buttonWidth, view_yview[view_current] + view_hview[view_current]-(buttonHeight*stratButtonTier));
+    if(i==0)
+    {
+        draw_sprite(buttonSprite,strategyType,view_xview[view_current] + i*buttonWidth, view_yview[view_current] + view_hview[view_current]-(buttonHeight*stratButtonTier));
+    }
+    else
+    {
+        draw_sprite(sprite_Abilities,0,view_xview[view_current] + i*buttonWidth, view_yview[view_current] + view_hview[view_current]-(buttonHeight*stratButtonTier));
+    }
 }
 
 if(generalCooldown)

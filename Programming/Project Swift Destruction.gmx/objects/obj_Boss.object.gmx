@@ -41,12 +41,12 @@ moveMin = 6; //Lowest movement frame. (may not want it to be the start)
 aimOffset = 128; //0 is perfect aim. Variable controls how accurate missles are.
 
 burstCount = 0; //used to keep track of burst fire
-burstTotal = 3; //Total burst shots to fire
+burstTotal = 10; //Total burst shots to fire
 burstDelay = .5;//How many seconds until burst fire.
 
-attackSpeedBurst = 0;
-attackSpeedMissiles = 5; //How often missiles can/will be launched.
-attackSpeedLasers = 7; //How often lasers can/will be launched.
+attackSpeedBurst = 4;
+attackSpeedMissiles = 7; //How often missiles can/will be launched.
+attackSpeedLasers = 10; //How often lasers can/will be launched.
 stratSpeed = 1; //How fast the ship will move in combat, if needed to.
 
 goal = x + global.howFar;

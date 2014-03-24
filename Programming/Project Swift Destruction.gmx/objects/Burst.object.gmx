@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>damage = 10;
+            <string>damage = 2;
 
 alarm[0] = 30*15;
 
@@ -56,12 +56,13 @@ damage = 25;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(sound_Missle, 0, false);
+            <string>audio_play_sound(sound_LaserImpact, 0, false);
 
 // Screen Shake (magnitude in pixels, Duration in steps, priority of shake, whether this should always overwrite another shake)
 scriptShakeScreen(3, 3, 1, false);
 
-instance_create(x,y,obj_MissleHit);
+scriptParticleEngine(x,y,0,random(20),80,60,0,360,1,3,c_blue,sprite_SoftParticle);
+//instance_create(x,y,obj_MissleHit);
 </string>
           </argument>
         </arguments>
@@ -108,6 +109,10 @@ instance_create(x,y,obj_MissleHit);
           <argument>
             <kind>1</kind>
             <string>image_angle = direction;
+
+directionHolder = direction -180;
+
+//scriptParticleEngine(x,y,0,random(5),50,40,directionHolder+5,directionHolder-5,1,3,c_blue,sprite_SoftParticle);
 
 holder = collision_point(x,y,target,true,false)
 if(holder&gt;0)

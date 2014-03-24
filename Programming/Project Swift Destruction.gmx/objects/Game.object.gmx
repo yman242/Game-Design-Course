@@ -25,12 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sound_global_volume(.5);
+            <string>sound_global_volume(.01);
 sound_volume(sound_MenuMusic,.8);
+sound_volume(sound_BossMusic,.8);
+sound_volume(sound_CombatMusic,.8);
+
 
 global.tutorial = false; //If combat tutorial was done.
 
-audio_play_sound(sound_MenuMusic, 0, true);
+audio_play_sound(sound_MenuMusic, 100, true);
 
 randomize();
 
@@ -144,6 +147,46 @@ global.shakeTimer = 0;
             <kind>1</kind>
             <string>scriptScreenShakeLoop(global.shakeMagnitude, global.shakeDuration);
 //scriptZoomOnPlanet();
+
+if(room == room_Battle)
+{
+    if(audio_is_playing(sound_MenuMusic))
+    {
+        audio_stop_sound(sound_MenuMusic);
+    }
+    
+    if(global.currentlyInvadingPlanet.isBoss)
+    {
+        if(!audio_is_playing(sound_BossMusic))
+        {
+            audio_play_sound(sound_BossMusic, 100, true);
+        }
+    }
+    else
+    {
+        if(!audio_is_playing(sound_CombatMusic))
+        {
+            audio_play_sound(sound_CombatMusic, 100, true);
+        }
+    }
+    
+}
+else
+{
+    if(audio_is_playing(sound_BossMusic))
+    {
+        audio_stop_sound(sound_BossMusic);
+    }
+    if(audio_is_playing(sound_CombatMusic))
+    {
+        audio_stop_sound(sound_CombatMusic);
+    }
+    
+    if(!audio_is_playing(sound_MenuMusic))
+    {
+        audio_play_sound(sound_MenuMusic, 100, true);
+    }
+}
 </string>
           </argument>
         </arguments>
