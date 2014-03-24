@@ -102,28 +102,32 @@ scriptParticleEngine(x,y,0,random(100),500,250,0,360,1,6,c_gray,sprite_SoftParti
             <kind>1</kind>
             <string>//Captain skill. Should be an if or case in here once we've more than 1 skill.
 
-valueHolder = array_length_1d(myController.target.ships);
 
-if(valueHolder&gt;0)
+if(myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
 {
-    holder = instance_create(x,y,Laser);
+    valueHolder = array_length_1d(myController.target.ships);
     
-    holder.maker = id;
-    
-    targetHolder = myController.target.ships[random(valueHolder-1)];
-    
-    holder.target = targetHolder;
-    
-    holder.x = targetHolder.x + sprite_get_width(targetHolder.sprite_index)/2;
-    holder.y = targetHolder.y + sprite_get_width(targetHolder.sprite_index)/2;
-    
-    holder.color1 = c_blue;
-    holder.color2 = c_blue;
-    holder.laserWidth = 15;
-    
-    damage = 300;
-    
-    holder.speed = 8;
+    if(valueHolder&gt;0)
+    {
+        holder = instance_create(x,y,Laser);
+        
+        holder.maker = id;
+        
+        targetHolder = myController.target.ships[random(valueHolder-1)];
+        
+        holder.target = targetHolder;
+        
+        holder.x = targetHolder.x + sprite_get_width(targetHolder.sprite_index)/2;
+        holder.y = targetHolder.y + sprite_get_width(targetHolder.sprite_index)/2;
+        
+        holder.color1 = c_blue;
+        holder.color2 = c_blue;
+        holder.laserWidth = 15;
+        
+        damage = 300;
+        
+        holder.speed = 8;
+    }
 }
 </string>
           </argument>
@@ -151,21 +155,24 @@ if(valueHolder&gt;0)
 xHolder = x+(sprite_get_width(sprite_index)/2);
 yHolder = y+(sprite_get_height(sprite_index)/2);
 
-
-valueHolder = array_length_1d(myController.target.ships);
-
-if(valueHolder&gt;0)
+if(myController.strategyType !=1 &amp;&amp; myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
 {
-    holder = instance_create(xHolder,yHolder,Burst);
     
-    targetHolder = myController.target.ships[valueHolder-1];
+    valueHolder = array_length_1d(myController.target.ships);
     
-    spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
-    aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
-    aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
-    
-    holder.direction = point_direction(xHolder,yHolder,aimX,aimY);
-    holder.target = Monster;
+    if(valueHolder&gt;0)
+    {
+        holder = instance_create(xHolder,yHolder,Burst);
+        
+        targetHolder = myController.target.ships[valueHolder-1];
+        
+        spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
+        aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
+        aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
+        
+        holder.direction = point_direction(xHolder,yHolder,aimX,aimY);
+        holder.target = Monster;
+    }
 }
 
 burstCount++;
@@ -202,21 +209,23 @@ else
             <kind>1</kind>
             <string>//Shoots lasers
 
-valueHolder = array_length_1d(myController.target.ships);
-
-if(valueHolder&gt;0)
+if(myController.strategyType !=1 &amp;&amp; myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
 {
-    holder = instance_create(x,y,Laser);
-    
-    holder.maker = id;
-    
-    
-    targetHolder = myController.target.ships[random(valueHolder-1)];
-    
-    holder.target = targetHolder;
-    
-    holder.color1 = c_blue;
-    holder.color2 = c_blue;
+    valueHolder = array_length_1d(myController.target.ships);
+    if(valueHolder&gt;0)
+    {
+        holder = instance_create(x,y,Laser);
+        
+        holder.maker = id;
+        
+        
+        targetHolder = myController.target.ships[random(valueHolder-1)];
+        
+        holder.target = targetHolder;
+        
+        holder.color1 = c_blue;
+        holder.color2 = c_blue;
+    }
 }
 
 alarm[1] = 30 * attackSpeedLasers* myController.formationController.attackSpeed;
@@ -247,21 +256,23 @@ xHolder = x+(sprite_get_width(sprite_index)/2);
 yHolder = y+(sprite_get_height(sprite_index)/2);
 
 //show_message(myController.target);
-
-valueHolder = array_length_1d(myController.target.ships);
-
-if(valueHolder&gt;0)
+if(myController.strategyType !=1 &amp;&amp; myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
 {
-    holder = instance_create(xHolder,yHolder,Missle);
+    valueHolder = array_length_1d(myController.target.ships);
     
-    targetHolder = myController.target.ships[random(valueHolder-1)];
-    
-    spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
-    aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
-    aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
-    
-    holder.direction = point_direction(xHolder,yHolder,aimX,aimY);
-    holder.target = Monster;
+    if(valueHolder&gt;0)
+    {
+        holder = instance_create(xHolder,yHolder,Missle);
+        
+        targetHolder = myController.target.ships[random(valueHolder-1)];
+        
+        spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
+        aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
+        aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
+        
+        holder.direction = point_direction(xHolder,yHolder,aimX,aimY);
+        holder.target = Monster;
+    }
 }
 
 alarm[0] = 30 * attackSpeedMissiles * myController.formationController.attackSpeed;
@@ -387,7 +398,7 @@ else
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="0">
+    <event eventtype="6" enumb="7">
       <action>
         <libid>1</libid>
         <id>603</id>

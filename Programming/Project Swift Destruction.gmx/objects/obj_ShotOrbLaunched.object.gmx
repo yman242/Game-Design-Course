@@ -29,7 +29,7 @@
 
 speed = 10;
 
-damage = 50;
+damage = 100;
 
 selfDestruct = 15;
 

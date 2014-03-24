@@ -31,11 +31,14 @@
     room_goto(room_Tutorial);
 }
 
+explosionsStarted = false;
+explosionChain = 10;
+
 global.selectedShip = 0;
 
 global.buttonTier = 0;//Used to determine how many buttons we have in place in terms of layers.
 
-scaleSize = 1.5;//scaled size of screen
+scaleSize = 2;//1.5;//scaled size of screen
 scrollSpeed = 2; //Speed of the background.
 
 view_wview[view_current] *= scaleSize;
@@ -140,7 +143,13 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
           <argument>
             <kind>1</kind>
             <string>if(global.battleState == 1)
-{   
+{  
+    if(!explosionsStarted)
+    {
+        scriptActivateExplosions(explosionChain);
+        explosionsStarted = true;
+    }
+ 
     currentWave++;
     if(currentWave&gt;global.waves)
     {
@@ -151,39 +160,21 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
     }
     else
     {   
+        bossOffset=0
         if(currentWave-global.waves==0)
         {
             global.destroyable = true;
+            
+            if(global.currentlyInvadingPlanet.isBoss)
+            {
+                bossOffset=1;
+                monsters[0] = instance_create(view_wview+random(view_wview - global.linePosition*1.2), view_hview/2,BossMonsterController);
+            }
         }
-        for(k=0;k&lt;waveTotals[currentWave-1,0];k++)
+        for(k=0+bossOffset;k&lt;waveTotals[currentWave-1,0];k++)
         {
-            monsters[k] = instance_create(view_wview+random(view_wview - global.linePosition*1.2), random(view_hview),MonsterController);
-            /*monsters[k].stratPosition = scriptMonsterStratLocations(monsters[k].strategyType);
-            monsters[k].shipType = floor(random(5))+1;
-            
-            if(monsters[k].shipType==1) //Frigate
-            {
-                monsters[k].numOfShips = 10;
-            }
-            else if(monsters[k].shipType==2) //Cruiser
-            {
-                monsters[k].numOfShips = 5;
-            }
-            else if(monsters[k].shipType==3) //Destroyer
-            {
-                monsters[k].numOfShips = 7;
-            }
-            else if(monsters[k].shipType==4) //Missleship
-            {
-                monsters[k].numOfShips = 5;
-            }
-            else if(monsters[k].shipType==5) //Battleship
-            {
-                monsters[k].numOfShips = 4;
-            }
-            
-            monsters[k].ships = scriptMonsterControllerSetup(monsters[k].shipType,monsters[k].numOfShips,monsters[k].stratPosition,monsters[k].x,monsters[k].y,monsters[k].id);
-        */}
+            monsters[k] = instance_create(view_wview+random(view_wview - global.linePosition*1.2), (view_hview/4)+random(view_hview/2),MonsterController);
+        }
         
         monsters = scriptUpdateArray(monsters);
         attackedPlanet.goal = attackedPlanet.x - (sprite_get_width(attackedPlanet.sprite_index)/4);
@@ -260,6 +251,38 @@ if(global.battleState&gt;0)
     }
     
     draw_sprite_stretched(sprite_UIOverlay,0,view_wview[view_current] - sprite_get_width(sprite_UIOverlay),0,sprite_get_width(sprite_UIOverlay),view_wview[view_current]);
+}
+
+if(global.selectedShip&gt;0&amp;&amp;instance_exists(global.selectedShip))
+{
+    for(i=0;i&lt;array_length_1d(global.selectedShip.ships);i++)
+    {
+        if(instance_exists(global.selectedShip.ships[i]))
+        {
+            particleHolder = sprite_SoftParticle;
+            scalingHolder = 5;
+            widthHolder = (sprite_get_width(global.selectedShip.ships[i].sprite_index)/2)-(scalingHolder*sprite_get_width(particleHolder))/2;
+            heightHolder = (sprite_get_height(global.selectedShip.ships[i].sprite_index)/2)-(scalingHolder*sprite_get_height(particleHolder))/2;
+            
+            draw_sprite_ext(particleHolder,0,global.selectedShip.ships[i].x+ widthHolder,global.selectedShip.ships[i].y+ heightHolder,scalingHolder,scalingHolder,0,c_green,.5);
+        }
+    }
+    
+    if(global.selectedShip.target&gt;0&amp;&amp;instance_exists(global.selectedShip.target))
+    {
+        for(i=0;i&lt;array_length_1d(global.selectedShip.target.ships);i++)
+        {
+            if(instance_exists(global.selectedShip.target.ships[i]))
+            {
+                particleHolder = sprite_SoftParticle;
+                scalingHolder = 5;
+                widthHolder = (sprite_get_width(global.selectedShip.target.ships[i].sprite_index)/2)-(scalingHolder*sprite_get_width(particleHolder))/2;
+                heightHolder = (sprite_get_height(global.selectedShip.target.ships[i].sprite_index)/2)-(scalingHolder*sprite_get_height(particleHolder))/2;
+                
+                draw_sprite_ext(particleHolder,0,global.selectedShip.target.ships[i].x+ widthHolder,global.selectedShip.target.ships[i].y+ heightHolder,scalingHolder,scalingHolder,0,c_red,.5);
+            }
+        }
+    }
 }
 </string>
           </argument>
