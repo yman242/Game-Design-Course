@@ -158,7 +158,7 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
         for(k=0;k&lt;waveTotals[currentWave-1,0];k++)
         {
             monsters[k] = instance_create(view_wview+random(view_wview - global.linePosition*1.2), random(view_hview),MonsterController);
-            monsters[k].stratPosition = scriptMonsterStratLocations(monsters[k].strategyType);
+            /*monsters[k].stratPosition = scriptMonsterStratLocations(monsters[k].strategyType);
             monsters[k].shipType = floor(random(5))+1;
             
             if(monsters[k].shipType==1) //Frigate
@@ -183,7 +183,8 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
             }
             
             monsters[k].ships = scriptMonsterControllerSetup(monsters[k].shipType,monsters[k].numOfShips,monsters[k].stratPosition,monsters[k].x,monsters[k].y,monsters[k].id);
-        }
+        */}
+        
         monsters = scriptUpdateArray(monsters);
         attackedPlanet.goal = attackedPlanet.x - (sprite_get_width(attackedPlanet.sprite_index)/4);
         global.battleState = 2;

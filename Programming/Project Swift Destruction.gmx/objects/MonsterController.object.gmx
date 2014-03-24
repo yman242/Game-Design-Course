@@ -31,7 +31,7 @@ target = 0;
 
 formationController = instance_create(x,y,FormationController);
 formationController.myMaster = id;
-formationController.target = Ship
+formationController.target = Ship;
 
 general = 0;
 generalCooldown = 10;
@@ -45,8 +45,33 @@ numOfShips = 9;
 
 stratPosition = 0;
 
-
 ships = 0;
+
+shipType = floor(random(5))+1;
+            
+if(shipType==1) //Frigate
+{
+    numOfShips = 10;
+}
+else if(shipType==2) //Cruiser
+{
+    numOfShips = 5;
+}
+else if(shipType==3) //Destroyer
+{
+    numOfShips = 7;
+}
+else if(shipType==4) //Missleship
+{
+    numOfShips = 5;
+}
+else if(shipType==5) //Battleship
+{
+    numOfShips = 4;
+}
+
+stratPosition = scriptMonsterStratLocations(strategyType);
+ships = scriptMonsterControllerSetup(shipType,numOfShips,stratPosition,x,y,id);
 </string>
           </argument>
         </arguments>

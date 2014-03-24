@@ -247,6 +247,7 @@ xHolder = x+(sprite_get_width(sprite_index)/2);
 yHolder = y+(sprite_get_height(sprite_index)/2);
 
 //show_message(myController.target);
+
 valueHolder = array_length_1d(myController.target.ships);
 
 if(valueHolder&gt;0)
