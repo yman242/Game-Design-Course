@@ -83,8 +83,6 @@ isSelected = false;
         global.playerKillCount += population;
         
         if (isBoss) {
-            // Destroy the universe, set the galaxy creation var to false
-            
             // Goto Narrative Room
             room_goto(room_Narrative_Section);
         }
@@ -184,15 +182,17 @@ isSelected = false;
             <kind>1</kind>
             <string>if (isSelected) {
     image_blend = make_color_rgb(100, 255, 100);
+    draw_self();
 } else if (isControlled) {
     image_blend = make_color_rgb(100, 100, 255);
+    draw_self();
 } else if (isBoss) {
-    image_blend = make_color_rgb(255, 50, 50);
+    //image_blend = make_color_rgb(255, 50, 50);
+    draw_sprite_ext(sprite_BossPlanet, image_index, x, y,image_xscale, image_yscale, image_angle, c_white, 1);
 } else {
     image_blend = -1;
+    draw_self();
 }
-
-draw_self();
 </string>
           </argument>
         </arguments>

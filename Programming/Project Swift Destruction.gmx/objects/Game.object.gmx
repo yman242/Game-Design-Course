@@ -52,9 +52,10 @@ global.invasionDone = false;
 
 // Narrative Variables
 global.pointInStory = 0;
+global.storySequence = 0;
 
 // Bosses for Narrative
-global.NextBoss = 0;
+global.NextBoss = 1;
 global.bossPlanetGenerated = false;
 
 // Player kill counts

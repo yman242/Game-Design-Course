@@ -26,6 +26,46 @@
           <argument>
             <kind>1</kind>
             <string>// Code for narrative here
+narrative = 0;
+storyTimer = 0;
+delayTime = 150;
+
+//Get ready to create a new galaxy
+scriptTransferSectors();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (storyTimer &gt; delayTime) {
+    narrative += 1;
+    storyTimer = 0;
+}
+
+storyTimer += 1;
+
+if (mouse_check_button_released(mb_left))
+{
+    narrative += 1;
+    storyTimer = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -51,83 +91,540 @@
             <string>draw_set_font(font_Intro);
 draw_set_color(c_white);
 
+leftImage = 0;
+rightImage = 0;
+leftSpeaking = true;
+Talking = "";
 MessageLineOne = "";
 MessageLineTwo = "";
+MessageLineThree = "";
 
-switch (narrative) {
-    case 0:
-        leftImage = 0;
-        rightImage = 1;
-        leftSpeaking = false;
-        Talking = "Boss";
-        MessageLineOne = "You will go no further human, your path of destruction has come to an end. No more Doregan will die today!";
-        break;
-    case 1:
-        leftImage = 0;
-        rightImage = 1;
-        leftSpeaking = true;
-        Talking = "Player";
-        MessageLineOne = "You should have thought of that before you broke the peace with my people… Now we have nothing left, and someone has to pay. I’m going to stomp your evil race out of existence.";
-        break;
-    case 2:
-        leftImage = 0;
-        rightImage = 1;
-        leftSpeaking = false;
-        Talking = "Boss";
-        MessageLineOne = "These systems are not the evil you seek! You walk a destructive path and cannot be allowed to continue.";
-        break;
-    case 3:
-        leftImage = 0;
-        rightImage = 1;
-        leftSpeaking = true;
-        Talking = "Player";
-        MessageLineOne = "It was your race that oppressed us, your race that tried to enslave us. I am completely justified in my actions!";
-        break;
-    case 4:
-        leftImage = 0;
-        rightImage = 1;
-        leftSpeaking = false;
-        Talking = "Boss";
-        MessageLineOne = "So be it, if you seek death, than death shall come to you! Prepare yourself human, as this day shall be your last.";
-        break;
-    case 5:
-        leftImage = 0;
-        rightImage = 2;
-        leftSpeaking = false;
-        Talking = "Missile";
-        MessageLineOne = ". . .";
-        break;
-    case 6:
-        leftImage = 0;
-        rightImage = 1;
-        leftSpeaking = true;
-        Talking = "Player";
-        MessageLineOne = "It’s too late for second thoughts now friend, we’ve come too far, there’s no going back!";
-        break;
-    case 7:
-        leftImage = 0;
-        rightImage = 3;
-        leftSpeaking = false;
-        Talking = "Captain";
-        MessageLineOne = "Commander?";
-        break;
-    case 8:
-        leftImage = 0;
-        rightImage = 1;
-        leftSpeaking = true;
-        Talking = "Player";
-        MessageLineOne = "Set a course for the planet, we’ll show this Doregan wretch who he’s dealing with . . .";
-        break;
-    case 9:
-        leftImage = 0;
-        rightImage = 3;
-        leftSpeaking = false;
-        Talking = "Captain";
-        MessageLineOne = "Yes sir . . .";
-        break;
+if (global.storySequence == 1) {
+    switch (narrative) {
+        case 0:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = true;
+                Talking = "Player";
+                MessageLineOne = "That was eventful, but it seems that the Doregan have broken the truce,";
+                MessageLineTwo = "we need to be cautious.";
+                break;
+            case 1:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = false;
+                Talking = "Captain";
+                MessageLineOne = "Commander, there’s a large enemy vessel incoming… It’s come out of";
+                MessageLineTwo = "nowhere!";
+                break;
+            case 2:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = true;
+                Talking = "Player";
+                MessageLineOne = "It’s a planet destroyer vessel! Quick charge the main cannon!";
+                break;
+            case 3:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = false;
+                Talking = "";
+                MessageLineOne = "*Ship gets hit and incapacitated by enemy missile*";
+                break;
+            case 4:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = false;
+                Talking = "Captain";
+                MessageLineOne = "Sir, we’ve been hit, it’s taken out the power to the main cannon, but";
+                MessageLineTwo = "the missile hasn’t exploded, but we’re incapacitated!";
+                break;
+            case 5:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = true;
+                Talking = "Player";
+                MessageLineOne = "Can we contact the rest of the fleet?!";
+                break;
+            case 6:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = false;
+                Talking = "Captain";
+                MessageLineOne = "Our communications are being jammed... we’re on our own…";
+                break;
+            case 7:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = true;
+                Talking = "Player";
+                MessageLineOne = "They’re charging their main cannon!";
+                break;
+            case 8:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = false;
+                Talking = "Captain";
+                MessageLineOne = "Sir, we’re being hailed.";
+                break;
+            case 9:
+                leftImage = 0;
+                rightImage = 1;
+                leftSpeaking = false;
+                Talking = "Boss";
+                MessageLineOne = "You humans, you never learn. This galaxy belongs to the Doregan! Now";
+                MessageLineTwo = "watch helplessly as your planet is torn to ruins!";
+                break;
+            case 10:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = false;
+                Talking = "Captain";
+                MessageLineOne = "Commander! They’re firing!";
+                break;
+            case 11:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = false;
+                Talking = "Captain";
+                MessageLineOne = "Oh No! Sir! They destroyed the planet!";
+                break;
+            case 12:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = false;
+                Talking = "";
+                MessageLineOne = "*Hours later image here*";
+                break;
+            case 13:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = false;
+                Talking = "Captain";
+                MessageLineOne = "Commander, they’re gone. . . But we’ve lost the planet . . .";
+                break;
+            case 14:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = false;
+                Talking = "Player";
+                MessageLineOne = "We’ll hunt him down… We’ll hunt all of them down… We’re heading back to";
+                MessageLineTwo = "the first sector, call the fleet, and head for the first sector, it’s";
+                MessageLineThree = "time to end this.";
+                break;
+            default:
+                // Room change to the travelling room, increase the story counter
+                global.storySequence += 1;
+                room_goto(room_travel_animation);
+                break;
+        }
+} else if (global.storySequence == 2) {
+        switch (narrative) {
+            case 0:
+                leftImage = 0;
+                rightImage = 1;
+                leftSpeaking = false;
+                Talking = "Boss";
+                MessageLineOne = "You will go no further human, your path of destruction has come to an end.";
+                MessageLineTwo = "No more Doregan will die today!";
+                break;
+            case 1:
+                leftImage = 0;
+                rightImage = 1;
+                leftSpeaking = true;
+                Talking = "Player";
+                MessageLineOne = "You should have thought of that before you broke the peace with my people...";
+                MessageLineTwo = "Now we have nothing left, and someone has to pay. I’m going to stomp your"
+                MessageLineThree = "evil race out of existence.";
+                break;
+            case 2:
+                leftImage = 0;
+                rightImage = 1;
+                leftSpeaking = false;
+                Talking = "Boss";
+                MessageLineOne = "These systems are not the evil you seek! You walk a destructive path and";
+                MessageLineTwo = "cannot be allowed to continue.";
+                break;
+            case 3:
+                leftImage = 0;
+                rightImage = 1;
+                leftSpeaking = true;
+                Talking = "Player";
+                MessageLineOne = "It was your race that oppressed us, your race that tried to enslave us. I";
+                MessageLineTwo = "am completely justified in my actions!";
+                break;
+            case 4:
+                leftImage = 0;
+                rightImage = 1;
+                leftSpeaking = false;
+                Talking = "Boss";
+                MessageLineOne = "So be it, if you seek death, than death shall come to you! Prepare yourself";
+                MessageLineTwo = "human, as this day shall be your last.";
+                break;
+            case 5:
+                leftImage = 0;
+                rightImage = 2;
+                leftSpeaking = false;
+                Talking = "Missile";
+                MessageLineOne = ". . .";
+                break;
+            case 6:
+                leftImage = 0;
+                rightImage = 2;
+                leftSpeaking = true;
+                Talking = "Player";
+                MessageLineOne = "It’s too late for second thoughts now friend, we’ve come too far, there’s";
+                MessageLineTwo = "no going back!";
+                break;
+            case 7:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = false;
+                Talking = "Captain";
+                MessageLineOne = "Commander?";
+                break;
+            case 8:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = true;
+                Talking = "Player";
+                MessageLineOne = "Set a course for the planet, we’ll show this Doregan wretch who he’s dealing";
+                MessageLineTwo = "with . . .";
+                break;
+            case 9:
+                leftImage = 0;
+                rightImage = 3;
+                leftSpeaking = false;
+                Talking = "Captain";
+                MessageLineOne = "Yes sir . . .";
+                break;
+            default:
+                // Goto a new sector
+                global.storySequence += 1;
+                room_goto(room_StrategyLayer);
+                break;
+        }
+} else if (global.storySequence == 3) {
+    switch (narrative) {
+        case 0:
+            leftImage = 0;
+            rightImage = 2;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "Should have ran while you still could… fool";
+            break;
+        case 1:
+            leftImage = 0;
+            rightImage = 2;
+            leftSpeaking = false;
+            Talking = "Missile";
+            MessageLineOne = ". . .";
+            break;
+        case 2:
+            leftImage = 0;
+            rightImage = 3;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "There’s nothing to worry about, we’re doing the right thing. We’ll no longer";
+            MessageLineTwo = "live under their shadow.";
+            break;
+        case 3:
+            leftImage = 0;
+            rightImage = 3;
+            leftSpeaking = false;
+            Talking = "Captain";
+            MessageLineOne = "Sir, is everything?";
+            break;
+        case 4:
+            leftImage = 0;
+            rightImage = 3;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "Set a course for the next sector, we’re far from finished.";
+            break;
+        case 5:
+            leftImage = 0;
+            rightImage = 3;
+            leftSpeaking = false;
+            Talking = "Captain";
+            MessageLineOne = "Yes, of course, plotting course now . . .";
+            break;
+        default:
+            // Room change to the travelling room, increase the story counter
+            global.storySequence += 1;
+            room_goto(room_travel_animation);
+            break;
+    }
+} else if (global.storySequence == 4) {
+    switch (narrative) {
+        case 0:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = false;
+            Talking = "Boss 2";
+            MessageLineOne = "Well... If it isn’t the rebellious human that has been sweeping through my";
+            MessageLineTwo = "colonies. You have caused me a lot of trouble...";
+            break;
+        case 1:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "I’m not causing trouble, I’m fixing the wrongs that you’re race has committed";
+            MessageLineTwo = "against my people.";
+            break;
+        case 2:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = false;
+            Talking = "Boss 2";
+            MessageLineOne = "And the bodies of my kin are stacking ever larger at your feet, has your";
+            MessageLineTwo = "bloodlust not had its fill?";
+            break;
+        case 3:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "I won’t be satisfied until I’m sure the human race can be free of the Doregan’s";
+            MessageLineTwo = "shadow.";
+            break;
+        case 4:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = false;
+            Talking = "Boss 2";
+            MessageLineOne = "You’ve done the humans no favors with your actions, and their blood will also";
+            MessageLineTwo = "be on your hands!";
+            break;
+        case 5:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "The only blood on my hands will be you... And I’m perfectly alright with that...";
+            MessageLineTwo = "All ships get in formation, and lets try to make this quick...";
+            break;
+        default:
+            // Goto a new sector
+            global.storySequence += 1;
+            room_goto(room_StrategyLayer);
+            break;
+    }
+} else if (global.storySequence == 5) {
+    switch (narrative) {
+        case 0:
+            leftImage = 0;
+            rightImage = 2;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "We’ve lost a lot of good men... But it’s all for a good cause.";
+            break;
+        case 1:
+            leftImage = 0;
+            rightImage = 2;
+            leftSpeaking = false;
+            Talking = "Missile";
+            MessageLineOne = ". . .";
+            break;
+        case 2:
+            leftImage = 0;
+            rightImage = 2;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "Of course, that’s where we’re headed to next, and we’ll take you home.";
+            break;
+        case 3:
+            leftImage = 0;
+            rightImage = 3;
+            leftSpeaking = false;
+            Talking = "Captain";
+            MessageLineOne = "Take who home sir? Who are you talking to?";
+            break;
+        case 4:
+            leftImage = 0;
+            rightImage = 3;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "Never mind..., it’s time to head to the next sector and finish what we started...";
+            MessageLineTwo = "We’ll find him, and make him pay for what he’s done...";
+            break;
+        case 5:
+            leftImage = 0;
+            rightImage = 3;
+            leftSpeaking = false;
+            Talking = "Captain";
+            MessageLineOne = "Sir, their forces are minimal, they serve no threat if we go back and rebuild...";
+            MessageLineTwo = "Why risk more men on this campaign?";
+            break;
+        case 6:
+            leftImage = 0;
+            rightImage = 3;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "The Doregan are a threat and will continue to be a threat unless we do something";
+            MessageLineTwo = "about it. Letting them loom over us and leaving them to their own devices was a";
+            MessageLineThree = "mistake, a mistake we won’t make again. Head to the next sector...";
+            break;
+        case 7:
+            leftImage = 0;
+            rightImage = 3;
+            leftSpeaking = false;
+            Talking = "Captain";
+            MessageLineOne = "Plotting course for next sector...";
+            break;
+        default:
+            // Room change to the travelling room, increase the story counter
+            global.storySequence += 1;
+            room_goto(room_travel_animation);
+            break;
+    }
+} else if (global.storySequence == 6) {
+    switch (narrative) {
+        case 0:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "There’s no where else to run, your entire fleet has been all but wiped out. Now";
+            MessageLineTwo = "it’s time for you to suffer the same fate as my home...";
+            break;
+        case 1:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = false;
+            Talking = "Boss 3";
+            MessageLineOne = "You puny excuse of a life form, you think I’ve not noticed your pitiful";
+            MessageLineTwo = "campaign against my kin? You’ve done me a favor by ridding me of those weaklings.";
+            MessageLineThree = "Only the strong may survive, however I’m curious as to how you’ve come this far.";
+            break;
+        case 2:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "You underestimate me and humanity, your allies fell not because they were weak,";
+            MessageLineTwo = "but because they stood in my way.";
+            break;
+        case 3:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = false;
+            Talking = "Boss 3";
+            MessageLineOne = "It matters not, you’re petty human ideals will not save you from what comes.";
+            MessageLineTwo = "You may have survived our last encounter, but I will make sure that your";
+            MessageLineThree = "path ends here!";
+            break;
+        case 4:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "We’ll see... I have something of yours that I’ve been meaning to return to you...";
+            break;
+        case 5:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = false;
+            Talking = "Boss 3";
+            MessageLineOne = "What you could you possibly have of mine, you have nothing.";
+            break;
+        case 6:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "You’ll see... All ships engage!";
+            break;
+        default:
+            // Goto a new sector
+            global.storySequence += 1;
+            room_goto(room_StrategyLayer);
+            break;
+    }
+} else if (global.storySequence == 7) {
+    switch (narrative) {
+        case 0:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "It’s time to end this once and for all... Take this parting gift on behalf of";
+            MessageLineTwo = "myself... and humanity...";
+            break;
+        case 1:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = false;
+            Talking = "Boss 3";
+            MessageLineOne = "You’ll pay for this… If not me, someone else will come along and finish what I";
+            MessageLineTwo = "started!";
+            break;
+        case 2:
+            leftImage = 0;
+            rightImage = 2;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "When they come, I’ll be ready, but never again will we be prey to the likes";
+            MessageLineTwo = "of you.";
+            break;
+        case 3:
+            leftImage = 0;
+            rightImage = 2;
+            leftSpeaking = false;
+            Talking = "Missile";
+            MessageLineOne = ". . .";
+            break;
+        case 4:
+            leftImage = 0;
+            rightImage = 2;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "That’s right... It’s time to go home...";
+            break;
+        case 5:
+            leftImage = 4; // Enemy Captain Here
+            rightImage = 1;
+            leftSpeaking = true;
+            Talking = "Enemy Captain";
+            MessageLineOne = "Sir, I’m detecting a Doregan weapon being fired from the enemy ship!";
+            break;
+        case 6:
+            leftImage = 4; // Enemy Captain Here
+            rightImage = 1;
+            leftSpeaking = false;
+            Talking = "Boss 3";
+            MessageLineOne = "That’s impossible! How could they have acquired one of our weapons!";
+            break;
+        case 7:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "He’s been waiting to go back home... You two were made for each other.";
+            break;
+        case 8:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = false;
+            Talking = "Boss 3";
+            MessageLineOne = "YOU’LL PAY FOR THIS! MARK MY WORDS, YOU HAVEN’T SEEN THE LAST OF THE DOREGAN!";
+            break;
+        case 9:
+            leftImage = 0;
+            rightImage = 1;
+            leftSpeaking = true;
+            Talking = "Player";
+            MessageLineOne = "It’s over, for now, but we’ll be ready if more come.";
+            break;
+        default:
+            // Room change to the travelling room, increase the story counter
+            global.storySequence += 1;
+            room_goto(room_game_ending);
+            break;
+    }
 }
 
-// Portrait of Character
 // Left side Image
 if (leftSpeaking) {
     switch (leftImage) {
@@ -140,9 +637,12 @@ if (leftSpeaking) {
         case 2:
             draw_sprite_ext(sprite_Narrative_Missile, -1, 0, 100, 1, 1, image_angle, c_white, 1);
             break;
-        default:
+        case 3:
             draw_sprite_ext(sprite_Narrative_Captain, -1, 0, 100, 1, 1, image_angle, c_white, 1);
-            break;;
+            break;
+        default:
+            draw_sprite_ext(sprite_Narrative_eCaptain, -1, 0, 150, 1, 1, image_angle, c_white, 1);
+            break;
     }
 } else {
     switch (leftImage) {
@@ -155,14 +655,47 @@ if (leftSpeaking) {
         case 2:
             draw_sprite_ext(sprite_Narrative_Missile, -1, 0, 100, 1, 1, image_angle, c_gray, 1);
             break;
-        default:
+        case 3:
             draw_sprite_ext(sprite_Narrative_Captain, -1, 0, 100, 1, 1, image_angle, c_gray, 1);
+            break;
+        default:
+            draw_sprite_ext(sprite_Narrative_eCaptain, -1, 0, 150, 1, 1, image_angle, c_gray, 1);
             break;
     }
 }
 
-// Portrait of Character
-draw_sprite_ext(sprite_Narrative_Boss, -1, 750, 100, 1, 1, image_angle, c_white, 1);
+// Right side Image
+if (!leftSpeaking) {
+    switch (rightImage) {
+        case 0:
+            draw_sprite_ext(sprite_Narrative_Player, -1, 700, 100, 1, 1, image_angle, c_white, 1);
+            break;
+        case 1:
+            draw_sprite_ext(sprite_Narrative_Boss, -1, 700, 100, 1, 1, image_angle, c_white, 1);
+            break;
+        case 2:
+            draw_sprite_ext(sprite_Narrative_Missile, -1, 850, 150, 1, 1, image_angle, c_white, 1);
+            break;
+        default:
+            draw_sprite_ext(sprite_Narrative_Captain, -1, 800, 150, 1.5, 1.5, image_angle, c_white, 1);
+            break;
+    }
+} else {
+    switch (rightImage) {
+        case 0:
+            draw_sprite_ext(sprite_Narrative_Player, -1, 700, 100, 1, 1, image_angle, c_gray, 1);
+            break;
+        case 1:
+            draw_sprite_ext(sprite_Narrative_Boss, -1, 700, 100, 1, 1, image_angle, c_gray, 1);
+            break;
+        case 2:
+            draw_sprite_ext(sprite_Narrative_Missile, -1, 850, 150, 1, 1, image_angle, c_gray, 1);
+            break;
+        default:
+            draw_sprite_ext(sprite_Narrative_Captain, -1, 800, 150, 1.5, 1.5, image_angle, c_gray, 1);
+            break;
+    }
+}
 
 // Text frame
 draw_sprite(sprite_Narrative_Frame, -1, 0, view_hview[view_current] - sprite_get_height(sprite_Narrative_Frame));
@@ -172,6 +705,8 @@ draw_text(25, view_hview[view_current] - sprite_get_height(sprite_Narrative_Fram
 
 // Text
 draw_text(25, view_hview[view_current] - sprite_get_height(sprite_Narrative_Frame) + 40, MessageLineOne);
+draw_text(25, view_hview[view_current] - sprite_get_height(sprite_Narrative_Frame) + 65, MessageLineTwo);
+draw_text(25, view_hview[view_current] - sprite_get_height(sprite_Narrative_Frame) + 90, MessageLineThree);
 </string>
           </argument>
         </arguments>
