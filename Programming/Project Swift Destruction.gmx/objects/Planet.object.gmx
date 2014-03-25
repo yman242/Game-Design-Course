@@ -91,6 +91,20 @@ isSelected = false;
         instance_destroy();
     }
     
+    if (isControlled)
+    {
+        
+        // Increase the planet kill count
+        global.playerPlanetsKilled += 1;
+        
+        // Add the population to the kill counter
+        global.playerKillCount += population;
+        
+        if (isBoss) {
+            room_goto(room_Narrative_Section);
+        }
+    }
+    
     /*if ((isDestroyed) &amp;&amp; (hasShownDestruction))
     {
         visible = false;

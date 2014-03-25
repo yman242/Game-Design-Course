@@ -44,6 +44,9 @@ draw_text(xHolder,yHolder+256,"It'll be enabled when the planet is in range, unl
 draw_text(xHolder,yHolder+288,"Click a unit to select them, they'll grow green and their target red.");
 draw_text(xHolder,yHolder+320,"With a unit selected click on a monster to target their formation.");
 draw_text(xHolder,yHolder+352,"Press the space bar to get back to combat!");
+
+
+draw_set_halign(fa_left);
 </string>
           </argument>
         </arguments>

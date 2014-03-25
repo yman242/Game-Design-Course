@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>setup = false;
+            <string>useLoop = false;
+
+setup = false;
 
 myMaster = 0;
 
@@ -132,7 +134,8 @@ alarm[2] = 30 * regenSpeed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//This is code to edit things on the fly.
+            <string>useLoop = true;
+/*//This is code to edit things on the fly.
 numOfShips = array_length_1d(myMaster.ships)
 if(numOfShips &gt; 1)
 {
@@ -199,7 +202,7 @@ if(numOfShips &gt; 1)
 else
 {
     alarm[0] = 1;
-}
+}*/
 </string>
           </argument>
         </arguments>
@@ -329,6 +332,101 @@ else if(myMaster.strategyType == 2)
         }
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(useLoop)
+{
+    //This is code to edit things on the fly.
+    numOfShips = array_length_1d(myMaster.ships)
+    if(numOfShips &gt; 1)
+    {
+        if(myMaster.strategyType == 2)
+        {
+            if(array_length_1d(shieldArray)&gt;0 &amp;&amp; instance_exists(shieldArray[0]))
+            {
+                shieldX = shieldArray[0].x;
+                shieldY = shieldArray[0].y;
+            }
+            else
+            {
+                shieldX = 0;
+                shieldY = 0;
+            }
+            
+            for(i=0;i&lt;array_length_1d(shieldArray);i++)
+            {
+                with (shieldArray[i]) instance_destroy();
+            }
+    
+            shieldArray = 0;
+            
+            if(numOfShips&gt;5)
+            {
+                shieldNum = 11;
+            }
+            else if(numOfShips&gt;4)
+            {
+                shieldNum = 9;
+            }
+            else if(numOfShips&gt;3)
+            {
+                shieldNum = 7;
+            }
+            else if(numOfShips&gt;2)
+            {
+                shieldNum = 5;
+            }
+            else if(numOfShips&gt;1)
+            {
+                shieldNum = 3;
+            }
+            else if(numOfShips&gt;0)
+            {
+                shieldNum = 0;
+            }
+            
+            for(i=0;i&lt;shieldNum;i++)
+            {
+                shieldArray[i] = instance_create(shieldX,shieldY+sizeY*i,obj_ShieldBlock);
+                shieldArray[i].myController = id;
+            }
+            
+            sizeofShields = array_length_1d(shieldArray);
+            
+            if(sizeofShields&gt;1)
+            {
+                shieldArray[0].imageIndex = 0;
+                shieldArray[sizeofShields-1].imageIndex = 2;
+            }
+        }
+    }
+    else
+    {
+        alarm[0] = 1;
+    }
+
+}
+useLoop = false;
 </string>
           </argument>
         </arguments>
