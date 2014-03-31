@@ -9,5 +9,9 @@ while (!done)
     {
         galaxy[temp].isBoss = true;
         done = true;
+        global.bossPlanetGeneralName = scriptGetGeneralName();
+        global.bossPlanetId = galaxy[temp];
     }
 }
+
+instance_create(0, 0, obj_bossArrow);

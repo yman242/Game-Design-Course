@@ -22,7 +22,7 @@ name = scriptGetPlanetName(floor(random(PLANET_NAME_LIST_LENGTH)));
 type = floor(random(6));
 
 // Generate the planets Threat Level
-threat = floor((random(6)+random(6))/4);
+threat = ceil((random(6)+random(6))/4);
 
 // Generate the planetary population
 switch(type)

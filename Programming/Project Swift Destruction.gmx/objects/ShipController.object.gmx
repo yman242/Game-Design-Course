@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>currentNumShips = 0; // used to update formations
+            <string>buttonMaker = 0;
+
+currentNumShips = 0; // used to update formations
 
 target = 0; //The controller's target
 
@@ -51,7 +53,7 @@ shipType = 1;
 
 numOfShips = 9;
 
-stratPosition = 0
+stratPosition = 0;
 
 //stratPosition = scriptShipStratLocations(strategyType);
 

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-10</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>Ship</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.buttonTier++;//This adds code to get some UI for the controller.
+            <string>myController = instance_create(x,y,obj_PDestroyerController);
+
+global.buttonTier++;//This adds code to get some UI for the controller.
 stratButtonTier = global.buttonTier;
 buttonSprite = sprite_DestroyerIcon;
 buttonWidth = sprite_get_width(buttonSprite);
@@ -42,11 +44,111 @@ laserMax = 44;
 charging = false;
 chargeTime = 5;
 
+stratGoalX = 0;
+stratGoalY = 0;
+stratSpeed = 5;
+
 
 destroying = false; //Is it lasering?
 global.destroyable = false;//Can i laser?
 startLaser = 24;
 endLaser = 59;
+
+life = 100;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Explosion code goes here.
+audio_play_sound(sound_Missle, 0, false);
+scriptParticleEngine(x,y,0,random(50),250,100,0,360,1,6,c_gray,sprite_SoftParticle);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Nope
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Nope
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Nope
 </string>
           </argument>
         </arguments>
@@ -75,6 +177,33 @@ endLaser = 59;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(life&lt;=0)
+{
+    //they died, time to explode.
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -92,7 +221,39 @@ endLaser = 59;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.battleState == 0)//animating
+            <string>if(global.destroyable)
+{
+    if(stratGoalX != 0 || stratGoalY != 0)//if the ship has a movement goal
+    {    
+        if((x &gt; stratGoalX-speed &amp;&amp; x &lt; stratGoalX+speed) &amp;&amp; (y &gt; stratGoalY-speed &amp;&amp; y &lt; stratGoalY+speed) ) //If it's within a range..
+        //if(x == stratGoalX &amp;&amp; y == stratGoalY)
+        {
+            stratGoalX = 0; //Close enough
+            stratGoalY = 0;
+            speed = 0;
+        }
+        else
+        {
+            direction = point_direction(x,y,stratGoalX,stratGoalY);
+            speed = stratSpeed;
+        
+            
+        }
+    }
+    else
+    {
+        direction = 0;
+        speed = 0;
+    }
+}
+else
+{
+    direction = 0;
+    speed = 0;
+}
+
+
+if(global.battleState == 0)//animating
 {
     if(image_index&gt;idleMax)
     {
@@ -162,6 +323,29 @@ for(i = 0; i&lt;buttonNumber;i++)
         }
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Nope
 </string>
           </argument>
         </arguments>

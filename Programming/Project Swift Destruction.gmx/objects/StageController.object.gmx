@@ -63,8 +63,10 @@ global.battleState = 0; //0 is placing ships, 1 is placing new wave, 2 is moving
 
 looper = room_height/32; //Used to draw the wall.
 
-planetDestroyer = instance_create(0,view_hview[view_current]/2,obj_PlanetDestroyer);
-planetDestroyer.y -= sprite_get_height(planetDestroyer.sprite_index)/2;
+planetDestroyer = instance_create(-512,view_hview[view_current]/2,obj_PlanetDestroyer);
+planetDestroyer.stratGoalX = 32;
+planetDestroyer.stratGoalY = view_hview[view_current]/2 - sprite_get_height(planetDestroyer.sprite_index)/2;
+//planetDestroyer.y -= sprite_get_height(planetDestroyer.sprite_index)/2;
 
 attackedPlanet = instance_create(view_wview[view_current],view_hview[view_current]/2,MonsterPlanet); //makes the planet being attacked.
 attackedPlanet.x -= sprite_get_width(attackedPlanet.sprite_index)*3/4;//Puts the planet on screen and then pushes it back.

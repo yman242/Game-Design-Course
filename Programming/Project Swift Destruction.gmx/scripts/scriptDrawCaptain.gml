@@ -30,14 +30,14 @@ switch(captain.tacticalType) {
         draw_text(newx+150, newy+30, "Aggressive");
         break;
     case 1:
-        draw_text(newx+150, newy+30, "Bold");
+        draw_text(newx+150, newy+30, "Patient");
         break;
-    case 2:
+    /*case 2:
         draw_text(newx+150, newy+30, "Passive");
         break;
     case 3:
         draw_text(newx+150, newy+30, "Reactive");
-        break;
+        break;*/
     default:
         draw_text(newx+150, newy+30, "Defensive");
         break;
@@ -74,10 +74,10 @@ switch(captain.shipType) {
         draw_text(newx+150, newy+90, "Cruiser");
         break;
     case 3:
-        draw_text(newx+150, newy+90, "Missile Ship");
+        draw_text(newx+150, newy+90, "Battleship");
         break;
     default:
-        draw_text(newx+150, newy+90, "Battleship");
+        draw_text(newx+150, newy+90, "Missile Ship");
         break;
 }
 //}

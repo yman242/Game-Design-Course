@@ -58,8 +58,10 @@ global.pointInStory = 0;
 global.storySequence = 0;
 
 // Bosses for Narrative
-global.NextBoss = 1;
+global.NextBoss = 0;
 global.bossPlanetGenerated = false;
+global.bossPlanetGeneralName = "";
+global.bossPlanetId = 0;
 
 // Player kill counts
 global.playerPlanetsKilled = 0;

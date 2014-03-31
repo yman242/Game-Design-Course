@@ -148,6 +148,8 @@ if ((global.playerPlanetsKilled &gt;= global.NextBoss) &amp;&amp; (!global.bossP
     scriptGenerateBossPlanet();
 }
 
+
+
 scriptZoomOnPlanet();
 </string>
           </argument>

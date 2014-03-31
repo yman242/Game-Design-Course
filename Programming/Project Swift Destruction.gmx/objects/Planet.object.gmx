@@ -194,7 +194,10 @@ isSelected = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (isSelected) {
+            <string>if (isSelected &amp;&amp; isBoss) {
+    //image_blend = make_color_rgb(100, 255, 100);
+    draw_sprite_ext(sprite_BossPlanet, image_index, x, y,image_xscale, image_yscale, image_angle, c_white, 1);
+} else if (isSelected) {
     image_blend = make_color_rgb(100, 255, 100);
     draw_self();
 } else if (isControlled) {

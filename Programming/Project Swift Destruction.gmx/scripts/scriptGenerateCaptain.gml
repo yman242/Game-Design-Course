@@ -47,7 +47,7 @@ switch (randomNumber)
 ability = floor(random(5));
 
 // Randomly choose a tactical trait (skill bonuses / negatives)
-tacticalType = floor(random(5));
+tacticalType = floor(random(3));
 
 // Randomly choose a ship type the captain commands
 // Put this on a curve

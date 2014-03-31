@@ -134,9 +134,6 @@ if ((mouse_x &gt; x) &amp;&amp; (mouse_x &lt; x + sprite_width)) {
     ship_y = planet_y + 5;// - sprite_get_width(sprite_Monster1)/2;
     ship_scale = 0.5;
     switch (planet_id.threat) {
-        case 0:
-            // Hyper Easy
-            break;
         case 1:
             // Add 1 ship
             draw_sprite_ext(sprite_Monster1, 0, ship_x-15, ship_y+10, ship_scale, ship_scale, 0, c_white, 1);
@@ -160,7 +157,36 @@ if ((mouse_x &gt; x) &amp;&amp; (mouse_x &lt; x + sprite_width)) {
     draw_set_font(font_Text);
     draw_set_color(c_white);
     draw_text(x+20, y+140, planet_id.planet_name);
-    //draw_text(x+20, y+150, "Threat: " + string(planet_id.threat));
+    
+    if (planet_id.isBoss)
+    {
+        // Highlight
+        draw_set_font(font_General);
+        draw_text(x+12, y-19, global.bossPlanetGeneralName);
+        draw_text(x+12, y-21, global.bossPlanetGeneralName);
+        draw_text(x+8, y-19, global.bossPlanetGeneralName);
+        draw_text(x+8, y-21, global.bossPlanetGeneralName);
+        
+        draw_set_font(font_Boss);
+        draw_text(x+42, y+212, "BOSS");
+        draw_text(x+42, y+208, "BOSS");
+        draw_text(x+38, y+212, "BOSS");
+        draw_text(x+38, y+208, "BOSS");
+        
+        // Boss Text
+        draw_set_font(font_Boss);
+        draw_set_color(c_red);
+        draw_text(x+40, y+210, "BOSS");
+        
+        // General Name
+        draw_set_font(font_Protected);
+        draw_set_color(c_white);
+        draw_text(x+10, y-35, "Protected Planet");
+        draw_set_color(c_green);
+        draw_set_font(font_General);
+        draw_text(x+10, y-20, global.bossPlanetGeneralName);
+        draw_set_color(c_white);
+    }
 }
 </string>
           </argument>

@@ -109,6 +109,7 @@
     <sprite>sprites\spr_background_explosion</sprite>
     <sprite>sprites\spr_red_bkg</sprite>
     <sprite>sprites\sprite_BossPlanet</sprite>
+    <sprite>sprites\sprite_boss_arrow</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_Space</background>
@@ -158,9 +159,13 @@
     <script>scripts\scriptEnableExplosions.gml</script>
     <script>scripts\scriptGenerateBossPlanet.gml</script>
     <script>scripts\scriptTransferSectors.gml</script>
+    <script>scripts\scriptGetGeneralName.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_Text</font>
+    <font>fonts\font_Boss</font>
+    <font>fonts\font_General</font>
+    <font>fonts\font_Protected</font>
     <font>fonts\font_Intro</font>
   </fonts>
   <objects name="objects">
@@ -177,6 +182,7 @@
       </objects>
       <object>objects\Ship</object>
       <object>objects\ShipController</object>
+      <object>objects\obj_PDestroyerController</object>
       <object>objects\obj_PlanetDestroyer</object>
       <object>objects\obj_Ship1</object>
       <object>objects\obj_Ship2</object>
@@ -253,6 +259,7 @@
     <object>objects\obj_backgroundExplosions</object>
     <object>objects\obj_death_counter</object>
     <object>objects\obj_travel</object>
+    <object>objects\obj_bossArrow</object>
   </objects>
   <rooms name="rooms">
     <rooms name="Front End">
