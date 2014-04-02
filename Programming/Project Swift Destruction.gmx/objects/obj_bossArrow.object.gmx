@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>//calculate the direction to face
-x1 = view_xview[view_current] + (view_wview[view_current] / 2);
-y1 = view_yview[view_current] + (view_hview[view_current] / 2);
+x1 = x;//view_xview[view_current] + (view_wview[view_current] / 2);
+y1 = y;//view_yview[view_current] + (view_hview[view_current] / 2);
 x2 = global.bossPlanetId.x;
 y2 = global.bossPlanetId.y;
 

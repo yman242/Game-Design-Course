@@ -93,7 +93,6 @@ isSelected = false;
     
     if (isControlled)
     {
-        
         // Increase the planet kill count
         global.playerPlanetsKilled += 1;
         
@@ -140,6 +139,10 @@ isSelected = false;
     }
     
     if (isSelected &amp;&amp; mouse_check_button_pressed(mb_left) &amp;&amp; !mouseInBounds &amp;&amp; !global.mouse_in_info_bounds) {
+        scriptDeselectAllPlanets();
+    }
+    
+    if (isSelected &amp;&amp; keyboard_check(vk_escape)) {
         scriptDeselectAllPlanets();
     }
     
