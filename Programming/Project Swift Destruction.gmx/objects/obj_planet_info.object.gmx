@@ -31,6 +31,8 @@ if (global.currently_selected_planet_id != -1)
     planet_id = global.currently_selected_planet_id;
 }
 
+onClose = false;
+
 // Planet Name
 
 // Planet Approx Population
@@ -74,6 +76,21 @@ if ((mouse_x &gt; x) &amp;&amp; (mouse_x &lt; x + sprite_width)) {
     if ((mouse_y &gt; y) &amp;&amp; (mouse_y &lt; y + sprite_height)) {            
             global.mouse_in_info_bounds = true;
     }
+}
+
+if ((mouse_x &gt;= x + sprite_get_width(sprite_planet_selection) - 25) &amp;&amp; (mouse_x &lt;= x + sprite_get_width(sprite_planet_selection) - 25 + sprite_get_width(sprite_close_false))) {
+    if ((mouse_y &gt;= y-5) &amp;&amp; (mouse_y &lt;= y-5+sprite_get_height(sprite_close_false))) {
+        onClose = true;
+    } else {
+        onClose = false;
+    }
+} else {
+    onClose = false;
+}
+
+if ((onClose) &amp;&amp; (mouse_check_button_released(mb_left))) {
+    // Close the info
+    scriptDeselectAllPlanets();
 }
 </string>
           </argument>
@@ -186,6 +203,13 @@ if ((mouse_x &gt; x) &amp;&amp; (mouse_x &lt; x + sprite_width)) {
         draw_set_font(font_General);
         draw_text(x+10, y-20, global.bossPlanetGeneralName);
         draw_set_color(c_white);
+    }
+    
+    // Draw close button
+    if (onClose) {
+        draw_sprite(sprite_close_true, -1, x + sprite_get_width(sprite_planet_selection) - 25, y-5);
+    } else {
+        draw_sprite(sprite_close_false, -1, x + sprite_get_width(sprite_planet_selection) - 25, y-5);
     }
 }
 </string>

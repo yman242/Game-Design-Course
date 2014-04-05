@@ -82,6 +82,17 @@ isSelected = false;
         // Add the population to the kill counter
         global.playerKillCount += population;
         
+        // Give the player there moneys!
+        if (isBoss) {
+            global.imperialCredits += 50;
+        } else if (threat == 3) {
+            global.imperialCredits += 30;
+        } else if (threat == 2) {
+            global.imperialCredits += 20;
+        } else {
+            global.imperialCredits += 10;
+        }
+        
         if (isBoss) {
             // Goto Narrative Room
             room_goto(room_Narrative_Section);

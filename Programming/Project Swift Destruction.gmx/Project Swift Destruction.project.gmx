@@ -90,6 +90,22 @@
         <sprite>sprites\sprite_portrait_1</sprite>
         <sprite>sprites\sprite_captain_selected</sprite>
         <sprite>sprites\sprite_captain_select_area</sprite>
+        <sprites name="FleetManager">
+          <sprite>sprites\sprite_fm_bkg_cpt1</sprite>
+          <sprite>sprites\sprite_fm_bkg_cpt2</sprite>
+          <sprite>sprites\sprite_fm_bkg_cpt3</sprite>
+          <sprite>sprites\sprite_fm_bkg_cpt4</sprite>
+          <sprite>sprites\sprite_fm_bkg_cpt5</sprite>
+          <sprite>sprites\sprite_fm_shiptpye_bkg</sprite>
+          <sprite>sprites\sprite_fm_portrait_outline</sprite>
+          <sprite>sprites\sprite_fm_port_attack</sprite>
+          <sprite>sprites\sprite_fm_port_shield</sprite>
+          <sprite>sprites\sprite_fm_port_skirmish</sprite>
+          <sprite>sprites\sprite_fm_replace_cpt_false</sprite>
+          <sprite>sprites\sprite_fm_replace_cpt_true</sprite>
+          <sprite>sprites\sprite_fm_replace_btn_false</sprite>
+          <sprite>sprites\sprite_fm_replace_btn_true</sprite>
+        </sprites>
       </sprites>
       <sprites name="Planet Displays">
         <sprite>sprites\sprite_WATER_PLANET</sprite>
@@ -110,6 +126,15 @@
     <sprite>sprites\spr_red_bkg</sprite>
     <sprite>sprites\sprite_BossPlanet</sprite>
     <sprite>sprites\sprite_boss_arrow</sprite>
+    <sprite>sprites\sprite_window_close</sprite>
+    <sprite>sprites\sprite_close_false</sprite>
+    <sprite>sprites\sprite_close_true</sprite>
+    <sprite>sprites\sprite_screen_arrow_up</sprite>
+    <sprite>sprites\sprite_screen_arrow_down</sprite>
+    <sprite>sprites\sprite_screen_arrow_left</sprite>
+    <sprite>sprites\sprite_screen_arrow_right</sprite>
+    <sprite>sprites\sprite_green_selecter</sprite>
+    <sprite>sprites\sprite_currency_icon</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_Space</background>
@@ -165,6 +190,7 @@
     <font>fonts\font_Text</font>
     <font>fonts\font_Boss</font>
     <font>fonts\font_General</font>
+    <font>fonts\font_fm_captain</font>
     <font>fonts\font_Protected</font>
     <font>fonts\font_Intro</font>
   </fonts>
@@ -242,6 +268,7 @@
       <object>objects\obj_Particle</object>
     </objects>
     <object>objects\FleetManager</object>
+    <object>objects\FleetManagerNew</object>
     <object>objects\MapController</object>
     <object>objects\BackgroundExplosionManager</object>
     <object>objects\obj_fleet_management_btn</object>
@@ -259,6 +286,8 @@
     <object>objects\obj_death_counter</object>
     <object>objects\obj_travel</object>
     <object>objects\obj_bossArrow</object>
+    <object>objects\HiringManager</object>
+    <object>objects\obj_currency</object>
   </objects>
   <rooms name="rooms">
     <rooms name="Front End">

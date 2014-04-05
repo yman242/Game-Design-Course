@@ -29,6 +29,7 @@
 scriptGenerateGalaxy();
 
 instance_create(0, 0, obj_fleet_management_btn);
+instance_create(0, view_yview[view_current] + (view_hview[view_current] / 4) * 3, obj_currency);
 
 view_yview = (640 - view_hview[0]/2);
 view_xview = (640 - view_wview[0]/2);
@@ -79,7 +80,7 @@ background_y[1] = view_yview[0];
           <argument>
             <kind>1</kind>
             <string>// Move the screen around based on WASD and mouse on the edge of the screen
-ViewMovementSpeed = 3;
+ViewMovementSpeed = 5;
 
 //******* Set limits to scrolling *******//
 
@@ -145,12 +146,90 @@ background_yscale[1] = view_hview[view_current] / 720;
 if ((global.playerPlanetsKilled &gt;= global.NextBoss) &amp;&amp; (!global.bossPlanetGenerated))
 {
     global.bossPlanetGenerated = true;
+    
+    if (global.playerPlanetsKilled &gt; global.NextBoss) {
+        global.NextBoss = global.NextBoss * 2;
+    } else {
+        global.NextBoss = global.playerPlanetsKilled + global.NextBoss;
+    }
+    
     scriptGenerateBossPlanet();
 }
 
-
-
 scriptZoomOnPlanet();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global.currently_selected_planet_id == -1) {
+    // Arrows to show screen arrows
+    scale_amount = 0.8;
+    total_alpha = 0.35;
+    
+    center_x = view_xview[view_current] + (view_wview[view_current] / 2) - (sprite_get_width(sprite_screen_arrow_up) * scale_amount / 2);
+    bottom_y = view_yview[view_current] + (view_hview[view_current]) - sprite_get_height(sprite_screen_arrow_up) * scale_amount;
+    center_y = view_yview[view_current] + (view_hview[view_current] / 2) - (sprite_get_height(sprite_screen_arrow_left) * scale_amount / 2);
+    
+    //Based on the distance of the mouse_x from the bottom
+    top_alpha = 0;
+    bottom_alpha = 0;
+    left_alpha = 0;
+    right_alpha = 0;
+    
+    mx = mouse_x - view_xview[view_current];
+    my = mouse_y - view_yview[view_current];
+    
+    alpha_wdetection = (view_wview[view_current] / 2) - 100;
+    
+    if (mx &lt; alpha_wdetection) {
+        left_alpha = total_alpha * ((alpha_wdetection - mx) / alpha_wdetection);
+    } else if (mx &gt; (view_wview[view_current] - alpha_wdetection)) {
+        right_alpha = total_alpha * ((mx - (view_wview[view_current] - alpha_wdetection)) / alpha_wdetection);
+    }
+    
+    alpha_hdetection = (view_hview[view_current] / 2) - 50;
+    
+    if (my &lt; alpha_hdetection) {
+        top_alpha = total_alpha * ((alpha_hdetection - my) / alpha_hdetection);
+    } else if (my &gt; (view_hview[view_current] - alpha_hdetection)) {
+        bottom_alpha = total_alpha * ((my - (view_hview[view_current] - alpha_hdetection)) / alpha_hdetection);
+    }
+    
+    draw_sprite_ext(sprite_screen_arrow_up, -1, center_x, view_yview[view_current], scale_amount, scale_amount, image_angle, c_white, top_alpha);
+    draw_sprite_ext(sprite_screen_arrow_down, -1, center_x, bottom_y, scale_amount, scale_amount, image_angle, c_white, bottom_alpha);
+    
+    draw_sprite_ext(sprite_screen_arrow_left, -1, view_xview[view_current], center_y, scale_amount, scale_amount, image_angle, c_white, left_alpha);
+    draw_sprite_ext(sprite_screen_arrow_right, -1, view_xview[view_current] + view_wview[view_current] - (sprite_get_width(sprite_screen_arrow_right) * scale_amount), center_y, scale_amount, scale_amount, image_angle, c_white, right_alpha);
+
+    draw_set_font(font_Text);
+    if (global.NextBoss &gt; global.playerPlanetsKilled) {
+        draw_text(view_xview[view_current] + view_wview[view_current] - 385, view_yview[view_current] + view_hview[view_current] - 40, "Investigate " + string(global.NextBoss - global.playerPlanetsKilled) + " More Planets");
+    } else {
+        draw_set_color(c_green);
+        draw_text(view_xview[view_current] + view_wview[view_current] - 200, view_yview[view_current] + view_hview[view_current] - 40, "Target Found");
+    }
+    
+    draw_set_color(c_white);
+}
+
 </string>
           </argument>
         </arguments>

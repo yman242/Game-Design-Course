@@ -58,7 +58,7 @@ global.pointInStory = 0;
 global.storySequence = 0;
 
 // Bosses for Narrative
-global.NextBoss = 0;
+global.NextBoss = 3;
 global.bossPlanetGenerated = false;
 global.bossPlanetGeneralName = "";
 global.bossPlanetId = 0;
@@ -100,7 +100,8 @@ global.mouse_in_info_bounds = false;
 global.orbitSpeed = 0.001;
 
 // Fleet Management UI and vars
-global.playerTokens = 10000; // Used to recruit / Reroll captains
+//global.playerTokens = 10000; // Used to recruit / Reroll captains
+global.imperialCredits = 100;
 global.bg_50_created = false;
 
 // Zoom variables

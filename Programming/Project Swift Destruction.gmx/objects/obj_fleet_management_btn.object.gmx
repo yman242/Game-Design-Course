@@ -48,7 +48,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Mouse detection and input
+            <string>// Zooming in
+if (global.currently_selected_planet_id == -1) {
+    visible = true;
+} else {
+    visible = false;
+}
+// Mouse detection and input
 
 mouseInBounds = false;
 
