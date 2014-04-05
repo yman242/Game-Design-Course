@@ -202,9 +202,24 @@ for(i = 0; i&lt;buttonNumber;i++)
         if(i == 0)
         {
             strategyType++;
+            
+            if(general.tacticalType == 1 &amp;&amp; strategyType == 2)
+            {
+                strategyType++;
+            }
+            else if(general.tacticalType == 2 &amp;&amp; strategyType == 1)
+            {
+                strategyType++;
+            }
+            
             if(strategyType&gt;2)
             {
                 strategyType = 0;
+            }
+            
+            if(general.tacticalType == 0 &amp;&amp; strategyType == 0)
+            {
+                strategyType++;
             }
             
             stratPosition = scriptShipStratLocations(strategyType);

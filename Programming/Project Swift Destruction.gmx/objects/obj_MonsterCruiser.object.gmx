@@ -41,7 +41,7 @@ moveMin = 6; //Lowest movement frame. (may not want it to be the start)
 aimOffset = 128; //0 is perfect aim. Variable controls how accurate missles are.
 
 burstCount = 0; //used to keep track of burst fire
-burstTotal = 4; //Total burst shots to fire
+burstTotal = 2; //Total burst shots to fire
 burstDelay = .3;//How many seconds until burst fire.
 
 attackSpeedBurst = 5;

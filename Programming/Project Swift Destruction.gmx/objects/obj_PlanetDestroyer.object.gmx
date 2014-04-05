@@ -286,6 +286,7 @@ else
            image_speed = 0;
            holder = instance_create(x + sprite_get_width(sprite_index)/2,y +sprite_get_height(sprite_index)/2,obj_deathLaser)
            holder.y -= sprite_get_height(holder.sprite_index)/2;
+           holder.master = id;
     }
 }
 </string>

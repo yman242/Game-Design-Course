@@ -31,7 +31,7 @@ setup = false;
 
 myMaster = 0;
 
-shieldHealth = 50;
+shieldHealth = 25;
 shieldMax = shieldHealth;
 shieldArray = 0;
 

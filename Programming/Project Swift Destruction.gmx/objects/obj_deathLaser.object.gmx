@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>growth = 0.25;
+master = 0;
 </string>
           </argument>
         </arguments>
@@ -52,7 +53,7 @@
 
 holder = instance_place(x, y, Ship);
 
-if(holder&gt;0)
+if(holder&gt;0 &amp;&amp; holder != master)
 {
     with (holder) instance_destroy();
 }

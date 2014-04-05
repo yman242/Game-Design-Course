@@ -25,17 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>buttonType = 4; //Used to determine what kind of ship this button deals with.
+            <string>image_xscale = global.buttonScale;
+image_yscale = global.buttonScale;
+
+buttonType = 4; //Used to determine what kind of ship this button deals with.
 imageHolder = sprite_Battleship;
 holdingShip = false; //If there's a ship on the mouse.
 validShip = false; //Used to tell if placement is valid.
 placed = false; //Used to see if the ship was placed.
 
-shipXSize = 160; //Size of the ship shown in button.
-shipYSize = sprite_get_height(imageHolder)*(160/sprite_get_width(imageHolder));// 50 should be the max on this...
+shipXSize = 160*global.buttonScale; //Size of the ship shown in button.
+shipYSize = sprite_get_height(imageHolder)*(shipXSize/sprite_get_width(imageHolder));// 50 should be the max on this...
 
-xOffset = 21;
-yOffset = 22+(50-shipYSize);//22;
+xOffset = 21*global.buttonScale;
+yOffset = 22*global.buttonScale+(50*(global.buttonScale)-shipYSize);//22;
 
 shipName = "Battleship";
 textXOffset = (sprite_get_width(sprite_Button)*3/4); 

@@ -91,7 +91,7 @@ if(holderTarget&gt;0)
     shipNumHolder = array_length_1d(hitShips);
     beenHit = false;
     
-    scriptParticleEngine(x+xHolder/2,y+yHolder/2,12,random(10),100,75,0,360,1,6,c_aqua,sprite_SoftParticle);
+    scriptParticleEngine(x+xHolder/2,y+yHolder/2,12,random(5),100,75,0,360,1,6,c_aqua,sprite_SoftParticle);
     
     for(i=0;i&lt;shipNumHolder;i++)
     {

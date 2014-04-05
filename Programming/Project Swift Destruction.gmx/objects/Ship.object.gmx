@@ -155,7 +155,7 @@ if(myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
 xHolder = x+(sprite_get_width(sprite_index)/2);
 yHolder = y+(sprite_get_height(sprite_index)/2);
 
-if(myController.strategyType !=1 &amp;&amp; myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
+if(myController.strategyType == 0 &amp;&amp; myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
 {
     
     valueHolder = array_length_1d(myController.target.ships);
@@ -210,7 +210,7 @@ else
             <kind>1</kind>
             <string>//Shoots lasers
 
-if(myController.strategyType !=1 &amp;&amp; myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
+if(myController.strategyType == 0 &amp;&amp; myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
 {
     valueHolder = array_length_1d(myController.target.ships);
     if(valueHolder&gt;0)
@@ -257,7 +257,7 @@ xHolder = x+(sprite_get_width(sprite_index)/2);
 yHolder = y+(sprite_get_height(sprite_index)/2);
 
 //show_message(myController.target);
-if(myController.strategyType !=1 &amp;&amp; myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
+if(myController.strategyType == 0 &amp;&amp; myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
 {
     valueHolder = array_length_1d(myController.target.ships);
     
