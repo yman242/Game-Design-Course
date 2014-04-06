@@ -34,9 +34,9 @@ image_speed = 1/4;
 
 idleMax = 0; //Max frame for the idle.
 idleMin = 0; //Lowest idle frame.
-moveStart = 5; //frame where we start the movement
-moveMax = 18; //highest move frame. (May not want it to be the final frame)
-moveMin = 6; //Lowest movement frame. (may not want it to be the start)
+moveStart = 1; //frame where we start the movement
+moveMax = 19; //highest move frame. (May not want it to be the final frame)
+moveMin = 16; //Lowest movement frame. (may not want it to be the start)
 
 aimOffset = 128; //0 is perfect aim. Variable controls how accurate missles are.
 

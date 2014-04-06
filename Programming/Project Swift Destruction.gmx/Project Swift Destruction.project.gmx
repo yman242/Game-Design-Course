@@ -54,6 +54,8 @@
       <sprite>sprites\sprite_MonsterMissleship</sprite>
       <sprite>sprites\sprite_MonsterBattleship</sprite>
       <sprite>sprites\sprite_Boss</sprite>
+      <sprite>sprites\sprite_Boss2</sprite>
+      <sprite>sprites\sprite_Boss3</sprite>
     </sprites>
     <sprites name="Front End">
       <sprite>sprites\sprite_MainMenu_New</sprite>
@@ -237,6 +239,8 @@
       <object>objects\obj_MonsterMissleship</object>
       <object>objects\obj_MonsterBattleship</object>
       <object>objects\obj_Boss</object>
+      <object>objects\obj_Boss2</object>
+      <object>objects\obj_Boss3</object>
       <object>objects\MonsterPlanet</object>
     </objects>
     <objects name="Weapons">

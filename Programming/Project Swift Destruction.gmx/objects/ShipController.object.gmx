@@ -108,6 +108,7 @@ ships = 0;
             <string>if(array_length_1d(ships)==0)
 {
     with(formationController) instance_destroy();
+    general.isDead = true;
     instance_destroy();
 }
 </string>

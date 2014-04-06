@@ -2,22 +2,22 @@
 <sprite>
   <xorig>0</xorig>
   <yorigin>0</yorigin>
-  <colkind>0</colkind>
+  <colkind>1</colkind>
   <coltolerance>0</coltolerance>
-  <sepmasks>-1</sepmasks>
+  <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>7</bbox_left>
-  <bbox_right>138</bbox_right>
-  <bbox_top>2</bbox_top>
-  <bbox_bottom>41</bbox_bottom>
+  <bbox_left>0</bbox_left>
+  <bbox_right>127</bbox_right>
+  <bbox_top>3</bbox_top>
+  <bbox_bottom>35</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>141</width>
-  <height>44</height>
+  <width>131</width>
+  <height>39</height>
   <frames>
     <frame index="0">images\sprite_Missleship_0.png</frame>
     <frame index="1">images\sprite_Missleship_1.png</frame>
@@ -49,8 +49,5 @@
     <frame index="27">images\sprite_Missleship_27.png</frame>
     <frame index="28">images\sprite_Missleship_28.png</frame>
     <frame index="29">images\sprite_Missleship_29.png</frame>
-    <frame index="30">images\sprite_Missleship_30.png</frame>
-    <frame index="31">images\sprite_Missleship_31.png</frame>
-    <frame index="32">images\sprite_Missleship_32.png</frame>
   </frames>
 </sprite>

@@ -30,11 +30,11 @@ captainPower = -1;
 
 image_speed = 1/4;
 
-idleMax = 9; //Max frame for the idle.
+idleMax = 5; //Max frame for the idle.
 idleMin = 0; //Lowest idle frame.
-moveStart = 10; //frame where we start the movement
-moveMax = 25; //highest move frame. (May not want it to be the final frame)
-moveMin = 20; //Lowest movement frame. (may not want it to be the start)
+moveStart = 6; //frame where we start the movement
+moveMax = 22; //highest move frame. (May not want it to be the final frame)
+moveMin = 13; //Lowest movement frame. (may not want it to be the start)
 
 missiles = 4; //Number of missile ports on ship.
 lasers = 0; //Number of laser ports on ships.
