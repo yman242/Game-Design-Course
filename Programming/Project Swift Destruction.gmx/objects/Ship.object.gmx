@@ -77,7 +77,32 @@ life = 100;
             <kind>1</kind>
             <string>//Explosion code goes here.
 audio_play_sound(sound_Missle, 0, false);
-scriptParticleEngine(x,y,0,random(50),250,100,0,360,1,6,c_gray,sprite_SoftParticle);
+scriptParticleEngine(x,y,0,random(25),250,100,0,360,1,6,c_gray,sprite_SoftParticle);
+holder = instance_create(x,y,obj_ShipExplosion);
+
+if(sprite_index = sprite_Frigate)
+{
+    holder.sprite_index = sprite_ExplosionFrigate;
+}
+else if (sprite_index = sprite_Destroyer)
+{
+    holder.sprite_index = sprite_ExplosionDestroyer;
+}
+else if (sprite_index = sprite_Cruiser)
+{
+    holder.sprite_index = sprite_ExplosionCruiser;
+}
+else if (sprite_index = sprite_Battleship)
+{
+    holder.sprite_index = sprite_ExplosionBattleShip;
+}
+else if (sprite_index = sprite_Missleship)
+{
+    holder.sprite_index = sprite_ExplosionMissleShip;
+}
+
+holder.x = x + (sprite_get_width(sprite_index)/2) - sprite_get_width(holder.sprite_index)/2;
+holder.y = y + (sprite_get_height(sprite_index)/2) - sprite_get_height(holder.sprite_index)/2;
 </string>
           </argument>
         </arguments>

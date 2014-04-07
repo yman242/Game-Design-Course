@@ -35,6 +35,9 @@ if(!global.tutorial)
     room_goto(room_Tutorial);
 }
 
+global.shuttles = 0;
+alarm[0] = 30*10;
+
 explosionsStarted = false;
 explosionChain = 10;
 
@@ -127,6 +130,33 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
 
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(currentWave-global.waves==0)
+{
+    global.shuttles++;
+    alarm[0] = 30*10;
+}
 </string>
           </argument>
         </arguments>
@@ -295,6 +325,9 @@ if(global.selectedShip&gt;0&amp;&amp;instance_exists(global.selectedShip))
         }
     }
 }
+
+draw_set_color(c_white);
+draw_text(view_xview[view_current] + view_wview[view_current] - 128,view_yview[view_current] + view_hview[view_current] - 128,global.shuttles);
 </string>
           </argument>
         </arguments>

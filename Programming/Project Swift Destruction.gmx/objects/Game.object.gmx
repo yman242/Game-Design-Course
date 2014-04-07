@@ -31,6 +31,7 @@ sound_volume(sound_BossMusic,.8);
 sound_volume(sound_CombatMusic,.8);
 
 
+global.shuttles = 0;
 global.tutorial = false; //If combat tutorial was done.
 
 audio_play_sound(sound_MenuMusic, 100, true);
