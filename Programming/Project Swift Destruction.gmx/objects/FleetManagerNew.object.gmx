@@ -34,6 +34,14 @@ tab_moused_over = 0;
 onClose = false;
 inReplace = false;
 
+hint_resetOnAction = false;
+hint_askTimer = 0;
+hint_askTime = 150;
+hint_create = false;
+
+hint_existsTimer = 0;
+hint_existsTime = 120;
+hint_created = false;
 
 instance_create(0, view_yview[view_current] + (view_hview[view_current] / 4) * 3, obj_currency);
 </string>
@@ -98,6 +106,7 @@ if ((mouse_y &gt;= y+12) &amp;&amp; (mouse_y &lt;= y+65))
 if ((inTab) &amp;&amp; (mouse_check_button_released(mb_left))) {
     // In a tab and clicked
     tab_selected = tab_moused_over;
+    ttp_resetOnAction = true;
 }
 
 // Mouse click on replace
@@ -120,6 +129,7 @@ if ((inReplace) &amp;&amp; (mouse_check_button_released(mb_left))) {
     inReplace = false;
     isFocused = false;
     instance_create(x, y, HiringManager);
+    ttp_resetOnAction = true;
 }
 
 clfm_x = view_xview[view_current] + view_wview[view_current] - (sprite_get_width(sprite_close_true) + 15)
@@ -143,6 +153,37 @@ if (keyboard_check_pressed(vk_backspace) || keyboard_check_pressed(vk_escape)) {
     // go back to the strat layer
     room_goto(room_StrategyLayer);
 }
+
+// Hint
+hint_askTimer += 1;
+
+if (hint_resetOnAction) {
+    hint_askTimer = 0;
+    hint_resetOnAction = false;
+}
+
+if (hint_askTimer &gt;= hint_askTime) {
+    // Create hint based on screen
+    tempHint = instance_create(view_xview[view_current] + view_wview[view_current] / 2 - 268, view_yview[view_current] + view_hview[view_current] - 180, obj_fm_hint);
+    tempHint.HintNumber = floor(random(5));
+    hint_created = true;
+    hint_existsTimer = 0;
+    hint_askTimer = 0;
+}
+
+if (hint_created) {
+    hint_existsTimer += 1;
+    hint_askTimer = 0;
+}
+
+if (hint_existsTimer &gt;= hint_existsTime) {
+    // Destroy the hint
+    with(obj_fm_hint) {
+        instance_destroy();
+    }
+    hint_askTimer = 0;
+}
+
 }
 </string>
           </argument>
