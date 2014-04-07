@@ -44,7 +44,7 @@ switch (randomNumber)
 }
 
 // Randomly choose an ability
-ability = floor(random(5));
+ability = floor(random(3));
 
 // Randomly choose a tactical trait (skill bonuses / negatives)
 tacticalType = floor(random(3));
