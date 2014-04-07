@@ -25,7 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>buttonMaker = 0;
+            <string>spriteHolder = sprite_Frigate;
+drawShipWidth = 32;
+drawShipHeight = 32;
+drawShipXOffset = 0;
+drawShipYOffset = 0;
+
+buttonMaker = 0;
 
 currentNumShips = 0; // used to update formations
 
@@ -34,12 +40,16 @@ target = 0; //The controller's target
 formationController = instance_create(x,y,FormationController);
 formationController.myMaster = id;
 
-global.buttonTier++;//This adds code to get some UI for the controller.
 stratButtonTier = global.buttonTier;
-buttonSprite = sprite_Formations;
-buttonWidth = sprite_get_width(buttonSprite);
-buttonHeight = sprite_get_height(buttonSprite);
+global.buttonTier++;//This adds code to get some UI for the controller.
+
+buttonFormationSprite = sprite_Formations;
+buttonSkillSprite = sprite_Abilities;
+buttonWidth = sprite_get_width(buttonFormationSprite);
+buttonFormationHeight = sprite_get_height(buttonFormationSprite);
+buttonSkillHeight = sprite_get_height(buttonSkillSprite);
 buttonNumber = 2; //How many buttons we printing?
+buttonSpace = buttonWidth/4;
 
 
 
@@ -196,7 +206,77 @@ currentNumShips = array_length_1d(ships);
           <argument>
             <kind>1</kind>
             <string>//Button collision
-for(i = 0; i&lt;buttonNumber;i++)
+
+//view_xview[view_current] + (global.buttonTier+stratButtonTier)*buttonWidth+buttonSpace, view_yview[view_current] + view_hview[view_current]-(buttonFormationHeight));
+
+if(scriptRectanglePointCollision(mouse_x,mouse_y,view_xview[view_current] + (global.buttonTier+stratButtonTier)*buttonWidth+buttonSpace,view_yview[view_current] + view_hview[view_current]-(buttonFormationHeight),view_xview[view_current] + (global.buttonTier+stratButtonTier+1)*buttonWidth+buttonSpace,view_yview[view_current] + view_hview[view_current]))
+{
+    strategyType++;
+            
+    if(general.tacticalType == 1 &amp;&amp; strategyType == 2)
+    {
+        strategyType++;
+    }
+    else if(general.tacticalType == 2 &amp;&amp; strategyType == 1)
+    {
+        strategyType++;
+    }
+    
+    if(strategyType&gt;2)
+    {
+        strategyType = 0;
+    }
+    
+    if(general.tacticalType == 0 &amp;&amp; strategyType == 0)
+    {
+        strategyType++;
+    }
+    
+    stratPosition = scriptShipStratLocations(strategyType);
+    
+    if(array_length_1d(ships)&gt;0)
+    {
+        scriptChangePosition(ships,stratPosition,ships[0].x,ships[0].y);
+        formationController.alarm[0] = 1;
+    }
+}
+else if(scriptRectanglePointCollision(mouse_x,mouse_y, view_xview[view_current] + stratButtonTier*buttonWidth,view_yview[view_current] + view_hview[view_current]-(buttonSkillHeight),view_xview[view_current] + (stratButtonTier+1)*buttonWidth,view_yview[view_current] + view_hview[view_current]))
+{
+    if(global.battleState == 3 &amp;&amp; !generalCooling)
+    {
+        
+        
+        if(general.ability == 0 &amp;&amp; global.imperialCredits&gt;=7)
+        {
+            global.imperialCredits -= 7;
+            global.planetDestroyer.alarm[1] = 1;
+            generalCooling = true;
+            alarm[0] = 30*generalCooldown;
+        }
+        else if(general.ability == 1 &amp;&amp; global.imperialCredits&gt;=5)
+        {
+            global.imperialCredits -= 5;
+            global.planetDestroyer.alarm[2] = 1;
+            generalCooling = true;
+            alarm[0] = 30*generalCooldown;
+        }
+        else if(global.imperialCredits&gt;=10)
+        {
+            //global.planetDestroyer.alarm[2] = 1;
+            global.imperialCredits -= 10;
+            generalCooling = true;
+            alarm[0] = 30*generalCooldown;
+            ships[floor(random(array_length_1d(ships)))].alarm[3] = 1;
+        }
+        /*
+        for(k = 0; k&lt;array_length_1d(ships); k++)
+        {   
+            ships[k].alarm[3] = 1;
+        }*/
+    }
+}
+
+/*for(i = 0; i&lt;buttonNumber;i++)
 {
     if(scriptRectanglePointCollision(mouse_x,mouse_y, view_xview[view_current] + buttonWidth*i,view_yview[view_current] + view_hview[view_current]-(stratButtonTier*buttonHeight),view_xview[view_current] + buttonWidth*(i+1),view_yview[view_current] + view_hview[view_current]-((stratButtonTier-1)*buttonHeight)))
     {
@@ -241,7 +321,7 @@ for(i = 0; i&lt;buttonNumber;i++)
             }
         }
     }
-}
+}*/
 </string>
           </argument>
         </arguments>
@@ -264,7 +344,22 @@ for(i = 0; i&lt;buttonNumber;i++)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;buttonNumber;i++)
+            <string>
+draw_sprite(buttonSkillSprite,general.ability,view_xview[view_current] + stratButtonTier*buttonWidth, view_yview[view_current] + view_hview[view_current]-(buttonSkillHeight));
+//draw_set_color(c_white);
+//draw_text(view_xview[view_current] + stratButtonTier*buttonWidth, view_yview[view_current] + view_hview[view_current]-(buttonSkillHeight),general.ability);
+
+draw_sprite(buttonFormationSprite,strategyType,view_xview[view_current] + (global.buttonTier+stratButtonTier)*buttonWidth+buttonSpace, view_yview[view_current] + view_hview[view_current]-(buttonFormationHeight));
+
+draw_sprite_stretched(spriteHolder,0,view_xview[view_current] + (global.buttonTier+stratButtonTier)*buttonWidth+buttonSpace + drawShipXOffset,view_yview[view_current] + view_hview[view_current]-(buttonFormationHeight)+drawShipYOffset,drawShipWidth,drawShipHeight);
+
+
+if(generalCooldown)
+{
+    draw_sprite_ext(sprite_Cooldown,0,view_xview[view_current] + stratButtonTier*buttonWidth,view_yview[view_current] + view_hview[view_current]-(buttonFormationHeight)+(1-(alarm[0]/(30*generalCooldown)))*buttonFormationHeight,1,alarm[0]/(30*generalCooldown),0,c_white,100);
+}
+
+/*for(i=0;i&lt;buttonNumber;i++)
 {
     //draw_sprite(buttonSprite,i,i*buttonWidth,view_hview[view_current]-(buttonHeight*stratButtonTier));
     if(i==0)
@@ -280,7 +375,7 @@ for(i = 0; i&lt;buttonNumber;i++)
 if(generalCooldown)
 {
     draw_sprite_ext(sprite_Cooldown,0,view_xview[view_current] + 1*buttonWidth,view_yview[view_current] + view_hview[view_current]-(buttonHeight*stratButtonTier)+(1-(alarm[0]/(30*generalCooldown)))*buttonHeight,1,alarm[0]/(30*generalCooldown),0,c_white,100);
-}
+}*/
 
 </string>
           </argument>

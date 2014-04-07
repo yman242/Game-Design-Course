@@ -101,9 +101,45 @@ scriptParticleEngine(x,y,0,random(50),250,100,0,360,1,6,c_gray,sprite_SoftPartic
           <argument>
             <kind>1</kind>
             <string>//Captain skill. Should be an if or case in here once we've more than 1 skill.
+life = 0;
 
+xHolder = x;
+yHolder = y;
 
+//show_message(myController.target);
 if(myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
+{
+    valueHolder = array_length_1d(myController.target.ships);
+    
+    if(valueHolder&gt;0)
+    {
+        holder = instance_create(xHolder,yHolder,Kamakaze);
+        holder.sprite_index = sprite_index;
+        targetHolder = myController.target.ships[random(valueHolder-1)];
+        
+        spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
+        aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
+        aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
+        
+        holder.direction = point_direction(xHolder,yHolder,aimX,aimY);
+        holder.target = Monster;
+    }
+}
+else
+{
+    alarm[3] = 1;
+}
+
+/*if()
+{
+    global.planetDestroyer.alarm[1] = 1;
+}
+else
+{
+
+}*/
+
+/*if(myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
 {
     valueHolder = array_length_1d(myController.target.ships);
     
@@ -128,7 +164,7 @@ if(myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
         
         holder.speed = 8;
     }
-}
+}*/
 </string>
           </argument>
         </arguments>

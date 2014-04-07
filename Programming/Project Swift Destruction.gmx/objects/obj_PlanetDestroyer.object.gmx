@@ -27,7 +27,11 @@
             <kind>1</kind>
             <string>myController = instance_create(x,y,obj_PDestroyerController);
 
-global.buttonTier++;//This adds code to get some UI for the controller.
+chargerHolder = instance_create(x,y,obj_Charger);
+
+chargerHolder.shipDestroyer = id;
+
+//global.buttonTier++;//This adds code to get some UI for the controller.
 stratButtonTier = global.buttonTier;
 buttonSprite = sprite_DestroyerIcon;
 buttonWidth = sprite_get_width(buttonSprite);
@@ -78,6 +82,7 @@ life = 100;
           <argument>
             <kind>1</kind>
             <string>//Explosion code goes here.
+with(chargerHolder) instance_destroy();
 audio_play_sound(sound_Missle, 0, false);
 scriptParticleEngine(x,y,0,random(50),250,100,0,360,1,6,c_gray,sprite_SoftParticle);
 </string>
@@ -125,7 +130,37 @@ scriptParticleEngine(x,y,0,random(50),250,100,0,360,1,6,c_gray,sprite_SoftPartic
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Nope
+            <string>if(myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
+{
+    valueHolder = array_length_1d(myController.target.ships);
+    
+    if(valueHolder&gt;0)
+    {
+        for(i=0;i&lt;10;i++)
+        {   
+            holder = instance_create(x,y,Missle);
+            
+            targetHolder = myController.target.ships[random(valueHolder-1)];
+            
+            holder.target = Monster;
+            
+            holder.x = x+sprite_get_width(sprite_index)/2;
+            holder.y = y+sprite_get_height(sprite_index)/2;
+            
+            holder.damage = 60;
+            
+            aimX = (holder.x + sprite_get_width(targetHolder.sprite_index)/2);
+            aimY = (holder.y + sprite_get_height(targetHolder.sprite_index)/2);
+        
+            holder.direction = point_direction(holder.x,holder.y,aimX,aimY);
+        
+            holder.speed = 15;
+            
+            //holder.image_xscale = 2;
+            //holder.image_yscale = 2;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -148,7 +183,32 @@ scriptParticleEngine(x,y,0,random(50),250,100,0,360,1,6,c_gray,sprite_SoftPartic
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Nope
+            <string>if(myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
+{
+    valueHolder = array_length_1d(myController.target.ships);
+    
+    if(valueHolder&gt;0)
+    {
+        holder = instance_create(x,y,Laser);
+        
+        holder.maker = id;
+        
+        targetHolder = myController.target.ships[random(valueHolder-1)];
+        
+        holder.target = targetHolder;
+        
+        holder.x = targetHolder.x + sprite_get_width(targetHolder.sprite_index)/2;
+        holder.y = targetHolder.y + sprite_get_width(targetHolder.sprite_index)/2;
+        
+        holder.color1 = c_blue;
+        holder.color2 = c_blue;
+        holder.laserWidth = 15;
+        
+        holder.damage = 300;
+        
+        holder.speed = 8;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -317,10 +377,10 @@ for(i = 0; i&lt;buttonNumber;i++)
     if(global.destroyable)
     {
         if(scriptRectanglePointCollision(mouse_x,mouse_y, view_xview[view_current] + buttonWidth*i,view_yview[view_current] + view_hview[view_current]-(stratButtonTier*buttonHeight),view_xview[view_current] + buttonWidth*(i+1),view_yview[view_current] + view_hview[view_current]-((stratButtonTier-1)*buttonHeight)))
-        {
+        {/*
             destroying = true;
             charging = true;
-            alarm[0] = 30*chargeTime;
+            alarm[0] = 30*chargeTime;*/
         }
     }
 }
@@ -382,7 +442,7 @@ else
 
 for(i=0;i&lt;buttonNumber;i++)
 {
-    draw_sprite_ext(buttonSprite,i,view_xview[view_current] + i*buttonWidth,view_yview[view_current] + view_hview[view_current]-(buttonHeight*stratButtonTier),1,1,0,color,1)
+    //draw_sprite_ext(buttonSprite,i,view_xview[view_current] + i*buttonWidth,view_yview[view_current] + view_hview[view_current]-(buttonHeight*stratButtonTier),1,1,0,color,1)
 }
 
 </string>

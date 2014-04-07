@@ -32,4 +32,11 @@ for(i = 0; i<argument1;i++)
     holder[i].myController = argument5;
 }
 
+argument5.spriteHolder = holder[0].sprite_index;
+
+argument5.drawShipWidth = sprite_get_width(argument5.buttonFormationSprite);
+argument5.drawShipHeight = sprite_get_height(argument5.spriteHolder)*(argument5.drawShipWidth/sprite_get_width(argument5.spriteHolder));
+argument5.drawShipXOffset = 0;
+argument5.drawShipYOffset = (sprite_get_height(argument5.buttonFormationSprite)/2)-argument5.drawShipHeight/2;
+
 return holder;
