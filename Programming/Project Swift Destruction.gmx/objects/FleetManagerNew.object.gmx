@@ -34,13 +34,8 @@ tab_moused_over = 0;
 onClose = false;
 inReplace = false;
 
-hint_resetOnAction = false;
 hint_askTimer = 0;
-hint_askTime = 150;
-hint_create = false;
-
-hint_existsTimer = 0;
-hint_existsTime = 120;
+hint_askTime = 75;
 hint_created = false;
 
 instance_create(0, view_yview[view_current] + (view_hview[view_current] / 4) * 3, obj_currency);
@@ -157,33 +152,37 @@ if (keyboard_check_pressed(vk_backspace) || keyboard_check_pressed(vk_escape)) {
 // Hint
 hint_askTimer += 1;
 
-if (hint_resetOnAction) {
-    hint_askTimer = 0;
-    hint_resetOnAction = false;
-}
-
-if (hint_askTimer &gt;= hint_askTime) {
-    // Create hint based on screen
-    tempHint = instance_create(view_xview[view_current] + view_wview[view_current] / 2 - 268, view_yview[view_current] + view_hview[view_current] - 180, obj_fm_hint);
-    tempHint.HintNumber = floor(random(5));
-    hint_created = true;
-    hint_existsTimer = 0;
-    hint_askTimer = 0;
-}
-
-if (hint_created) {
-    hint_existsTimer += 1;
-    hint_askTimer = 0;
-}
-
-if (hint_existsTimer &gt;= hint_existsTime) {
-    // Destroy the hint
-    with(obj_fm_hint) {
-        instance_destroy();
+if ((hint_askTimer &gt;= hint_askTime) &amp;&amp; (!hint_created)) {
+    // Create a notification tip
+    HintNumber = floor(random(4));
+    
+    switch(HintNumber) {
+        case 0:
+            temp_title = "Laser Beams";
+            temp_message = "Laser Beams fire lasers that destroy enemy ships.";
+            temp_length = 60;
+            break;
+        case 1:
+            temp_title = "Ship Launcher";
+            temp_message = "This ability tells a captain to launch a ship that explodes and destroys enemy ships.";
+            temp_length = 70;
+            break;
+        case 2:
+            temp_title = "Missile Barrage";
+            temp_message = "The Capital Ship fires many missiles at random enemy ships.";
+            temp_length = 80;
+            break;
+        default:
+            temp_title = "Helmet Colors";
+            temp_message = "Each Captain has a different helmet colors telling you what formations they like and what formations they dont.";
+            temp_length = 100;
+            break;
     }
-    hint_askTimer = 0;
-}
+    //scriptToast(Title, Message, duration in steps);
+    scriptToast(temp_title, temp_message, temp_length);
 
+    hint_created = true;
+}
 }
 </string>
           </argument>

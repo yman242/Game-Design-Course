@@ -66,7 +66,20 @@ global.bossPlanetId = 0;
 
 // Player kill counts
 global.playerPlanetsKilled = 0;
+global.playerPlanetsConquered = 0;
 global.playerKillCount = 0;
+
+// Sector Tracker
+global.sectorNumber = 1;
+
+// Ability and Formation usage tracker for achievements
+global.achievements_earned = 0;
+global.missiles_fired = 0;
+global.sacrifices_had = 0;
+global.lasers_fired = 0;
+global.attack_formations = 0;
+global.shield_formations = 0;
+global.skirmish_formations = 0;
 
 // Fleet Game Start Generation
 for (i=0; i&lt;global.shipMax; i+=1)
@@ -132,6 +145,91 @@ global.shakeTimer = 0;
 global.draggingScreen = false;
 global.MouseXDrag = 0;
 global.MouseYDrag = 0;
+
+// tips
+global.hint_up = false;
+global.hint_planet_info = false;
+global.hint_planet_clicked = false;
+global.hint_boss_appears = false;
+
+// Achievements
+global.achievement_up = false;
+
+// Achievement List
+global.ach_GreatBeginning = false;
+global.ach_GreatBeginning_Shown = false;
+
+global.ach_DestructionOfPuppies = false;
+global.ach_DestructionOfPuppies_Shown = false;
+
+global.ach_CaptainPlanet = false;
+global.ach_CaptainPlanet_Shown = false;
+
+global.ach_GalaxyKing = false;
+global.ach_GalaxyKing_Shown = false;
+
+global.ach_LevelConquererOne = false;
+global.ach_LevelConquererOne_Shown = false;
+
+global.ach_LevelConquererTwo = false;
+global.ach_LevelConquererTwo_Shown = false;
+
+global.ach_LevelConquererThree = false;
+global.ach_LevelConquererThree_Shown = false;
+
+global.ach_SweetVictory = false;
+global.ach_SweetVictory_Shown = false;
+
+global.ach_HoarderOfLoot = false;
+global.ach_HoarderOfLoot_Shown = false;
+
+global.ach_FirstDanceParty = false;
+global.ach_FirstDanceParty_Shown = false;
+
+global.ach_RaveMaster = false;
+global.ach_RaveMaster_Shown = false;
+
+global.ach_GraveSacrifice = false;
+global.ach_GraveSacrifice_Shown = false;
+
+global.ach_TheEndIsJustified = false;
+global.ach_TheEndIsJustified_Shown = false;
+
+global.ach_YepThatJustHappened = false;
+global.ach_YepThatJustHappened_Shown = false;
+    
+global.ach_MacrossHasNothingOnYou = false;
+global.ach_MacrossHasNothingOnYou_Shown = false;
+
+global.ach_TheAttackNoob = false;
+global.ach_TheAttackNoob_Shown = false;
+
+global.ach_TheTrueAggressor = false;
+global.ach_TheTrueAggressor_Shown = false;
+
+global.ach_ShieldNoob = false;
+global.ach_ShieldNoob_Shown = false;
+
+global.ach_TheTrueDefender = false;
+global.ach_TheTrueDefender_Shown = false;
+
+global.ach_SkirmisherNoob = false;
+global.ach_SkirmisherNoob_Shown = false;
+
+global.ach_TheTrueSkirmisher = false;
+global.ach_TheTrueSkirmisher_Shown = false;
+
+global.ach_EndOfTheFirstQuarter = false;
+global.ach_EndOfTheFirstQuarter_Shown = false;
+
+global.ach_NotLivingOnAPrayer = false;
+global.ach_NotLivingOnAPrayer_Shown = false;
+
+global.ach_AlmostThere = false;
+global.ach_AlmostThere_Shown = false;
+
+global.ach_AchievementFiend = false;
+global.ach_AchievementFiend_Shown = false;
 </string>
           </argument>
         </arguments>
@@ -155,6 +253,7 @@ global.MouseYDrag = 0;
           <argument>
             <kind>1</kind>
             <string>scriptScreenShakeLoop(global.shakeMagnitude, global.shakeDuration);
+scriptAchievementTracker();
 //scriptZoomOnPlanet();
 
 if(room == room_Battle)

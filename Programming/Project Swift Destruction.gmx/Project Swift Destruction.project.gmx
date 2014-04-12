@@ -200,6 +200,9 @@
     <script>scripts\scriptTransferSectors.gml</script>
     <script>scripts\scriptGetGeneralName.gml</script>
     <script>scripts\scriptDragView.gml</script>
+    <script>scripts\scriptToast.gml</script>
+    <script>scripts\scriptAchievementDisplay.gml</script>
+    <script>scripts\scriptAchievementTracker.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_Text</font>
@@ -213,6 +216,9 @@
     <object>objects\Game</object>
     <object>objects\Captain</object>
     <object>objects\obj_Mouse</object>
+    <object>objects\MapController</object>
+    <object>objects\FleetManagerNew</object>
+    <object>objects\BackgroundExplosionManager</object>
     <objects name="Ships">
       <objects name="Formation Controls">
         <object>objects\FormationController</object>
@@ -287,10 +293,6 @@
       <object>objects\obj_Particle</object>
       <object>objects\obj_Charger</object>
     </objects>
-    <object>objects\FleetManager</object>
-    <object>objects\FleetManagerNew</object>
-    <object>objects\MapController</object>
-    <object>objects\BackgroundExplosionManager</object>
     <object>objects\obj_fleet_management_btn</object>
     <object>objects\obj_Galaxy</object>
     <object>objects\obj_hire_captain</object>
@@ -310,6 +312,8 @@
     <object>objects\obj_currency</object>
     <object>objects\obj_CombatCurrency</object>
     <object>objects\obj_fm_hint</object>
+    <object>objects\obj_toast</object>
+    <object>objects\obj_achievements</object>
   </objects>
   <rooms name="rooms">
     <rooms name="Front End">

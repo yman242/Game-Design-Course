@@ -33,6 +33,9 @@ instance_create(0, view_yview[view_current] + (view_hview[view_current] / 4) * 3
 
 view_yview = (640 - view_hview[0]/2);
 view_xview = (640 - view_wview[0]/2);
+
+tip_counter = 0;
+tip_duration = 120;
 </string>
           </argument>
         </arguments>
@@ -55,10 +58,7 @@ view_xview = (640 - view_wview[0]/2);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>background_x[1] = view_xview[0];
-background_y[1] = view_yview[0];
-
-scriptDragView();
+            <string>scriptDragView();
 </string>
           </argument>
         </arguments>
@@ -140,25 +140,41 @@ if ((view_xview[0] + view_wview[0]) &gt;= 1780)
     view_xview = (1780 - view_wview[0]);
 }
 
-/***** Keeping Background1 centered while zooming *****/
-background_xscale[1] = view_wview[view_current] / 1280;
-background_yscale[1] = view_hview[view_current] / 720;
 
 // Generate Boss Planets
-if ((global.playerPlanetsKilled &gt;= global.NextBoss) &amp;&amp; (!global.bossPlanetGenerated))
+if (((global.playerPlanetsKilled + global.playerPlanetsConquered) &gt;= global.NextBoss) &amp;&amp; (!global.bossPlanetGenerated))
 {
     global.bossPlanetGenerated = true;
     
-    if (global.playerPlanetsKilled &gt; global.NextBoss) {
-        global.NextBoss = global.NextBoss * 2;
+    if (global.playerPlanetsKilled + global.playerPlanetsConquered &gt; global.NextBoss) {
+        global.NextBoss = global.playerPlanetsKilled + global.playerPlanetsConquered + global.NextBoss * 2;
     } else {
-        global.NextBoss = global.playerPlanetsKilled + global.NextBoss;
+        global.NextBoss = global.playerPlanetsKilled + global.playerPlanetsConquered + global.NextBoss * 2;
     }
     
     scriptGenerateBossPlanet();
 }
 
 scriptZoomOnPlanet();
+
+if ((!global.hint_boss_appears) &amp;&amp; ((global.playerPlanetsKilled + global.playerPlanetsConquered) &gt;= global.NextBoss)) {
+    //scriptToast(Title, Message, duration in steps);
+    scriptToast("Target Appears", "Your target has appeared, double check your fleet and prepare for a difficult encounter.", 90);
+    
+    global.hint_boss_appears = true;
+}
+
+// Tips
+tip_counter += 1;
+
+if ((tip_counter &gt; tip_duration) &amp;&amp; (!global.hint_planet_info)) {
+
+    // Display Tip for planet interaction
+    //scriptToast(Title, Message, duration in steps);
+    scriptToast("Invading Planets", "You can click on a planet to view information about it, and to invade it.", 90);
+    
+    global.hint_planet_info = true;
+}
 </string>
           </argument>
         </arguments>
@@ -215,11 +231,13 @@ scriptZoomOnPlanet();
         bottom_alpha = total_alpha * ((my - (view_hview[view_current] - alpha_hdetection)) / alpha_hdetection);
     }
     
-    draw_sprite_ext(sprite_screen_arrow_up, -1, center_x, view_yview[view_current], scale_amount, scale_amount, image_angle, c_white, top_alpha);
-    draw_sprite_ext(sprite_screen_arrow_down, -1, center_x, bottom_y, scale_amount, scale_amount, image_angle, c_white, bottom_alpha);
+    min_alpha = 0.1;
     
-    draw_sprite_ext(sprite_screen_arrow_left, -1, view_xview[view_current], center_y, scale_amount, scale_amount, image_angle, c_white, left_alpha);
-    draw_sprite_ext(sprite_screen_arrow_right, -1, view_xview[view_current] + view_wview[view_current] - (sprite_get_width(sprite_screen_arrow_right) * scale_amount), center_y, scale_amount, scale_amount, image_angle, c_white, right_alpha);
+    draw_sprite_ext(sprite_screen_arrow_up, -1, center_x, view_yview[view_current], scale_amount, scale_amount, image_angle, c_white, top_alpha + min_alpha);
+    draw_sprite_ext(sprite_screen_arrow_down, -1, center_x, bottom_y, scale_amount, scale_amount, image_angle, c_white, bottom_alpha + min_alpha);
+    
+    draw_sprite_ext(sprite_screen_arrow_left, -1, view_xview[view_current], center_y, scale_amount, scale_amount, image_angle, c_white, left_alpha + min_alpha);
+    draw_sprite_ext(sprite_screen_arrow_right, -1, view_xview[view_current] + view_wview[view_current] - (sprite_get_width(sprite_screen_arrow_right) * scale_amount), center_y, scale_amount, scale_amount, image_angle, c_white, right_alpha + min_alpha);
 
     draw_set_font(font_Text);
     if (global.NextBoss &gt; global.playerPlanetsKilled) {
@@ -232,6 +250,12 @@ scriptZoomOnPlanet();
     draw_set_color(c_white);
 }
 
+background_x[1] = view_xview[view_current];
+background_y[1] = view_yview[view_current];
+
+/***** Keeping Background1 centered while zooming *****/
+background_xscale[1] = view_wview[view_current] / 1280;
+background_yscale[1] = view_hview[view_current] / 720;
 </string>
           </argument>
         </arguments>

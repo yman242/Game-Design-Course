@@ -96,6 +96,7 @@ isSelected = false;
         if (isBoss) {
             // Goto Narrative Room
             room_goto(room_Narrative_Section);
+            global.sectorNumber += 1;
         }
         
         // destroy the planet
@@ -105,13 +106,14 @@ isSelected = false;
     if (isControlled)
     {
         // Increase the planet kill count
-        global.playerPlanetsKilled += 1;
+        global.playerPlanetsConquered += 1;
         
         // Add the population to the kill counter
-        global.playerKillCount += population;
+        global.playerKillCount += population * 0.15;
         
         if (isBoss) {
             room_goto(room_Narrative_Section);
+            global.sectorNumber += 1;
         }
     }
     
@@ -144,6 +146,15 @@ isSelected = false;
         //scriptShakeScreen(3, 3, 0, false);
         
         scriptZoomIn();
+        
+        if (!global.hint_planet_clicked) {
+
+            // Display Tip for planet interaction
+            //scriptToast(Title, Message, duration in steps);
+            scriptToast("Difficulty Levels", "The ships surrounding a planet show the difficulty level.", 75);
+            
+            global.hint_planet_clicked = true;
+        }
         
         isSelected = true;
         global.currently_selected_planet_id = myRef;
