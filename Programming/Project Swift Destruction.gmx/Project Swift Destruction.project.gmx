@@ -199,6 +199,7 @@
     <script>scripts\scriptGenerateBossPlanet.gml</script>
     <script>scripts\scriptTransferSectors.gml</script>
     <script>scripts\scriptGetGeneralName.gml</script>
+    <script>scripts\scriptDragView.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_Text</font>

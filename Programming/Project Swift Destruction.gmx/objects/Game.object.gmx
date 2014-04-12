@@ -127,6 +127,11 @@ global.currentShakePriority = 0;
 global.shakeMagnitude = 0;
 global.shakeDuration = 0;
 global.shakeTimer = 0;
+
+// Mouse drag
+global.draggingScreen = false;
+global.MouseXDrag = 0;
+global.MouseYDrag = 0;
 </string>
           </argument>
         </arguments>

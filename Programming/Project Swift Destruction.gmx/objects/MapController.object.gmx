@@ -57,6 +57,8 @@ view_xview = (640 - view_wview[0]/2);
             <kind>1</kind>
             <string>background_x[1] = view_xview[0];
 background_y[1] = view_yview[0];
+
+scriptDragView();
 </string>
           </argument>
         </arguments>
