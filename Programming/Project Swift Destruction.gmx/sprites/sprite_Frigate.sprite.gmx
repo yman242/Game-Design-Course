@@ -6,18 +6,18 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>0</bbox_left>
-  <bbox_right>148</bbox_right>
-  <bbox_top>0</bbox_top>
-  <bbox_bottom>40</bbox_bottom>
+  <bbox_left>15</bbox_left>
+  <bbox_right>173</bbox_right>
+  <bbox_top>12</bbox_top>
+  <bbox_bottom>53</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>151</width>
-  <height>42</height>
+  <width>186</width>
+  <height>63</height>
   <frames>
     <frame index="0">images\sprite_Frigate_0.png</frame>
     <frame index="1">images\sprite_Frigate_1.png</frame>
@@ -55,6 +55,5 @@
     <frame index="33">images\sprite_Frigate_33.png</frame>
     <frame index="34">images\sprite_Frigate_34.png</frame>
     <frame index="35">images\sprite_Frigate_35.png</frame>
-    <frame index="36">images\sprite_Frigate_36.png</frame>
   </frames>
 </sprite>

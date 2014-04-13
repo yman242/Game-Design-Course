@@ -134,6 +134,8 @@ scriptParticleEngine(x,y,0,random(50),250,100,0,360,1,6,c_gray,sprite_SoftPartic
 {
     valueHolder = array_length_1d(myController.target.ships);
     
+    flipper = 1;
+    
     if(valueHolder&gt;0)
     {
         for(i=0;i&lt;10;i++)
@@ -144,15 +146,24 @@ scriptParticleEngine(x,y,0,random(50),250,100,0,360,1,6,c_gray,sprite_SoftPartic
             
             holder.target = Monster;
             
-            holder.x = x+sprite_get_width(sprite_index)/2;
+            /*holder.x = x+sprite_get_width(sprite_index)/2;
+            holder.y = y+sprite_get_height(sprite_index)/2;*/
+            
+            holder.x = x+sprite_get_width(sprite_index)/4+((i+1)*12)
             holder.y = y+sprite_get_height(sprite_index)/2;
             
             holder.damage = 60;
             
-            aimX = (holder.x + sprite_get_width(targetHolder.sprite_index)/2);
-            aimY = (holder.y + sprite_get_height(targetHolder.sprite_index)/2);
+            /*aimX = (targetHolder.x + sprite_get_width(targetHolder.sprite_index)/2);
+            aimY = (targetHolder.y + sprite_get_height(targetHolder.sprite_index)/2);
         
-            holder.direction = point_direction(holder.x,holder.y,aimX,aimY);
+            holder.direction = point_direction(holder.x,holder.y,aimX,aimY);*/
+            
+            holder.goalX = (targetHolder.x + sprite_get_width(targetHolder.sprite_index)/2);
+            holder.goalY = (targetHolder.y + sprite_get_height(targetHolder.sprite_index)/2);
+            
+            holder.direction = 90*flipper;
+            flipper = flipper*-1;
         
             holder.speed = 15;
             

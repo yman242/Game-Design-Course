@@ -31,11 +31,11 @@ captainPower = -1;
 
 image_speed = 1/4;
 
-idleMax = 12; //Max frame for the idle.
+idleMax = 8; //Max frame for the idle.
 idleMin = 0; //Lowest idle frame.
-moveStart = 13; //frame where we start the movement
-moveMax = 30; //highest move frame. (May not want it to be the final frame)
-moveMin = 25; //Lowest movement frame. (may not want it to be the start)
+moveStart = 9; //frame where we start the movement
+moveMax = 25; //highest move frame. (May not want it to be the final frame)
+moveMin = 16; //Lowest movement frame. (may not want it to be the start)
 
 burstCount = 0; //used to keep track of burst fire
 burstTotal = 1; //Total burst shots to fire

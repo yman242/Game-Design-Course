@@ -405,8 +405,11 @@ else if(myMaster.strategyType == 2)
     }
     else if(myMaster.strategyType == 1)
     {
-        chargeShot.x = myMaster.ships[0].x+sizeX*2*flipper;
-        chargeShot.y =  myMaster.ships[0].y+sizeY;
+        if(array_length_1d(myMaster.ships)&gt;0 &amp;&amp; instance_exists(myMaster.ships[0]))
+        {
+            chargeShot.x = myMaster.ships[0].x+sizeX*2*flipper;
+            chargeShot.y =  myMaster.ships[0].y+sizeY;
+        }
     }
     else if(myMaster.strategyType == 2)
     {

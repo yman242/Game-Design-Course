@@ -32,6 +32,13 @@ alarm[0] = 30*15;
 speed = 15;
 
 target = Monster;
+
+goalX = 0;
+goalY = 0;
+straight = false;
+
+curveTime = .05;
+alarm[1] = 30*curveTime;
 </string>
           </argument>
         </arguments>
@@ -60,6 +67,47 @@ target = Monster;
 scriptShakeScreen(7, 5, 1, false);
 
 instance_create(x,y,obj_MissleHit);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if((goalX!=0 || goalY !=0)&amp;&amp; !straight)
+{
+    tempHolder = point_direction(x,y,goalX,goalY);
+    
+    if(direction != tempHolder)
+    {
+        direction += sin(degtorad(tempHolder-direction)) * 4; 
+    }
+    else
+    {
+        
+    }
+}
+else
+{
+    straight = true;
+}
+
+alarm[1] = 30*curveTime;
 </string>
           </argument>
         </arguments>
