@@ -226,7 +226,7 @@ if(myController.strategyType == 0 &amp;&amp; myController.target&gt;0 &amp;&amp;
         audio_play_sound(sound_LaserFire, 0, false);
         holder = instance_create(xHolder,yHolder,Burst);
         
-        targetHolder = myController.target.ships[valueHolder-1];
+        targetHolder = myController.target.ships[floor(random(valueHolder-1))];
         
         spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
         aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
@@ -281,7 +281,7 @@ if(myController.strategyType == 0 &amp;&amp; myController.target&gt;0 &amp;&amp;
         holder.maker = id;
         
         
-        targetHolder = myController.target.ships[random(valueHolder-1)];
+        targetHolder = myController.target.ships[floor(random(valueHolder-1))];
         
         holder.target = targetHolder;
         
@@ -326,7 +326,7 @@ if(myController.strategyType == 0 &amp;&amp; myController.target&gt;0 &amp;&amp;
     {
         holder = instance_create(xHolder,yHolder,Missle);
         
-        targetHolder = myController.target.ships[random(valueHolder-1)];
+        targetHolder = myController.target.ships[floor(random(valueHolder-1))];
         
         spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
         aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;

@@ -63,6 +63,13 @@
       <sprite>sprites\sprite_Boss</sprite>
       <sprite>sprites\sprite_Boss2</sprite>
       <sprite>sprites\sprite_Boss3</sprite>
+      <sprites name="Explosions">
+        <sprite>sprites\sprite_ExplosionMonsterFrigate</sprite>
+        <sprite>sprites\sprite_ExplosionMonsterCruiser</sprite>
+        <sprite>sprites\sprite_ExplosionMonsterDestroyer</sprite>
+        <sprite>sprites\sprite_ExplosionMonsterBattleship</sprite>
+        <sprite>sprites\sprite_ExplosionMonsterMissleship</sprite>
+      </sprites>
     </sprites>
     <sprites name="Front End">
       <sprite>sprites\sprite_MainMenu_New</sprite>

@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>myController = instance_create(x,y,obj_PDestroyerController);
+myController.ships[0] = id;
 
 chargerHolder = instance_create(x,y,obj_Charger);
 
@@ -58,7 +59,7 @@ global.destroyable = false;//Can i laser?
 startLaser = 24;
 endLaser = 59;
 
-life = 100;
+life = 500;
 </string>
           </argument>
         </arguments>

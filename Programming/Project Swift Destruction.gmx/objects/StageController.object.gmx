@@ -254,7 +254,7 @@ if(global.battleState&gt;0)
     {
         global.battleState = 1;
     }
-    else if(!instance_exists(Ship)) //Lost
+    else if(!instance_exists(Ship) || !instance_exists(global.planetDestroyer)) //Lost
     {
         room_goto(room_Lose);
     }

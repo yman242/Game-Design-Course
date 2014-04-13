@@ -127,7 +127,6 @@ else if(array_length_1d(target.ships) == 0)
     targetHolder = instance_nearest(x, y, Ship);
     target = targetHolder.myController;
 }
-
 if(currentNumShips&gt;array_length_1d(ships))
 {
     formationController.alarm[1] = 1;

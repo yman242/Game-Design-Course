@@ -44,7 +44,7 @@ shipType = 1;
 numOfShips = 1;
 
 stratPosition = 0;
-ships = 0;
+ships[0] = global.planetDestroyer;
 </string>
           </argument>
         </arguments>
@@ -113,7 +113,7 @@ ships = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//nope
+            <string>ships = scriptUpdateArray(ships);
 </string>
           </argument>
         </arguments>

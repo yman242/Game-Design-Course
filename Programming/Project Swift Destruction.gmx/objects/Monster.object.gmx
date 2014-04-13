@@ -76,7 +76,33 @@ life = 200;
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(sound_Missle, 0, false);
-scriptParticleEngine(x,y,0,random(100),500,250,0,360,1,6,c_gray,sprite_SoftParticle);
+scriptParticleEngine(x,y,0,random(25),500,250,0,360,1,6,c_gray,sprite_SoftParticle);
+
+holder = instance_create(x,y,obj_ShipExplosion);
+
+if(sprite_index = sprite_MonsterFrigate)
+{
+    holder.sprite_index = sprite_ExplosionMonsterFrigate;
+}
+else if (sprite_index = sprite_MonsterDestroyer)
+{
+    holder.sprite_index = sprite_ExplosionMonsterDestroyer;
+}
+else if (sprite_index = sprite_MonsterCruiser)
+{
+    holder.sprite_index = sprite_ExplosionMonsterCruiser;
+}
+else if (sprite_index = sprite_MonsterBattleship)
+{
+    holder.sprite_index = sprite_ExplosionMonsterBattleship;
+}
+else if (sprite_index = sprite_MonsterMissleship)
+{
+    holder.sprite_index = sprite_ExplosionMonsterMissleship;
+}
+
+holder.x = x + (sprite_get_width(sprite_index)/2) - sprite_get_width(holder.sprite_index)/2;
+holder.y = y + (sprite_get_height(sprite_index)/2) - sprite_get_height(holder.sprite_index)/2;
 </string>
           </argument>
         </arguments>
@@ -112,7 +138,7 @@ if(myController.strategyType == 0 &amp;&amp; myController.target&gt;0 &amp;&amp;
         audio_play_sound(sound_LaserFire, 0, false);
         holder = instance_create(xHolder,yHolder,Burst);
         
-        targetHolder = myController.target.ships[valueHolder-1];
+        targetHolder = myController.target.ships[floor(random(valueHolder-1))];
         
         spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
         aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
@@ -168,7 +194,7 @@ if(myController.strategyType == 0 &amp;&amp; myController.target&gt;0 &amp;&amp;
         holder.maker = id;
         
         
-        targetHolder = myController.target.ships[random(valueHolder-1)];
+        targetHolder = myController.target.ships[floor(random(valueHolder-1))];
         
         holder.target = targetHolder;
         
@@ -213,7 +239,7 @@ if(myController.strategyType == 0 &amp;&amp; myController.target&gt;0 &amp;&amp;
     {
         holder = instance_create(xHolder,yHolder,Missle);
         
-        targetHolder = myController.target.ships[random(valueHolder-1)];
+        targetHolder = myController.target.ships[floor(random(valueHolder-1))];
         
         spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
         aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
