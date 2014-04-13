@@ -35,6 +35,7 @@ y = view_yview[view_current] + ((view_hview[view_current] / 2) - (sprite_get_hei
 
 // Generate a captain to hire
 newCaptain = scriptGenerateCaptain();
+captainCost = newCaptain.shipType * 5 + 25;
 
 if (!global.bg_50_created)
 {
@@ -111,7 +112,7 @@ if (((mouse_x &gt;= x+360) &amp;&amp; (mouse_x &lt;= x+542)) &amp;&amp; ((mouse_
 if ((isOnHire) &amp;&amp; (mouse_check_button_released(mb_left)) &amp;&amp; (global.imperialCredits &gt;= 50)) {
     // Hire this captain
     global.fleet[fleet_id_ref] = newCaptain;
-    global.imperialCredits -= 50;
+    global.imperialCredits -= captainCost;
     instance_destroy();
 }
 
@@ -232,7 +233,7 @@ switch(newCaptain.shipType) {
 text_y = text_y + 65;
 
 draw_text(text_x, text_y, "Cost");
-draw_text(text_x, text_y+25, "50 ic");
+draw_text(text_x, text_y+25, string(captainCost) + " ic");
 
 draw_set_halign(fa_left);
 

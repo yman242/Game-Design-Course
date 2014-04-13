@@ -317,6 +317,10 @@ switch(global.fleet[tab_selected].shipType) {
         break;
 }
 
+if (global.fleet[tab_selected].isDead) {
+    draw_sprite(sprite_dead_captain_overlay, -1, x+16, y+71);
+}
+
 // Replace button
 
 replace_button_x = portraitLocation_x + 530;

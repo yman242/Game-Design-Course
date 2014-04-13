@@ -112,7 +112,7 @@ focus=true;
         {
             room_goto(room_NarrativeRoom);
         } else if (menu == 1) {
-            room_goto(room_LoadMenu);
+            room_goto(room_Credits);
         } else {
             game_end();
         }

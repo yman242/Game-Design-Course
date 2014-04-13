@@ -43,6 +43,7 @@ isBoss = false;
 isControlled = false;
 isDestroyed = false;
 hasShownDestruction = false;
+hasShownControlled = false;
 
 isSelected = false;
 </string>
@@ -79,20 +80,6 @@ isSelected = false;
         // Increase the planet kill count
         global.playerPlanetsKilled += 1;
         
-        // Add the population to the kill counter
-        global.playerKillCount += population;
-        
-        // Give the player there moneys!
-        if (isBoss) {
-            global.imperialCredits += 50;
-        } else if (threat == 3) {
-            global.imperialCredits += 30;
-        } else if (threat == 2) {
-            global.imperialCredits += 20;
-        } else {
-            global.imperialCredits += 10;
-        }
-        
         if (isBoss) {
             // Goto Narrative Room
             room_goto(room_Narrative_Section);
@@ -103,24 +90,17 @@ isSelected = false;
         instance_destroy();
     }
     
-    if (isControlled)
-    {
-        // Increase the planet kill count
-        global.playerPlanetsConquered += 1;
-        
+    if ((isControlled) &amp;&amp; (!hasShownControlled))
+    {   
         // Add the population to the kill counter
         global.playerKillCount += population * 0.15;
+        hasShownControlled = true;
         
         if (isBoss) {
             room_goto(room_Narrative_Section);
             global.sectorNumber += 1;
         }
     }
-    
-    /*if ((isDestroyed) &amp;&amp; (hasShownDestruction))
-    {
-        visible = false;
-    }*/
 
     // Mouse in bounds?
     mouseInBounds = false;
