@@ -109,11 +109,13 @@ if (((mouse_x &gt;= x+360) &amp;&amp; (mouse_x &lt;= x+542)) &amp;&amp; ((mouse_
 }
 
 // Hired?
-if ((isOnHire) &amp;&amp; (mouse_check_button_released(mb_left)) &amp;&amp; (global.imperialCredits &gt;= 50)) {
+if ((isOnHire) &amp;&amp; (mouse_check_button_released(mb_left)) &amp;&amp; (global.imperialCredits &gt;= captainCost)) {
     // Hire this captain
     global.fleet[fleet_id_ref] = newCaptain;
     global.imperialCredits -= captainCost;
     instance_destroy();
+} else if ((isOnHire) &amp;&amp; (mouse_check_button_released(mb_left)) &amp;&amp; !(global.imperialCredits &gt;= captainCost)) {
+    scriptErrorDisplay("Insufficient funds")
 }
 
 if ((isOnHire) &amp;&amp; (mouse_check_button_released(mb_left)) &amp;&amp; (global.imperialCredits &lt; 50)) {

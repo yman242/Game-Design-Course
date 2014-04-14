@@ -39,6 +39,12 @@ hint_askTime = 75;
 hint_created = false;
 
 instance_create(0, view_yview[view_current] + (view_hview[view_current] / 4) * 3, obj_currency);
+
+if (scriptAllCaptainsDead()) {
+    // All Captains are dead, display error
+    global.imperialCredits += 35;
+    scriptToast("Dead Captains", "When you fleet has been wiped out, you can come here and get imperial funding to continue your rampage", 90);
+}
 </string>
           </argument>
         </arguments>
