@@ -97,7 +97,7 @@ alarm[0] = 30*5;
           <argument>
             <kind>1</kind>
             <string>//AI
-if((global.battleState == 3) &amp;&amp; target &gt; 0 &amp;&amp; instance_exists(target))
+if((global.battleState == 3) &amp;&amp; target &gt; 0 &amp;&amp; instance_exists(target) &amp;&amp; array_length_1d(ships)&gt;0 &amp;&amp; instance_exists(ships[0]))
 {
     if(target.strategyType == 0 &amp;&amp; strategyType != 1)
     {
