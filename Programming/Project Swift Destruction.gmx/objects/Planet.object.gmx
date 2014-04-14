@@ -94,6 +94,7 @@ isSelected = false;
     {   
         // Add the population to the kill counter
         global.playerKillCount += population * 0.15;
+        global.playerPlanetsConquered += 1;
         hasShownControlled = true;
         
         if (isBoss) {
