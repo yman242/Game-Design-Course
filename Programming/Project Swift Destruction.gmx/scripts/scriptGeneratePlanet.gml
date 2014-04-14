@@ -28,22 +28,22 @@ threat = ceil((random(6)+random(6))/4);
 switch(type)
 {
     case 0:
-        population = ceil(random(2));
+        population = ceil(random(200000000)) * 10;
         break;
     case 1:
-        population = ceil(random(5));
+        population = ceil(random(500000000)) * 10;
         break;
     case 2:
-        population = ceil(random(3));
+        population = ceil(random(300000000)) * 10;
         break;
     case 3:
-        population = ceil(random(8));
+        population = ceil(random(800000000)) * 10;
         break;
     case 4:
-        population = ceil(random(11)) + 4;
+        population = ceil(random(1100000000)) * 10 + 4000000000;
         break;
     default:
-        population = (ceil(random(3)) * 3) + 1;
+        population = (ceil(random(300000000)) * 3) * 10 + 1000000000;
         break;
 }
 

@@ -80,8 +80,13 @@ isSelected = false;
         // Increase the planet kill count
         global.playerPlanetsKilled += 1;
         
+        if (isControlled) {
+            global.playerPlanetsConquered -= 1;
+        }
+        
         if (isBoss) {
             // Goto Narrative Room
+            global.NextBoss = global.playerPlanetsKilled + global.playerPlanetsConquered + global.NextBossStep * global.sectorNumber;
             room_goto(room_Narrative_Section);
             global.sectorNumber += 1;
         }
@@ -93,11 +98,12 @@ isSelected = false;
     if ((isControlled) &amp;&amp; (!hasShownControlled))
     {   
         // Add the population to the kill counter
-        global.playerKillCount += population * 0.15;
+        //global.playerKillCount += population * 0.15;
         global.playerPlanetsConquered += 1;
         hasShownControlled = true;
         
         if (isBoss) {
+            global.NextBoss = global.playerPlanetsKilled + global.playerPlanetsConquered + global.NextBossStep * global.sectorNumber;
             room_goto(room_Narrative_Section);
             global.sectorNumber += 1;
         }

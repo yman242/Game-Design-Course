@@ -59,6 +59,18 @@ draw_sprite(spr_red_bkg, -1, 90, 337);
 tempstr = "You Killed: " + string(global.playerKillCount) + " people";
 draw_text(500, 340, tempstr);
 
+tempstr = "Males: " + string(global.playerKillCount * 0.24);
+draw_text(500, 440, tempstr);
+
+tempstr = "Females: " + string(global.playerKillCount * 0.26);
+draw_text(500, 460, tempstr);
+
+tempstr = "Children: " + string(global.playerKillCount * 0.3);
+draw_text(500, 480, tempstr);
+
+tempstr = "Puppies: " + string(global.playerKillCount * 0.2);
+draw_text(500, 500, tempstr);
+
 draw_text(950, 680, "Click to continue...");
 </string>
           </argument>

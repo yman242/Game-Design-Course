@@ -66,6 +66,7 @@ global.pointInStory = 0;
 global.storySequence = 0;
 
 // Bosses for Narrative
+global.NextBossStep = 3;
 global.NextBoss = 3;
 global.bossPlanetGenerated = false;
 global.bossPlanetGeneralName = "";
