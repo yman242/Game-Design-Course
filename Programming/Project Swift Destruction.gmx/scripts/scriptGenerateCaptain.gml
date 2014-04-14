@@ -7,7 +7,7 @@ var randomNumber;
 faceType = floor(random(3));
 
 // Generate a Name
-randomNumber = floor(random(10));
+randomNumber = floor(random(11));
 
 switch (randomNumber)
 {
@@ -37,6 +37,9 @@ switch (randomNumber)
         break;
     case 8:
         name = "Count Dracula";
+        break;
+    case 9:
+        name = "Captain Dky";
         break;
     default:
         name = "Captain Nuggeteer";

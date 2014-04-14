@@ -232,6 +232,21 @@ if(scriptRectanglePointCollision(mouse_x,mouse_y,view_xview[view_current] + (glo
         strategyType++;
     }
     
+    if(strategyType == 0)
+    {
+        global.skirmish_formations++;
+    }
+    else if(strategyType == 1)
+    {
+        global.attack_formations++;
+    }
+    else
+    {
+        global.shield_formations++;
+    }
+    
+    
+    
     stratPosition = scriptShipStratLocations(strategyType);
     
     if(array_length_1d(ships)&gt;0)
@@ -382,46 +397,6 @@ if(generalCooldown)
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="65">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>formationController.alarm[0] = 1;
-
-if(strategyType == 0)
-{
-    strategyType = 1;
-}
-else
-{
-    strategyType = 0;
-}
-
-
-stratPosition = scriptShipStratLocations(strategyType);
-
-if(array_length_1d(ships)&gt;0)
-{
-    scriptChangePosition(ships,stratPosition,ships[0].x,ships[0].y);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="10" enumb="83">
       <action>
         <libid>1</libid>
@@ -439,11 +414,14 @@ if(array_length_1d(ships)&gt;0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(array_length_1d(ships)&gt;0 &amp;&amp; instance_exists(ships[0]))
+            <string>if(global.debug)
 {
-    //with (ships[0]) instance_destroy();
-    ships[0].life = 0;
-    
+    if(array_length_1d(ships)&gt;0 &amp;&amp; instance_exists(ships[0]))
+    {
+        //with (ships[0]) instance_destroy();
+        ships[0].life = 0;
+        
+    }
 }
 </string>
           </argument>

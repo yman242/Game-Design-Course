@@ -460,6 +460,18 @@ else if(myMaster.strategyType == 2)
             shieldArray[0].imageIndex = 0;
             shieldArray[sizeofShields-1].imageIndex = 2;
             offset = sizeY *((sizeofShields+1)/2)
+            
+            if(target == Ship)
+            {
+                for(i=0;i&lt;sizeofShields;i++)
+                {
+                    shieldArray[i].imageIndex = 4;
+                }
+                
+                shieldArray[0].imageIndex = 3;
+                shieldArray[sizeofShields-1].imageIndex = 5;
+            }
+            
             for(i=0;i&lt;sizeofShields;i++)
             {
                 shieldArray[i].y -= offset;
@@ -533,6 +545,17 @@ if(useLoop)
             {
                 shieldArray[0].imageIndex = 0;
                 shieldArray[sizeofShields-1].imageIndex = 2;
+                
+                if(target == Ship)
+                {
+                    for(i=0;i&lt;sizeofShields;i++)
+                    {
+                        shieldArray[i].imageIndex = 4;
+                    }
+                
+                    shieldArray[0].imageIndex = 3;
+                    shieldArray[sizeofShields-1].imageIndex = 5;
+                }
             }
         }
     }

@@ -44,6 +44,7 @@ explosionChain = 10;
 global.selectedShip = 0;
 
 global.buttonTier = 0;//Used to determine how many buttons we have in place in terms of layers.
+global.useButtons = -1; //This is gonna be used to see which spots are 'open'
 
 scaleSize = 2;//1.5;//scaled size of screen
 scrollSpeed = 2; //Speed of the background.
@@ -87,33 +88,36 @@ incrementHolder = (yHolder*2+32);
 
 for(i=0;i&lt;global.shipMax;i++)
 {
-    if(global.fleet[i].shipType == 0)
+    if(!global.fleet[i].isDead)
     {
-        buttons[i] = instance_create(xHolder,yHolder,obj_ShipButton1);
-        yHolder += incrementHolder;
+        if(global.fleet[i].shipType == 0)
+        {
+            buttons[i] = instance_create(xHolder,yHolder,obj_ShipButton1);
+            yHolder += incrementHolder;
+        }
+        else if(global.fleet[i].shipType == 1)
+        {
+            buttons[i] = instance_create(xHolder,yHolder,obj_ShipButton2);
+            yHolder += incrementHolder;
+        }
+        else if(global.fleet[i].shipType == 2)
+        {
+            buttons[i] = instance_create(xHolder,yHolder,obj_ShipButtonCruiser);
+            yHolder += incrementHolder;
+        }
+        else if(global.fleet[i].shipType == 3)
+        {
+            buttons[i] = instance_create(xHolder,yHolder,obj_ShipButtonBattleship);
+            yHolder += incrementHolder;
+        }
+        else // shipType == 4
+        {
+            buttons[i] = instance_create(xHolder,yHolder,obj_ShipButtonMissleship);
+            yHolder += incrementHolder;
+        }
+        
+        buttons[i].commander = global.fleet[i];
     }
-    else if(global.fleet[i].shipType == 1)
-    {
-        buttons[i] = instance_create(xHolder,yHolder,obj_ShipButton2);
-        yHolder += incrementHolder;
-    }
-    else if(global.fleet[i].shipType == 2)
-    {
-        buttons[i] = instance_create(xHolder,yHolder,obj_ShipButtonCruiser);
-        yHolder += incrementHolder;
-    }
-    else if(global.fleet[i].shipType == 3)
-    {
-        buttons[i] = instance_create(xHolder,yHolder,obj_ShipButtonBattleship);
-        yHolder += incrementHolder;
-    }
-    else // shipType == 4
-    {
-        buttons[i] = instance_create(xHolder,yHolder,obj_ShipButtonMissleship);
-        yHolder += incrementHolder;
-    }
-    
-    buttons[i].commander = global.fleet[i];
 }
 
 instance_create(xHolder,yHolder,obj_Go);

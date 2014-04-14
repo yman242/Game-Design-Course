@@ -65,13 +65,16 @@ if ((mouse_x &gt; x - sprite_width) &amp;&amp; (mouse_x &lt; x + sprite_width)) 
     }
 }
 
-if (mouseInBounds &amp;&amp; mouse_check_button_pressed(mb_left)) {
+if (mouseInBounds &amp;&amp; mouse_check_button_pressed(mb_left) &amp;&amp; !scriptAllCaptainsDead()) {
     // Call Transition Script here
     scriptChangeLayer();
     
     global.currentlyInvadingPlanet = global.currently_selected_planet_id;
 
     room_goto(room_Battle);
+} else if (mouseInBounds &amp;&amp; mouse_check_button_pressed(mb_left) &amp;&amp; scriptAllCaptainsDead()) {
+    // All Captains are dead, display error
+    show_message("ERROR NO CAPTAINS LOLOLOL"); // Replace with the real error message
 }
 
 image_xscale = scalex;

@@ -136,7 +136,7 @@ scriptParticleEngine(x,y,0,random(50),250,100,0,360,1,6,c_gray,sprite_SoftPartic
     valueHolder = array_length_1d(myController.target.ships);
     
     flipper = 1;
-    
+    global.missiles_fired++;
     if(valueHolder&gt;0)
     {
         for(i=0;i&lt;10;i++)
@@ -201,6 +201,7 @@ scriptParticleEngine(x,y,0,random(50),250,100,0,360,1,6,c_gray,sprite_SoftPartic
     
     if(valueHolder&gt;0)
     {
+        global.lasers_fired++;
         holder = instance_create(x,y,Laser);
         
         holder.maker = id;

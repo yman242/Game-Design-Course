@@ -142,6 +142,8 @@ if(myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
         holder.sprite_index = sprite_index;
         targetHolder = myController.target.ships[random(valueHolder-1)];
         
+        global.sacrifices_had++;
+        
         spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
         aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
         aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
