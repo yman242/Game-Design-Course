@@ -81,7 +81,9 @@ tip_duration = 120;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Move the screen around based on WASD and mouse on the edge of the screen
+            <string>scriptAchievementTracker();
+
+// Move the screen around based on WASD and mouse on the edge of the screen
 ViewMovementSpeed = 5;
 
 //******* Set limits to scrolling *******//

@@ -233,129 +233,129 @@ if (!global.achievement_up) {
 }
 
 // Achievements Checks
-if (global.playerPlanetsKilled >= 1) {
+if (global.playerPlanetsKilled >= 1) && (!global.ach_GreatBeginning_Shown) {
     global.ach_GreatBeginning = true;
     global.ach_GreatBeginning_Shown = false;
 }
 
-if (global.playerPlanetsKilled >= 50) {
+if (global.playerPlanetsKilled >= 50) && (!global.ach_DestructionOfPuppies_Shown) {
     global.ach_DestructionOfPuppies = true;
     global.ach_DestructionOfPuppies_Shown = false;
 }
 
-if (global.playerPlanetsConquered >= 1) {
+if (global.playerPlanetsConquered >= 1) && (!global.ach_CaptainPlanet_Shown) {
     global.ach_CaptainPlanet = true;
     global.ach_CaptainPlanet_Shown = false;
 }
 
-if (global.playerPlanetsConquered >= 50) {
+if (global.playerPlanetsConquered >= 50) && (!global.ach_GalaxyKing_Shown) {
     global.ach_GalaxyKing = true;
     global.ach_GalaxyKing_Shown = false;
 }
 
-if (global.sectorNumber >= 2) {
+if (global.sectorNumber >= 2) && (!global.ach_LevelConquererOne_Shown) {
     global.ach_LevelConquererOne = true;
     global.ach_LevelConquererOne_Shown = false;
 }
 
-if (global.sectorNumber >= 3) {
+if (global.sectorNumber >= 3) && (!global.ach_LevelConquererTwo_Shown) {
     global.ach_LevelConquererTwo = true;
     global.ach_LevelConquererTwo_Shown = false;
 }
 
-if (global.sectorNumber >= 4) {
+if (global.sectorNumber >= 4) && (!global.ach_LevelConquererThree_Shown) {
     global.ach_LevelConquererThree = true;
     global.ach_LevelConquererThree_Shown = false;
 }
 
-if (global.sectorNumber >= 5) {
+if (global.sectorNumber >= 5) && (!global.ach_SweetVictory_Shown) {
     global.ach_SweetVictory = true;
     global.ach_SweetVictory_Shown = false;
 }
 
-if (global.imperialCredits > 550) {
+if (global.imperialCredits > 550) && (!global.ach_HoarderOfLoot_Shown) {
     global.ach_HoarderOfLoot = true;
     global.ach_HoarderOfLoot_Shown = false;
 }
 
-if (global.lasers_fired >= 1) {
+if (global.lasers_fired >= 1) && (!global.ach_FirstDanceParty_Shown) {
     global.ach_FirstDanceParty = true;
     global.ach_FirstDanceParty_Shown = false;
 }
 
-if (global.lasers_fired >= 50) {
+if (global.lasers_fired >= 50) && (!global.ach_RaveMaster_Shown) {
     global.ach_RaveMaster = true;
     global.ach_RaveMaster_Shown = false;
 }
 
-if (global.sacrifices_had >= 1) {
+if (global.sacrifices_had >= 1) && (!global.ach_GraveSacrifice_Shown) {
     global.ach_GraveSacrifice = true;
     global.ach_GraveSacrifice_Shown = false;
 }
 
-if (global.sacrifices_had >= 50) {
+if (global.sacrifices_had >= 50) && (!global.ach_TheEndIsJustified_Shown) {
     global.ach_TheEndIsJustified = true;
     global.ach_TheEndIsJustified_Shown = false;
 }
 
-if (global.missiles_fired >= 1) {
+if (global.missiles_fired >= 1) && (!global.ach_YepThatJustHappened_Shown) {
     global.ach_YepThatJustHappened = true;
     global.ach_YepThatJustHappened_Shown = false;
 }
     
-if (global.missiles_fired >= 50) {
+if (global.missiles_fired >= 50) && (!global.ach_MacrossHasNothingOnYou_Shown) {
     global.ach_MacrossHasNothingOnYou = true;
     global.ach_MacrossHasNothingOnYou_Shown = false;
 }
 
-if (global.attack_formations >= 5) {
+if (global.attack_formations >= 5) && (!global.ach_TheAttackNoob_Shown) {
     global.ach_TheAttackNoob = true;
     global.ach_TheAttackNoob_Shown = false;
 }
 
-if (global.attack_formations >= 100) {
+if (global.attack_formations >= 100) && (!global.ach_TheTrueAggressor_Shown) {
     global.ach_TheTrueAggressor = true;
     global.ach_TheTrueAggressor_Shown = false;
 }
 
-if (global.shield_formations >= 5) {
+if (global.shield_formations >= 5) && (!global.ach_ShieldNoob_Shown) {
     global.ach_ShieldNoob = true;
     global.ach_ShieldNoob_Shown = false;
 }
 
-if (global.shield_formations >= 100) {
+if (global.shield_formations >= 100) && (!global.ach_TheTrueDefender_Shown) {
     global.ach_TheTrueDefender = true;
     global.ach_TheTrueDefender_Shown = false;
 }
 
-if (global.skirmish_formations >= 5) {
+if (global.skirmish_formations >= 5) && (!global.ach_SkirmisherNoob_Shown) {
     global.ach_SkirmisherNoob = true;
     global.ach_SkirmisherNoob_Shown = false;
 }
 
-if (global.skirmish_formations >= 100) {
+if (global.skirmish_formations >= 100) && (!global.ach_TheTrueSkirmisher_Shown) {
     global.ach_TheTrueSkirmisher = true;
     global.ach_TheTrueSkirmisher_Shown = false;
 }
 
 // Achievement % complete
-if (global.achievements_earned >= (achievement_count * 0.25)) {
+if (global.achievements_earned >= (achievement_count * 0.25)) && (!global.ach_EndOfTheFirstQuarter_Shown) {
     global.ach_EndOfTheFirstQuarter = true;
     global.ach_EndOfTheFirstQuarter_Shown = false;
 }
 
-if (global.achievements_earned >= (achievement_count * 0.5)) {
+if (global.achievements_earned >= (achievement_count * 0.5)) && (!global.ach_NotLivingOnAPrayer_Shown) {
     global.ach_NotLivingOnAPrayer = true;
     global.ach_NotLivingOnAPrayer_Shown = false;
 }
 
 
-if (global.achievements_earned >= (achievement_count * 0.75)) {
+if (global.achievements_earned >= (achievement_count * 0.75)) && (!global.ach_AlmostThere_Shown) {
     global.ach_AlmostThere = true;
     global.ach_AlmostThere_Shown = false;
 }
 
-if (global.achievements_earned == achievement_count) {
+if (global.achievements_earned == achievement_count) && (!global.ach_AchievementFiend_Shown) {
     global.ach_AchievementFiend = true;
     global.ach_AchievementFiend_Shown = false;
 }
