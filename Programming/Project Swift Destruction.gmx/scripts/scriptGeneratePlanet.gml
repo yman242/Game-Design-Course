@@ -47,10 +47,10 @@ switch(type)
         break;
 }
 
-if (population < 2)
+if (population < 2000000000)
 {
     threat = 1;
-} else if (population > 13) {
+} else if (population > 13000000000) {
     threat = 3;
 }
 

@@ -262,6 +262,7 @@ global.ach_AchievementFiend_Shown = false;
           <argument>
             <kind>1</kind>
             <string>scriptScreenShakeLoop(global.shakeMagnitude, global.shakeDuration);
+scriptAchievementTracker();
 //scriptZoomOnPlanet();
 
 if(room == room_Battle)

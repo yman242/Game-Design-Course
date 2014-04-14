@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>currentNumShips = 0; // used to update formations
 
+alarmTriggered = false;
+
 target = 0;
 
 formationController = instance_create(x,y,FormationController);
