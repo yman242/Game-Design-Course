@@ -45,6 +45,11 @@ killCount = population-escaped;
 if(!global.currentlyInvadingPlanet.isDestroyed)
 {
     killCount = floor(killCount*0.15);
+    controlledPlanets = global.playerPlanetsConquered +1;
+}
+else
+{
+    controlledPlanets = global.playerPlanetsConquered;
 }
 
 global.playerKillCount += killCount;
@@ -71,8 +76,6 @@ if(global.currentlyInvadingPlanet.isDestroyed)
          credits = 10;
      }
 }
-
-controlledPlanets = global.playerPlanetsConquered +1;
 
 credits = (controlledPlanets*5) + credits;
 

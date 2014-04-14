@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>currentNumShips = 0; // used to update formations
 
+alarmTriggered = false;
+
 target = 0;
 
 formationController = instance_create(x,y,FormationController);
@@ -96,7 +98,9 @@ alarm[0] = 30*5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//AI
+            <string>alarmTriggered = true;
+/*
+//AI
 if((global.battleState == 3) &amp;&amp; target &gt; 0 &amp;&amp; instance_exists(target) &amp;&amp; array_length_1d(ships)&gt;0 &amp;&amp; instance_exists(ships[0]))
 {
     if(target.strategyType == 0 &amp;&amp; strategyType != 1)
@@ -120,7 +124,7 @@ if((global.battleState == 3) &amp;&amp; target &gt; 0 &amp;&amp; instance_exists
         scriptChangePosition(ships,stratPosition,ships[0].x,ships[0].y);
         formationController.alarm[0] = 1;
     }
-}
+}*/
 
 alarm[0] = 30*5;
 </string>
@@ -188,6 +192,35 @@ if(!formationController.setup &amp;&amp; global.battleState == 3)
 }
 
 currentNumShips = array_length_1d(ships);
+
+
+
+//AI
+if(alarmTriggered &amp;&amp;(global.battleState == 3) &amp;&amp; target &gt; 0 &amp;&amp; instance_exists(target) &amp;&amp; array_length_1d(ships)&gt;0 &amp;&amp; instance_exists(ships[0]))
+{   
+    alarmTriggered = false;
+    if(target.strategyType == 0 &amp;&amp; strategyType != 1)
+    {
+        strategyType = 1;
+        stratPosition = scriptMonsterStratLocations(strategyType);
+        scriptChangePosition(ships,stratPosition,ships[0].x,ships[0].y);
+        formationController.alarm[0] = 1;
+    }
+    else if(target.strategyType == 1 &amp;&amp; strategyType != 2)
+    {
+        strategyType = 2;
+        stratPosition = scriptMonsterStratLocations(strategyType);
+        scriptChangePosition(ships,stratPosition,ships[0].x,ships[0].y);
+        formationController.alarm[0] = 1;
+    }
+    else if(target.strategyType == 2 &amp;&amp; strategyType != 0)
+    {
+        strategyType = 0;
+        stratPosition = scriptMonsterStratLocations(strategyType);
+        scriptChangePosition(ships,stratPosition,ships[0].x,ships[0].y);
+        formationController.alarm[0] = 1;
+    }
+}
 </string>
           </argument>
         </arguments>
