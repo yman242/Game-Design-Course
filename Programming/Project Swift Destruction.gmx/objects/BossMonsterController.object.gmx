@@ -50,10 +50,10 @@ ships = 0;
 shipType = 6;
 
 
-ships[0] = instance_create(x, y , obj_Boss)
+/*ships[0] = instance_create(x, y , obj_Boss)
 ships[0].direction = 180;
 ships[0].speed = global.moveSpeed;
-ships[0].myController = id;
+ships[0].myController = id;*/
 </string>
           </argument>
         </arguments>

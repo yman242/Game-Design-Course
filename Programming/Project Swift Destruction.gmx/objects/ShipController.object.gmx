@@ -234,14 +234,28 @@ if(scriptRectanglePointCollision(mouse_x,mouse_y,view_xview[view_current] + (glo
     
     if(strategyType == 0)
     {
+    
+        if(global.skirmish_formations == 0)
+        {
+            scriptToast("Skirmish", "This formation is great for rapid firing and very effective against shields!", 90);
+        }
         global.skirmish_formations++;
     }
     else if(strategyType == 1)
     {
+        if(global.attack_formations == 0)
+        {
+            scriptToast("Attack", "This formation puts all your ship's power into a single, charged shot. Powerful, but leaves them wide open!", 90);
+        }
         global.attack_formations++;
     }
     else
     {
+    
+        if(global.shield_formations == 0)
+        {
+            scriptToast("Shield", "This formation is good for protecting things behind it, like the planet destroyer. It's weak to rapid fire, though.", 90);
+        }
         global.shield_formations++;
     }
     
@@ -359,8 +373,21 @@ else if(scriptRectanglePointCollision(mouse_x,mouse_y, view_xview[view_current] 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-draw_sprite(buttonSkillSprite,general.ability,view_xview[view_current] + stratButtonTier*buttonWidth, view_yview[view_current] + view_hview[view_current]-(buttonSkillHeight));
+            <string>colorHolder= c_white;
+
+if(general.ability == 0 &amp;&amp; global.imperialCredits&lt;7)
+{
+    colorHolder= c_gray;
+}
+else if(general.ability == 1 &amp;&amp; global.imperialCredits&lt;5)
+{
+    colorHolder= c_gray;
+}
+else if(general.ability == 2 &amp;&amp; global.imperialCredits&lt;10)
+{
+    colorHolder= c_gray;
+}
+draw_sprite_ext(buttonSkillSprite,general.ability,view_xview[view_current] + stratButtonTier*buttonWidth, view_yview[view_current] + view_hview[view_current]-(buttonSkillHeight),1,1,0,colorHolder,1);
 //draw_set_color(c_white);
 //draw_text(view_xview[view_current] + stratButtonTier*buttonWidth, view_yview[view_current] + view_hview[view_current]-(buttonSkillHeight),general.ability);
 

@@ -136,6 +136,12 @@ scriptParticleEngine(x,y,0,random(50),250,100,0,360,1,6,c_gray,sprite_SoftPartic
     valueHolder = array_length_1d(myController.target.ships);
     
     flipper = 1;
+    
+    if(global.missiles_fired == 0)
+    {
+        scriptToast("Missiles", "This will cause the planet destroyer to shoot a volley of missiles. Effective against groups!", 90);
+    }
+    
     global.missiles_fired++;
     if(valueHolder&gt;0)
     {
@@ -201,6 +207,10 @@ scriptParticleEngine(x,y,0,random(50),250,100,0,360,1,6,c_gray,sprite_SoftPartic
     
     if(valueHolder&gt;0)
     {
+        if(global.lasers_fired == 0)
+        {
+            scriptToast("Lasers", "This will cause the planet destroyer to shoot a deadly laser blast. Very powerful!", 90);
+        }
         global.lasers_fired++;
         holder = instance_create(x,y,Laser);
         

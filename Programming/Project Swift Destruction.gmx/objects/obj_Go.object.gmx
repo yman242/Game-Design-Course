@@ -51,6 +51,11 @@ image_yscale = global.buttonScale;
             <kind>1</kind>
             <string>if(global.onField &gt; 0)
 {
+    if(!global.tutorial)
+    {
+        scriptToast("Combat", "The ships are now flying to engage! The buttons in the bottom left control abilities and formations.", 180);
+    }
+
     global.battleState = 1;
     instance_destroy();
 }

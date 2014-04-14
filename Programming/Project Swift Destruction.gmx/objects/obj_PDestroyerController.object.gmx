@@ -44,7 +44,8 @@ shipType = 1;
 numOfShips = 1;
 
 stratPosition = 0;
-ships[0] = global.planetDestroyer;
+ships = 0;
+//ships[0] = global.planetDestroyer;
 </string>
           </argument>
         </arguments>

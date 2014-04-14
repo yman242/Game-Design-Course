@@ -30,6 +30,11 @@ sound_volume(sound_MenuMusic,.8);
 sound_volume(sound_BossMusic,.8);
 sound_volume(sound_CombatMusic,.8);
 
+global.whichBoss = 0;
+
+
+global.alliesDead = 0;
+global.monstersKilled = 0;
 
 global.shuttles = 0;
 global.tutorial = false; //If combat tutorial was done.

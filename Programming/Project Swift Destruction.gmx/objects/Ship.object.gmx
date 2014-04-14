@@ -75,7 +75,9 @@ life = 100;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Explosion code goes here.
+            <string>global.alliesDead += 1;
+
+//Explosion code goes here.
 audio_play_sound(sound_Missle, 0, false);
 scriptParticleEngine(x,y,0,random(25),250,100,0,360,1,6,c_gray,sprite_SoftParticle);
 holder = instance_create(x,y,obj_ShipExplosion);
@@ -141,6 +143,11 @@ if(myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
         holder = instance_create(xHolder,yHolder,Kamakaze);
         holder.sprite_index = sprite_index;
         targetHolder = myController.target.ships[random(valueHolder-1)];
+        
+        if(global.sacrifices_had == 0)
+        {
+            scriptToast("Sacrifice", "This will cause 1 ship in the formation to kamikaze to its death, dealing lots of damage but dieing in the process.", 90);
+        }
         
         global.sacrifices_had++;
         

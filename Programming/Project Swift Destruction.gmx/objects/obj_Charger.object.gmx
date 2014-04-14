@@ -108,7 +108,19 @@ if(shipDestroyer.destroying &amp;&amp; shipDestroyer.alarm[0]&gt;0)
 {
     tempYHolder = sprite_get_height(sprite_index)/2;
     tempXHolder = sprite_get_width(sprite_index)/10;
-    draw_sprite_stretched(sprite_ChargeBeam,0,x+tempXHolder,y+tempYHolder,sprite_get_height(sprite_ChargeBeam)*((30*shipDestroyer.chargeTime)/shipDestroyer.alarm[0]),sprite_get_height(sprite_ChargeBeam))
+    
+    //stretchX = sprite_get_height(sprite_ChargeBeam)*((30*shipDestroyer.chargeTime)/shipDestroyer.alarm[0]);
+    
+    stretchX = ((30*shipDestroyer.chargeTime)/shipDestroyer.alarm[0]);
+    
+    if(stretchX&gt;5)
+    {
+        stretchX = 5;
+    }
+    
+    stretchX = sprite_get_height(sprite_ChargeBeam)*stretchX;
+    
+    draw_sprite_stretched(sprite_ChargeBeam,0,x+tempXHolder,y+tempYHolder,stretchX,sprite_get_height(sprite_ChargeBeam))
 }
 </string>
           </argument>

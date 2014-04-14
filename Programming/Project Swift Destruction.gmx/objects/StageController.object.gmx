@@ -31,10 +31,13 @@ global.buttonScale = 1.5;
 
 if(!global.tutorial)
 {
-    global.tutorial = true;
-    room_goto(room_Tutorial);
+    //global.tutorial = true;
+    //room_goto(room_Tutorial);
+    scriptToast("Place Ships", "You can place ships by clicking and dragging the cards to the right. Press engage when ready!", 180);
 }
 
+global.alliesDead = 0;
+global.monstersKilled = 0;
 global.shuttles = 0;
 alarm[0] = 30*10;
 
@@ -78,9 +81,13 @@ global.planetDestroyer = instance_create(0,view_hview[view_current]/2,obj_Planet
 global.planetDestroyer.y -= sprite_get_height(global.planetDestroyer.sprite_index)/2;
 
 attackedPlanet = instance_create(view_wview[view_current],view_hview[view_current]/2,MonsterPlanet); //makes the planet being attacked.
-attackedPlanet.x -= sprite_get_width(attackedPlanet.sprite_index)*3/4;//Puts the planet on screen and then pushes it back.
+/*attackedPlanet.x -= sprite_get_width(attackedPlanet.sprite_index)*3/4;//Puts the planet on screen and then pushes it back.
 attackedPlanet.x += (sprite_get_width(attackedPlanet.sprite_index)/4)*global.waves;
-attackedPlanet.y -= sprite_get_height(attackedPlanet.sprite_index)/2;
+attackedPlanet.y -= sprite_get_height(attackedPlanet.sprite_index)/2;*/
+
+attackedPlanet.x -= sprite_get_width(attackedPlanet.sprite_index);//Puts the planet on screen and then pushes it back.
+//attackedPlanet.x += (sprite_get_width(attackedPlanet.sprite_index)/4)*global.waves;
+attackedPlanet.y -= sprite_get_height(attackedPlanet.sprite_index);
 
 xHolder = view_wview[view_current] - (sprite_get_width(sprite_Button)*global.buttonScale);
 yHolder = sprite_get_height(sprite_Button)*global.buttonScale/2;
@@ -158,9 +165,9 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
             <kind>1</kind>
             <string>if(currentWave-global.waves==0)
 {
-    global.shuttles++;
-    alarm[0] = 30*10;
+    global.shuttles+= floor(random(5));   
 }
+alarm[0] = 30*5;
 </string>
           </argument>
         </arguments>
@@ -206,16 +213,43 @@ whichWay = 0; //Not Implemented yet, but will allow control of directions.
         {
             global.destroyable = true;
             
+            if(!global.tutorial)
+            {
+                global.tutorial = true;
+                scriptToast("Planet Destruction", "The planet is in range! Press the button in the bottom right there to start charging the planet destroyer!", 180);
+                scriptToast("Planet Capture", "Alternately you can wait to kill all the enemies flying around to take the planet for yourself!", 180*3);
+                scriptToast("Escape Ships", "Whatever you do you better do it fast! As you wait there are people escaping from the planet and, in turn, your eventual control!", 180*6);
+            }
+            
             if(global.currentlyInvadingPlanet.isBoss)
             {
                 bossOffset=1;
-                monsters[0] = instance_create(view_wview+random(view_wview - global.linePosition*1.2), view_hview/2,BossMonsterController);
+                if(global.whichBoss == 0)
+                {
+                    bossHolder = obj_Boss;
+                }
+                else if(global.whichBoss == 1)
+                {
+                    bossHolder = obj_Boss2;
+                }
+                else
+                {
+                    bossHolder = obj_Boss3;
+                }
+                global.whichBoss++;
+                
+                monsters[0] = instance_create(view_wview+random(view_wview - global.linePosition*1.5), view_hview/2,BossMonsterController);
+                monsters[0].ships[0] = instance_create(monsters[0].x, monsters[0].y , bossHolder)
+                monsters[0].ships[0].direction = 180;
+                monsters[0].ships[0].speed = global.moveSpeed;
+                monsters[0].ships[0].myController = monsters[0].id;
+                
                 global.destroyable = false;
             }
         }
         for(k=0+bossOffset;k&lt;waveTotals[currentWave-1,0];k++)
         {
-            monsters[k] = instance_create(view_wview+random(view_wview - global.linePosition*1.2), (view_hview/4)+random(view_hview/2),MonsterController);
+            monsters[k] = instance_create(view_wview+random(view_wview - global.linePosition*1.5), (view_hview/4)+random(view_hview/2),MonsterController);
         }
         
         monsters = scriptUpdateArray(monsters);
@@ -330,8 +364,13 @@ if(global.selectedShip&gt;0&amp;&amp;instance_exists(global.selectedShip))
     }
 }
 
-draw_set_color(c_white);
-draw_text(view_xview[view_current] + view_wview[view_current] - 128,view_yview[view_current] + view_hview[view_current] - 128,global.shuttles);
+draw_set_color(c_white)
+if(global.battleState &gt; 0)
+{
+    
+    draw_text(view_xview[view_current] + view_wview[view_current] - 384,view_yview[view_current] + view_hview[view_current] - 128,"Escaped pods:");
+    draw_text(view_xview[view_current] + view_wview[view_current] - 128,view_yview[view_current] + view_hview[view_current] - 128,global.shuttles);
+}
 </string>
           </argument>
         </arguments>
