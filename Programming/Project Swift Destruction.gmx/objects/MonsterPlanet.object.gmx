@@ -43,7 +43,7 @@ image_xscale = 0.5;
 image_yscale = 0.5;
 alarm[0] = 30*1;
 
-switch (global.currentlyInvadingPlanet.type) 
+/*switch (global.currentlyInvadingPlanet.type) 
 {
     case 0:
         sprite_index = sprite_GAS_PLANET;
@@ -63,7 +63,7 @@ switch (global.currentlyInvadingPlanet.type)
     default:
         sprite_index = sprite_WATER_PLANET;
         break;
-}
+}*/
 </string>
           </argument>
         </arguments>

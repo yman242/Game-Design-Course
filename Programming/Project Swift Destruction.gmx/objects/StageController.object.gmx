@@ -36,6 +36,7 @@ if(!global.tutorial)
     scriptToast("Place Ships", "You can place ships by clicking and dragging the cards to the right. Press engage when ready!", 180);
 }
 
+global.captainsDead = 0;
 global.alliesDead = 0;
 global.monstersKilled = 0;
 global.shuttles = 0;

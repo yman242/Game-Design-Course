@@ -26,36 +26,57 @@
           <argument>
             <kind>1</kind>
             <string>population = global.currentlyInvadingPlanet.population;
-escaped = global.shuttles*1000000;
+escaped = global.shuttles*1000000 + floor(random(999999));
+if(global.shuttles == 0)
+{
+    escaped = 0;
+}
+
 
 if(escaped&gt;population)
 {
     escaped = population;
 }
 
+
+
 killCount = population-escaped;
 
-global.playerKillCount += killCount;
+if(!global.currentlyInvadingPlanet.isDestroyed)
+{
+    killCount = floor(killCount*0.15);
+}
 
+global.playerKillCount += killCount;
 //show_message(global.currentlyInvadingPlanet.population);
 
-   // Give the player there moneys!
-    if (global.currentlyInvadingPlanet.isBoss) 
-    {
-        credits = 50;
-    } 
-    else if (global.currentlyInvadingPlanet.threat == 3) 
-    {
-        credits = 30;
-    } 
-    else if (global.currentlyInvadingPlanet.threat == 2) 
-    {
-        credits = 20;
-    } 
-    else 
-    {
-        credits = 10;
-    }
+// Give the player there moneys!
+credits = 0;
+if(global.currentlyInvadingPlanet.isDestroyed)
+{
+     if (global.currentlyInvadingPlanet.isBoss) 
+     {
+         credits = 50;
+     } 
+     else if (global.currentlyInvadingPlanet.threat == 3) 
+     {
+         credits = 30;
+     } 
+     else if (global.currentlyInvadingPlanet.threat == 2) 
+     {
+         credits = 20;
+     } 
+     else 
+     {
+         credits = 10;
+     }
+}
+
+controlledPlanets = global.playerPlanetsConquered +1;
+
+credits = (controlledPlanets*5) + credits;
+
+global.imperialCredits += credits;
 </string>
           </argument>
         </arguments>
@@ -126,22 +147,39 @@ draw_text(middleX*2,startY,population);
 startY += increaseY;
 draw_text(middleX/2,startY,"People Evacuated:");
 draw_text(middleX*2,startY,escaped);
+startY += increaseY;
+draw_text(middleX/2,startY,"Ships Lost:");
+draw_text(middleX*2,startY,global.alliesDead);
+startY += increaseY;
+draw_text(middleX/2,startY,"Captains Lost:");
+draw_text(middleX*2,startY,global.captainsDead);
+startY += increaseY;
+draw_text(middleX/2,startY,"Enemies Killed:");
+draw_text(middleX*2,startY,global.monstersKilled);
 
 startY += increaseY;
 draw_sprite(sprite_HorizontalLine,0,middleX/2,startY);
 startY += increaseY/2;
 draw_text(middleX/2,startY,"Total Score:");
-draw_text(middleX*2,startY,global.playerKillCount);
+draw_text(middleX*2,startY,killCount);
 
-startY += increaseY*3;
-draw_sprite(sprite_Coin,0,middleX/4-sprite_get_width(sprite_Coin),startY+sprite_get_height(sprite_Coin)/4);
+startY += increaseY*1.25;
+draw_sprite(sprite_Coin,0,middleX/3-sprite_get_width(sprite_Coin),startY+sprite_get_height(sprite_Coin)/4);
+draw_text(middleX/2,startY,"Planets Conquered:");
+draw_text(middleX*2,startY,controlledPlanets);
+
+startY += increaseY;
 draw_text(middleX/2,startY,"Victory Credits:");
 draw_text(middleX*2,startY,credits);
 
-startY += increaseY;
-draw_text(middleX*2.25,startY,"Press Spacebar to continue");
+//startY += increaseY;
+draw_text(middleX*2.75,startY,"Press Spacebar to continue");
 
 draw_set_halign(fa_left)
+
+/*global.captainsDead = 0;
+global.alliesDead = 0;
+global.monstersKilled = 0;*/
 
 </string>
           </argument>

@@ -75,7 +75,7 @@ life = 200;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.monstersKilled = 0;
+            <string>global.monstersKilled++;
 
 audio_play_sound(sound_Missle, 0, false);
 scriptParticleEngine(x,y,0,random(25),500,250,0,360,1,6,c_gray,sprite_SoftParticle);
