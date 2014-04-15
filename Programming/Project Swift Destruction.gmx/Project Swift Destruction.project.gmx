@@ -355,13 +355,13 @@
     <room>rooms\room_Battle</room>
     <room>rooms\room_Credits</room>
     <room>rooms\room_Map</room>
-    <room>rooms\room_Narrative_Section</room>
     <rooms name="Win/Lose">
       <room>rooms\room_Win</room>
       <room>rooms\room_Tutorial</room>
       <room>rooms\room_Lose</room>
     </rooms>
     <room>rooms\room_game_ending</room>
+    <room>rooms\room_Narrative_Section</room>
     <room>rooms\room_travel_animation</room>
   </rooms>
   <help>

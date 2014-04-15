@@ -260,6 +260,8 @@ ypos += 60;
 draw_text(x, ypos, "Tyler Matchett");
 ypos += 40;
 draw_text(x, ypos, "Shawn Dorey");
+ypos += 40;
+draw_text(x, ypos, "Yaodong Zhao");
 
 
 draw_set_font(font_Boss);
