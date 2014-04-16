@@ -290,6 +290,15 @@ switch(global.fleet[tab_selected].tacticalType) {
         draw_text(textLocation_x + 20, textLocation_y + 75, "Attack Formation");
         break;
 }
+/*
+textLocation_y = textLocation_y + 75;
+
+draw_text(textLocation_x, textLocation_y, "Captain Rank");
+textLocation_y = textLocation_y + 25;
+        draw_text(textLocation_x + 20, textLocation_y, "First Class");
+*/
+
+
 // Draw the protrait's Border
 draw_sprite(sprite_fm_portrait_outline, -1, portraitLocation_x, portraitLocation_y);
 
