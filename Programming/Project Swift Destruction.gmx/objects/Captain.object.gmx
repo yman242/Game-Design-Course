@@ -36,6 +36,7 @@ inFocus = true;
 fleet_id = -1;
 drawText = true;
 isDead = false;
+totalWins = 0;
 </string>
           </argument>
         </arguments>

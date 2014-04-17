@@ -6,7 +6,7 @@ switch(floor(random(10)))
         result = "General Jobber";
         break;
     case 1:
-        result = "General Spacey";
+        result = "General Mundee";
         break;
     case 2:
         result = "General Bowe";

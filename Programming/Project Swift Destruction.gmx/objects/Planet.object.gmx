@@ -84,6 +84,12 @@ isSelected = false;
             global.playerPlanetsConquered -= 1;
         }
         
+        for (i = 0; i &lt; global.shipMax; i += 1) {
+            if (!global.fleet[i].isDead) {
+                global.fleet[i].totalWins += 1;
+            }
+        }
+        
         if (isBoss) {
             // Goto Narrative Room
             global.NextBoss = global.playerPlanetsKilled + global.playerPlanetsConquered + global.NextBossStep * global.sectorNumber;
@@ -101,6 +107,12 @@ isSelected = false;
         //global.playerKillCount += population * 0.15;
         global.playerPlanetsConquered += 1;
         hasShownControlled = true;
+        
+        with (Captain) {
+            if (!isDead) {
+                totalWins += 1;
+            }
+        }
         
         if (isBoss) {
             global.NextBoss = global.playerPlanetsKilled + global.playerPlanetsConquered + global.NextBossStep * global.sectorNumber;

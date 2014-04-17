@@ -103,7 +103,7 @@ currentTimer = 0;
 currentTimer += 1;
 scaleFactor = view_wview[view_current] / 1280;
 
-x = view_xview[view_current] + ((view_wview[view_current] / 2) - ((sprite_get_width(sprite_tooltipbkg)* scaleFactor) / 2));
+x = view_xview[view_current] + ((view_wview[view_current] / 2) - ((sprite_get_width(sprite_achievement)* scaleFactor) / 2));
 y = (view_yview[view_current] + (25 * scaleFactor));
 
 // Alpha for the fade out
@@ -113,7 +113,7 @@ if (currentTimer &gt; DelayForFade) {
     draw_set_alpha(1);
 }
 
-draw_sprite_ext(sprite_tooltipbkg, -1, x, y, 1 * scaleFactor, 1 * scaleFactor, image_angle, c_white, image_alpha);
+draw_sprite_ext(sprite_achievement, -1, x, y, 1 * scaleFactor, 1 * scaleFactor, image_angle, c_white, image_alpha);
 
 // Title
 draw_text_ext_transformed(x+(25 * scaleFactor), y+(10 * scaleFactor), title, 20, 500, 1 * scaleFactor, 1 * scaleFactor, 0);

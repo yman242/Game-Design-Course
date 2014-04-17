@@ -290,13 +290,20 @@ switch(global.fleet[tab_selected].tacticalType) {
         draw_text(textLocation_x + 20, textLocation_y + 75, "Attack Formation");
         break;
 }
-/*
-textLocation_y = textLocation_y + 75;
+
+textLocation_y = textLocation_y + 125;
 
 draw_text(textLocation_x, textLocation_y, "Captain Rank");
 textLocation_y = textLocation_y + 25;
-        draw_text(textLocation_x + 20, textLocation_y, "First Class");
-*/
+if (global.fleet[tab_selected].totalWins &gt; 2) {
+    draw_text(textLocation_x + 20, textLocation_y, "First Class");
+} else if (global.fleet[tab_selected].totalWins &gt; 5) {
+    draw_text(textLocation_x + 20, textLocation_y, "Second Class");
+} else if (global.fleet[tab_selected].totalWins &gt; 9) {
+    draw_text(textLocation_x + 20, textLocation_y, "Elite");
+} else {
+    draw_text(textLocation_x + 20, textLocation_y, "Rookie");
+}
 
 
 // Draw the protrait's Border
