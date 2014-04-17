@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>damage = 15;
+            <string>damage = 35;
 
-alarm[0] = 30*15;
+alarm[0] = 150;
 
 speed = 15;
 
@@ -39,6 +39,8 @@ straight = false;
 
 curveTime = .05;
 alarm[1] = 30*curveTime;
+
+scriptMissileTrail();
 </string>
           </argument>
         </arguments>
@@ -161,6 +163,8 @@ if(holder&gt;0)
     scriptCombatDamage(damage,holder); //Damage the ship
     instance_destroy();
 }
+
+scriptMissileTrail();
 </string>
           </argument>
         </arguments>

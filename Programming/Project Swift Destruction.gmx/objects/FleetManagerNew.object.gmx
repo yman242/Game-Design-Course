@@ -276,7 +276,7 @@ textLocation_y = textLocation_y + 25;
 switch(global.fleet[tab_selected].tacticalType) {
     case 0:
         draw_sprite(sprite_fm_port_attack, -1, portraitLocation_x, portraitLocation_y);
-        draw_text(textLocation_x + 20, textLocation_y, "Aggressive Formation");
+        draw_text(textLocation_x + 20, textLocation_y, "Attack Formation");
         draw_text(textLocation_x + 20, textLocation_y + 75, "Volley Formation");
         break;
     case 1:

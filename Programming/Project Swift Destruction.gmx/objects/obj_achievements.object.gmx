@@ -119,7 +119,7 @@ draw_sprite_ext(sprite_achievement, -1, x, y, 1 * scaleFactor, 1 * scaleFactor, 
 draw_text_ext_transformed(x+(25 * scaleFactor), y+(10 * scaleFactor), title, 20, 500, 1 * scaleFactor, 1 * scaleFactor, 0);
 
 // Message, needs to be broken down if too long
-draw_text_ext_transformed(x+(25 * scaleFactor), y+(40 * scaleFactor), display_message, 20, 485, 1 * scaleFactor, 1 * scaleFactor, 0);
+draw_text_ext_transformed(x+(25 * scaleFactor), y+(30 * scaleFactor), display_message, 20, 485, 1 * scaleFactor, 1 * scaleFactor, 0);
 
 draw_set_alpha(1);
 </string>

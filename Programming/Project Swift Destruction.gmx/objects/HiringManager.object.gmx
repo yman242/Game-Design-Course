@@ -193,8 +193,8 @@ draw_text(text_x, text_y, "Favorite Formation");
 
 switch(newCaptain.tacticalType) {
     case 0:
-        draw_text(text_x, text_y + 25, "Aggressive Formation");
-        draw_text(text_x, text_y + 65 + 25, "Shield Formation");
+        draw_text(text_x, text_y + 25, "Attack Formation");
+        draw_text(text_x, text_y + 65 + 25, "Volley Formation");
         break;
     case 1:
         draw_text(text_x, text_y + 25, "Volley Formation");
@@ -202,7 +202,7 @@ switch(newCaptain.tacticalType) {
         break;
     default:
         draw_text(text_x, text_y + 25, "Shield Formation");
-        draw_text(text_x, text_y + 65 + 25, "Volley Formation");
+        draw_text(text_x, text_y + 65 + 25, "Attack Formation");
         break;
 }
 
