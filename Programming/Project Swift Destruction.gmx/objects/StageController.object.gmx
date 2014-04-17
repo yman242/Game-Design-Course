@@ -94,6 +94,8 @@ xHolder = view_wview[view_current] - (sprite_get_width(sprite_Button)*global.but
 yHolder = sprite_get_height(sprite_Button)*global.buttonScale/2;
 incrementHolder = (yHolder*2+32);
 
+buttonCounter = 0;
+global.buttonAvailable=0;
 for(i=0;i&lt;global.shipMax;i++)
 {
     if(!global.fleet[i].isDead)
@@ -125,6 +127,9 @@ for(i=0;i&lt;global.shipMax;i++)
         }
         
         buttons[i].commander = global.fleet[i];
+        
+        global.buttonAvailable[buttonCounter] = 1;
+        buttonCounter++;
     }
 }
 

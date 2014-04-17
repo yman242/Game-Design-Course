@@ -41,8 +41,8 @@ missiles = 4; //Number of missile ports on ship.
 lasers = 0; //Number of laser ports on ships.
 
 burstCount = 0; //used to keep track of burst fire
-burstTotal = 3; //Total burst shots to fire
-burstDelay = .5;//How many seconds until burst fire.
+burstTotal = 4; //Total burst shots to fire
+burstDelay = .1;//How many seconds until burst fire.
 
 attackSpeedBurst = 0;
 attackSpeedMissiles = 5; //How often missiles can/will be launched.
@@ -59,6 +59,65 @@ aimOffset = 64;
 engaged = false;
 
 life = 100;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>xHolder = x+(sprite_get_width(sprite_index)/2);
+yHolder = y+(sprite_get_height(sprite_index)/2);
+
+if(myController.strategyType == 0 &amp;&amp; myController.target&gt;0 &amp;&amp; instance_exists(myController.target))
+{
+    
+    valueHolder = array_length_1d(myController.target.ships);
+    
+    if(valueHolder&gt;0)
+    {
+        holder = instance_create(xHolder,yHolder,Missle);
+        
+        targetHolder = myController.target.ships[floor(random(valueHolder-1))];
+        
+        spriteTemp = sprite_get_name(targetHolder); //Used to get an aiming point.
+        //aimX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
+        //aimY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
+        
+        holder.goalX = (random(aimOffset)-(aimOffset/2)) + targetHolder.x + sprite_get_width(spriteTemp)/2;
+        holder.goalY = (random(aimOffset)-(aimOffset/2)) + targetHolder.y + sprite_get_height(spriteTemp)/2;
+        
+        holder.direction = floor(random(90))-45;
+        
+        holder.target = Monster;
+    }
+}
+
+burstCount++;
+if(burstCount&lt;burstTotal)
+{
+    alarm[0] = 30 * burstDelay;
+}
+else
+{
+    alarm[0] = 30 *attackSpeedMissiles * myController.formationController.attackSpeed
+    burstCount = 0;
+}
 </string>
           </argument>
         </arguments>

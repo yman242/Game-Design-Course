@@ -500,6 +500,9 @@ else
     {
         myController.ships[i].life = 0;
     }
+    
+    global.buttonAvailable[myController.stratButtonTier] = 1;
+    global.buttonTier--;
 }
 </string>
           </argument>
