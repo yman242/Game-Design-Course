@@ -54,7 +54,7 @@ tacticalType = floor(random(3));
 
 // Randomly choose a ship type the captain commands
 // Put this on a curve
-shipType = 5// floor(random(5));
+shipType = floor(random(5));
 
 // Create the captain object
 captain_id = instance_create(0,0, Captain);

@@ -174,7 +174,7 @@ isSelected = false;
     }
     
     if (isSelected &amp;&amp; !info_created) {
-        instance_create(x + 25, y - (sprite_get_height(sprite_planet_selection) / 2), obj_planet_info);
+        instance_create(x + 45, y - (sprite_get_height(sprite_planet_selection) / 2), obj_planet_info);
         //scriptCenterView(x, y, zoomlevel);
         info_created = true;
     }
