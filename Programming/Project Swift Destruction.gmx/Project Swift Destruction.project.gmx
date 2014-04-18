@@ -103,6 +103,7 @@
         <sprite>sprites\sprite_portrait_empty</sprite>
         <sprite>sprites\sprite_portrait_3</sprite>
         <sprite>sprites\sprite_portrait_2</sprite>
+        <sprite>sprites\sprite_portrait_enemy</sprite>
         <sprite>sprites\sprite_portrait_1</sprite>
         <sprite>sprites\sprite_captain_selected</sprite>
         <sprite>sprites\sprite_captain_select_area</sprite>
